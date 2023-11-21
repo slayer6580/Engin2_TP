@@ -5,6 +5,7 @@ using UnityEngine;
 
 public class TeamOrchestrator : MonoBehaviour
 {
+    const int SPECIAL_SCORE = 10;
     private const float MIN_OBJECTS_DISTANCE = 2.0f;
     public List<Collectible> KnownCollectibles { get; private set; } = new List<Collectible>();
     public List<Camp> Camps { get; private set; } = new List<Camp>();
@@ -64,8 +65,8 @@ public class TeamOrchestrator : MonoBehaviour
         }
         if (collectibleType == ECollectibleType.Special)
         {
-            m_score += 10;//TODO: Turn to const
-        }
+            m_score += SPECIAL_SCORE;
+		}
 
         Debug.Log("New score = " + m_score);
         m_scoreText.text = "Score: " + m_score.ToString();
