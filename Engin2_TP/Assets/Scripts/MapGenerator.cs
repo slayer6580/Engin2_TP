@@ -17,9 +17,14 @@ public class MapGenerator : MonoBehaviour
 
     [field: SerializeField]
 	public static RandomIntBetweenRange CampCost { get; private set; } = new RandomIntBetweenRange(5, 80); //Valeur à laquelle vos workers peuvent accéder
-    [SerializeField]
-	private RandomIntBetweenRange m_mapDimension; //Valeur à laquelle vos workers peuvent accéder
-    [SerializeField]
+																										   //[SerializeField]
+																										   //private RandomIntBetweenRange m_mapDimension; //Valeur à laquelle vos workers peuvent accéder
+
+	[field: SerializeField]
+	public static RandomIntBetweenRange MapDimension { get; private set; } = new RandomIntBetweenRange(60, 600); //Valeur à laquelle vos workers peuvent accéder
+
+
+	[SerializeField]
 	private RandomIntBetweenRange m_nodesDensity;	//Valeur INCONNUE de vos workers
 	public static RandomIntBetweenRange SimulationDuration { get; private set; } = new RandomIntBetweenRange(10, 1000); //In seconds. Between 10 and 1000
 		//Valeur à laquelle vos workers peuvent accéder
@@ -51,7 +56,7 @@ public class MapGenerator : MonoBehaviour
 
 
 		CampCost.RollValue();
-		m_mapDimension.RollValue();
+		MapDimension.RollValue();
 		m_nodesDensity.RollValue();
 		SimulationDuration.RollValue();
     }
@@ -59,7 +64,7 @@ public class MapGenerator : MonoBehaviour
     private void GenerateMap()
     {
         List<Vector2> points;
-        points = PoissonDiscSampling.GeneratePoints(m_nodesDensity.Value, Vector2.one * m_mapDimension.Value, rejectionSamples);
+        points = PoissonDiscSampling.GeneratePoints(m_nodesDensity.Value, Vector2.one * MapDimension.Value, rejectionSamples);
 
 		foreach (var point in points)
 		{
@@ -70,7 +75,7 @@ public class MapGenerator : MonoBehaviour
 
     private void ShiftMap()
     {
-        transform.Translate(-m_mapDimension.Value / 2, -m_mapDimension.Value / 2, 0);
+        transform.Translate(-MapDimension.Value / 2, -MapDimension.Value / 2, 0);
     }
 }
 
