@@ -187,8 +187,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
-  repeatOnFinish: 0
+  selectedEditorNode: {fileID: 1775752309640372879}
+  repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 0}
 --- !u!114 &6246064434598885474
@@ -440,10 +440,10 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 9116295918746765065}
+  - component: {fileID: 7671532921028383350}
   - component: {fileID: 8564573260190037872}
   - component: {fileID: 8172920614790624917}
   - component: {fileID: 3149279807577635767}
-  - component: {fileID: 7671532921028383350}
   m_Layer: 0
   m_Name: Worker_Alex
   m_TagString: Untagged
@@ -468,6 +468,22 @@ Transform:
   - {fileID: 2584961225956309886}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &7671532921028383350
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6189211357747071840}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: adb0c7aa741521d47bf21975b9c5b158, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  m_radius: 12
+  m_radiusDebugTransform: {fileID: 328708408943503787}
+  m_collectibleInInventory: 2
+  m_currentExtractingCollectible: {fileID: 0}
 --- !u!212 &8564573260190037872
 SpriteRenderer:
   m_ObjectHideFlags: 0
@@ -592,19 +608,3 @@ BoxCollider2D:
   serializedVersion: 2
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
---- !u!114 &7671532921028383350
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6189211357747071840}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: adb0c7aa741521d47bf21975b9c5b158, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_radius: 12
-  m_radiusDebugTransform: {fileID: 328708408943503787}
-  m_collectibleInInventory: 2
-  m_currentExtractingCollectible: {fileID: 0}
