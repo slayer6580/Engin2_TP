@@ -1,3 +1,4 @@
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using Unity.VisualScripting;
@@ -157,35 +158,59 @@ public class Worker_Explorer_Tommy : MonoBehaviour
 		directionValues = GetDirectionValue(m_currentExploreDir + 1);	
 		directionValues += lastChunk;
 
-		if (m_orchestrator.m_chunkList[directionValues.x, directionValues.y] == false)
+		bool isOutOfBound = true;
+		
+		if(IsStillInRange(directionValues))
 		{
-			//The chunk in NOT in any workers path so we can add it
-			nextChunk = new Vector2Int(directionValues.x, directionValues.y);
-			m_workerPath.Add(nextChunk);
-
-			//Update the direction, and reset to UP if all direction has been checked
-			m_currentExploreDir++;
-			if (m_currentExploreDir >= ExploringDirection.Count)
+			
+			if (m_orchestrator.m_chunkList[directionValues.x, directionValues.y] == false)
 			{
-				m_currentExploreDir = 0;
+				//The chunk in NOT in any workers path so we can add it
+				nextChunk = new Vector2Int(directionValues.x, directionValues.y);
+				m_workerPath.Add(nextChunk);
+
+				//Update the direction, and reset to UP if all direction has been checked
+				m_currentExploreDir++;
+				if (m_currentExploreDir >= ExploringDirection.Count)
+				{
+					m_currentExploreDir = 0;
+				}
+				isOutOfBound = false;
 			}
-		}
-		else
-		{
-			//Since we can't turn into a free chunk, continue in the same direction
-			directionValues = GetDirectionValue(m_currentExploreDir);
-			directionValues += lastChunk;
-			nextChunk = new Vector2Int(directionValues.x, directionValues.y);
-			m_workerPath.Add(nextChunk);
-		}
+			else
+			{
+				//Since we can't turn into a free chunk, continue in the same direction
+				directionValues = GetDirectionValue(m_currentExploreDir);
+				directionValues += lastChunk;
+				if (IsStillInRange(directionValues))
+				{	
+					nextChunk = new Vector2Int(directionValues.x, directionValues.y);
+					m_workerPath.Add(nextChunk);
 
-		//Set chosen Chunck so it won't be chose again.
-		m_orchestrator.m_chunkList[nextChunk.x, nextChunk.y] = true;
+					isOutOfBound = false;
+				}		
+			}
 
-		CheckIfPathIsDone();
+			if (!isOutOfBound)
+			{
+				//Set chosen Chunck so it won't be chose again.
+				m_orchestrator.m_chunkList[nextChunk.x, nextChunk.y] = true;
+			}		
+		}
 	}
 
-	
+	public bool IsStillInRange(Vector2Int directionValues)
+	{
+		if (directionValues.x < (m_orchestrator.nbOfChunckInLine) && directionValues.x > 0)
+		{
+			if (directionValues.y < (m_orchestrator.nbOfChunckInLine) && directionValues.y > 0)
+			{
+				return true;
+			}
+		}
+		return false;
+	}
+
 	public Vector2Int GetDirectionValue(ExploringDirection currentDir)
 	{
         if(currentDir == ExploringDirection.Up)
@@ -210,14 +235,14 @@ public class Worker_Explorer_Tommy : MonoBehaviour
 		
 	}
 
-    public void CheckIfPathIsDone()
+    public void CheckIfPathIsDone(Vector2Int lastChunk)
     {
 		//End the path
-		if (nextChunk.x > m_orchestrator.nbOfChunckInLine - 2 || nextChunk.x < 0)
+		if (lastChunk.x > m_orchestrator.nbOfChunckInLine || lastChunk.x < 0)
 		{
 			IsPathListFull = true;
 		}
-		if (nextChunk.y > m_orchestrator.nbOfChunckInLine - 2 || nextChunk.y < 0)
+		if (lastChunk.y > m_orchestrator.nbOfChunckInLine || lastChunk.y < 0)
 		{
 			IsPathListFull = true;
 		}
