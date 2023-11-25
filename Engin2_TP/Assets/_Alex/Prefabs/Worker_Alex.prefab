@@ -328,13 +328,16 @@ GameObject:
   - component: {fileID: 1351354143918856998}
   - component: {fileID: 5333905907760853543}
   - component: {fileID: 2661608582018306423}
-  - component: {fileID: 3066171840014029879}
   - component: {fileID: 5446215398362752672}
   - component: {fileID: 7978836462879654577}
   - component: {fileID: 3411941095620775092}
   - component: {fileID: 6747373303013722250}
   - component: {fileID: 9160126063694643300}
   - component: {fileID: 1818245411115894836}
+  - component: {fileID: 4322643718319028337}
+  - component: {fileID: 5061029409297584139}
+  - component: {fileID: 4124938537985030104}
+  - component: {fileID: 9090015632601704140}
   m_Layer: 0
   m_Name: Brain
   m_TagString: Untagged
@@ -479,49 +482,11 @@ MonoBehaviour:
   parent: {fileID: 2841092270851443096}
   children:
   - {fileID: 1818245411115894836}
-  - {fileID: 3066171840014029879}
+  - {fileID: 9090015632601704140}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &3066171840014029879
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Move Towards 2D
-  rect:
-    serializedVersion: 2
-    x: 420
-    y: 380
-    width: 160
-    height: 44
-  parent: {fileID: 2661608582018306423}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  targetPosition:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  minDistance: 0.01
 --- !u!114 &5446215398362752672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -625,6 +590,7 @@ MonoBehaviour:
   parent: {fileID: 2841092270851443096}
   children:
   - {fileID: 3411941095620775092}
+  - {fileID: 4124938537985030104}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -685,3 +651,148 @@ MonoBehaviour:
     blackboard: {fileID: 3483846891267229189}
     key: Worker
     constantValue: {fileID: 0}
+--- !u!114 &4322643718319028337
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779436825274623627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8127c86dc1860644823858facafd68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Generate Point Around Self
+  rect:
+    serializedVersion: 2
+    x: 520
+    y: 260
+    width: 160
+    height: 59
+  parent: {fileID: 4124938537985030104}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_movementRange:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 3483846891267229189}
+    key: MovingRangeRadius
+    constantValue: 0
+  m_targetPosition2D:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 3483846891267229189}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  m_agentTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3483846891267229189}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+--- !u!114 &5061029409297584139
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779436825274623627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move Towards 2D
+  rect:
+    serializedVersion: 2
+    x: 700
+    y: 260
+    width: 160
+    height: 44
+  parent: {fileID: 4124938537985030104}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3483846891267229189}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3483846891267229189}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0.01
+--- !u!114 &4124938537985030104
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779436825274623627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 560
+    y: 180
+    width: 160
+    height: 44
+  parent: {fileID: 6747373303013722250}
+  children:
+  - {fileID: 4322643718319028337}
+  - {fileID: 5061029409297584139}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &9090015632601704140
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8779436825274623627}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move Towards 2D
+  rect:
+    serializedVersion: 2
+    x: 400
+    y: 380
+    width: 160
+    height: 44
+  parent: {fileID: 2661608582018306423}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3483846891267229189}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3483846891267229189}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0

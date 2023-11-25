@@ -9,7 +9,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     private const float MIN_OBJECTS_DISTANCE = 2.0f;
     public List<Collectible> KnownCollectibles { get; private set; } = new List<Collectible>();
     public List<Camp> Camps { get; private set; } = new List<Camp>();
-    public static List<Worker_Alex> WorkersList { get; private set; } = new List<Worker_Alex>();
+    public List<Worker_Alex> WorkersList { get; private set; } = new List<Worker_Alex>();
 
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private TextMeshProUGUI m_remainingTimeText;

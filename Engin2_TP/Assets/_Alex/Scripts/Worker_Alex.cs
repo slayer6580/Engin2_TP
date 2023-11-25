@@ -6,6 +6,7 @@ public class Worker_Alex : MonoBehaviour
     {
         // State de mes workers
         exploring,
+        wandering,
         collecting,
         constructing,
         endPhase,
@@ -42,14 +43,16 @@ public class Worker_Alex : MonoBehaviour
     {
         m_radiusDebugTransform.localScale = new Vector3(m_radius, m_radius, m_radius);
     }
-    private void Awake()
-    {
 
-    }
     private void Start()
     {
-        TeamOrchestrator_Alex.WorkersList.Add(this);
-        ExplorationOrchestrator.SetExploringToWorker(this);
+        TeamOrchestrator_Alex._Instance.WorkersList.Add(this);
+
+        if (ExplorationOrchestrator._Instance.m_exploringWorkers.Count < ExplorationOrchestrator._Instance.m_nbOfExploringWorkers)
+        {
+            ExplorationOrchestrator._Instance.SetWorkerForExploring(this);
+        }
+  
     }
 
     private void FixedUpdate()
