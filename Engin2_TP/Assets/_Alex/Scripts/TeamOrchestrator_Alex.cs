@@ -9,15 +9,13 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     private const float MIN_OBJECTS_DISTANCE = 2.0f;
     public List<Collectible> KnownCollectibles { get; private set; } = new List<Collectible>();
     public List<Camp> Camps { get; private set; } = new List<Camp>();
-    public List<Worker_Alex> WorkersList { get; private set; } = new List<Worker_Alex>();
+    public static List<Worker_Alex> WorkersList { get; private set; } = new List<Worker_Alex>();
 
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private TextMeshProUGUI m_remainingTimeText;
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
-
-
-    private const int WORKER_TO_SPAWN = 5;
+    [SerializeField] [Range(1,5)] private int nbOfWorkerToSpawn;
 
     private float m_remainingTime;
     private int m_score = 0;
@@ -31,6 +29,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     private void Awake()
     {
         Time.timeScale = m_timeScale;
+        SpawnStartingWorkers();
 
         if (_Instance == null || _Instance == this)
         {
@@ -42,8 +41,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
     private void Start()
     {
-        m_remainingTime = MapGenerator.SimulationDuration.Value;
-        SpawnStartingWorkers();
+        m_remainingTime = MapGenerator.SimulationDuration.Value;   
     }
 
 
@@ -127,7 +125,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
     private void SpawnStartingWorkers()
     {
-        for (int i = 0; i < WORKER_TO_SPAWN; i++)
+        for (int i = 0; i < nbOfWorkerToSpawn; i++)
         {
            Transform worker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation).transform;
            worker.parent = transform;

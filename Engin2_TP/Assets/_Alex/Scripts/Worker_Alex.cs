@@ -1,37 +1,60 @@
-using Unity.VisualScripting;
 using UnityEngine;
 
 public class Worker_Alex : MonoBehaviour
 {
+    public enum EWorkerState
+    {
+        // State de mes workers
+        exploring,
+        collecting,
+        constructing,
+        endPhase,
+        none
+    }
+
+    public enum EDirection
+    {
+        // Pour exploration initiale
+        left,
+        right,
+        up,
+        down,
+       
+    }
+
     private const float EXTRACTION_DURATION = 1.0f;
     private const float DEPOSIT_DURATION = 1.0f;
 
-    [SerializeField]
-    private float m_radius = 5.0f;
-    [SerializeField]
-    private Transform m_radiusDebugTransform;
-    [SerializeField]
-    private ECollectibleType m_collectibleInInventory = ECollectibleType.None;
-    [SerializeField]
-    private Collectible m_currentExtractingCollectible;
+    [SerializeField] private float m_radius = 5.0f;
+    [SerializeField] private Transform m_radiusDebugTransform;
+    [SerializeField] private ECollectibleType m_collectibleInInventory = ECollectibleType.None;
+    [SerializeField] private Collectible m_currentExtractingCollectible;
 
     private bool m_isInDepot = false;
     private bool m_isInExtraction = false;
     private float m_currentActionDuration = 0.0f;
 
+    // Pour exploration initiale
+    public EWorkerState m_workerState = EWorkerState.none;
+    public EDirection m_workerDirection = EDirection.left;
+
     private void OnValidate()
     {
         m_radiusDebugTransform.localScale = new Vector3(m_radius, m_radius, m_radius);
     }
+    private void Awake()
+    {
 
+    }
     private void Start()
     {
-        TeamOrchestrator_Alex._Instance.WorkersList.Add(this);
+        TeamOrchestrator_Alex.WorkersList.Add(this);
+        ExplorationOrchestrator.SetExploringToWorker(this);
     }
 
     private void FixedUpdate()
     {
-        if (m_isInDepot || m_isInExtraction)
+        if ((m_isInDepot || m_isInExtraction) && m_workerState == EWorkerState.collecting)
         {
             m_currentActionDuration -= Time.fixedDeltaTime;
             if (m_currentActionDuration < 0.0f)

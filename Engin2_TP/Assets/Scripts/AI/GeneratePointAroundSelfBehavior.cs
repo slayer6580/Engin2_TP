@@ -19,7 +19,7 @@ public class GeneratePointAroundSelfBehavior : Leaf
 
     public override NodeResult Execute()
     {
-        Debug.Log("On GeneratedPointAroundSelf execute");
+       // Debug.Log("On GeneratedPointAroundSelf execute");
         return NodeResult.success;
     }
 }
