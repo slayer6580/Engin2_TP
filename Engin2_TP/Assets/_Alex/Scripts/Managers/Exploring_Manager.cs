@@ -17,9 +17,6 @@ public class Exploring_Manager : MonoBehaviour
     [HideInInspector] public List<Vector2> m_zonesPositions = new List<Vector2>();
     [HideInInspector] public List<bool> m_zonesIsDetected = new List<bool>();
     [HideInInspector] public List<Worker_Alex> m_exploringWorkers = new List<Worker_Alex>();
-
-    // ca va etre utile plus tard
-    [HideInInspector] public bool m_isInExplorationMode = true;
  
     public static Exploring_Manager _Instance
     {

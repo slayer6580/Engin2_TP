@@ -476,7 +476,7 @@ MonoBehaviour:
   m_remainingTimeText: {fileID: 1264221022}
   m_timeScale: 5
   m_workersPrefab: {fileID: 8024679636586000092, guid: 2cb8dd90365686041acca0177764c2fc, type: 3}
-  nbOfWorkerToSpawn: 6
+  nbOfWorkerToSpawn: 10
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -680,6 +680,11 @@ MonoBehaviour:
     m_minimumValue: 12
     m_maximumValue: 80
     <Value>k__BackingField: 0
+  m_takeTestVariables: 1
+  m_campCost: 0
+  m_mapDimension: 60
+  m_simulationDuration: 585
+  m_nodeDensity: 12
 --- !u!1 &810867466
 GameObject:
   m_ObjectHideFlags: 0
@@ -753,6 +758,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children:
+  - {fileID: 1247387796}
   - {fileID: 325813586}
   - {fileID: 1896052429}
   - {fileID: 810867467}
@@ -802,6 +808,50 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3b0ed4edf7e01a948be873edd1daab50, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+--- !u!1 &1247387795
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1247387796}
+  - component: {fileID: 1247387797}
+  m_Layer: 0
+  m_Name: InitialStrategy
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1247387796
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247387795}
+  serializedVersion: 2
+  m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1003171644}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1247387797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1247387795}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 2b6ac5f517d5d7042890451b9ba8c6ba, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &1264221020
@@ -1013,12 +1063,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_zone: {fileID: 1855023451441103286, guid: cbccc05abf88924489e028203a495eb6, type: 3}
   m_nbOfExploringWorkers: 4
-  m_pourcentageOfTotalTimeExploration: 19.4
+  m_pourcentageOfTotalTimeExploration: 5
   m_zoneLenght: 0
   m_zonesPositions: []
   m_zonesIsDetected: 
   m_exploringWorkers: []
-  m_isInExplorationMode: 1
 --- !u!4 &1896052429
 Transform:
   m_ObjectHideFlags: 0

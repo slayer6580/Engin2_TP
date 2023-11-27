@@ -455,8 +455,8 @@ MonoBehaviour:
   title: Root
   rect:
     serializedVersion: 2
-    x: 412
-    y: -328
+    x: 408
+    y: -393
     width: 160
     height: 44
   parent: {fileID: 0}
@@ -508,8 +508,8 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: -318
-    y: -15.999985
+    x: -319
+    y: -9.999985
     width: 160
     height: 44
   parent: {fileID: 2841092270851443096}
@@ -623,7 +623,7 @@ MonoBehaviour:
   title: Search For Unexplored Zone
   rect:
     serializedVersion: 2
-    x: -408.00006
+    x: -402.00006
     y: 57
     width: 160
     height: 59
@@ -745,8 +745,8 @@ MonoBehaviour:
   title: Move Towards 2D
   rect:
     serializedVersion: 2
-    x: -243
-    y: 65.00003
+    x: -244
+    y: 70.00003
     width: 160
     height: 44
   parent: {fileID: 2661608582018306423}
@@ -784,7 +784,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 78
-    y: -77.5
+    y: -82.5
     width: 160
     height: 44
   parent: {fileID: 6747373303013722250}
@@ -930,8 +930,8 @@ MonoBehaviour:
   title: Worker have a ressource
   rect:
     serializedVersion: 2
-    x: -72.80002
-    y: 53.800003
+    x: -74.80002
+    y: 56.800003
     width: 160
     height: 44
   parent: {fileID: 4970376115857297316}
@@ -988,7 +988,7 @@ MonoBehaviour:
   title: Worker have a designed ressource
   rect:
     serializedVersion: 2
-    x: 111.20001
+    x: 123.20001
     y: 134.80006
     width: 160
     height: 59
@@ -1019,8 +1019,8 @@ MonoBehaviour:
   title: Worker don't have a reserved ressource
   rect:
     serializedVersion: 2
-    x: 290.2
-    y: 137.80005
+    x: 293.2
+    y: 133.80005
     width: 160
     height: 59
   parent: {fileID: 1628025773648374281}
@@ -1046,8 +1046,8 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 112.20001
-    y: 314.80005
+    x: 118.20001
+    y: 309.80005
     width: 160
     height: 44
   parent: {fileID: 8318839355133331411}
@@ -1075,8 +1075,8 @@ MonoBehaviour:
   title: Enter Wandering State
   rect:
     serializedVersion: 2
-    x: 459.2
-    y: 225.80006
+    x: 458.2
+    y: 230.80006
     width: 160
     height: 44
   parent: {fileID: 3151303831900009727}
@@ -1105,8 +1105,8 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 564.2
-    y: -47.19992
+    x: 561.2
+    y: -42.19992
     width: 160
     height: 44
   parent: {fileID: 4617845832092809700}
@@ -1291,8 +1291,8 @@ MonoBehaviour:
   title: Enter Constructing State
   rect:
     serializedVersion: 2
-    x: -62.799988
-    y: 196.80002
+    x: -60.799988
+    y: 198.80002
     width: 160
     height: 44
   parent: {fileID: 3516913747160686115}
@@ -1321,8 +1321,8 @@ MonoBehaviour:
   title: Move Towards 2D
   rect:
     serializedVersion: 2
-    x: -362
-    y: 349
+    x: -359
+    y: 341
     width: 160
     height: 44
   parent: {fileID: 214152912510469834}
@@ -1359,8 +1359,8 @@ MonoBehaviour:
   title: Wait till you drop the ressource
   rect:
     serializedVersion: 2
-    x: -186.79999
-    y: 352.80008
+    x: -183.79999
+    y: 335.80008
     width: 160
     height: 59
   parent: {fileID: 214152912510469834}
@@ -1554,7 +1554,7 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 1230.2
+    x: 1226.2
     y: -68.19998
     width: 160
     height: 44
@@ -1714,7 +1714,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 952.19995
-    y: 193.79999
+    y: 192.79999
     width: 160
     height: 44
   parent: {fileID: 206624246006347914}
