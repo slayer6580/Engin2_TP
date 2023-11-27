@@ -1,12 +1,11 @@
-using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class ExplorationOrchestrator : MonoBehaviour
+public class Exploring_Manager : MonoBehaviour
 {
-
     [SerializeField] private GameObject m_zone;
     [Range(0, 4)] public int m_nbOfExploringWorkers;
+    [SerializeField][Range(1, 100)] private float m_pourcentageOfTotalTimeExploration;
 
     [HideInInspector] public int m_zoneLenght = 0;
     private int m_mapDimension = 0;
@@ -22,13 +21,15 @@ public class ExplorationOrchestrator : MonoBehaviour
     // ca va etre utile plus tard
     [HideInInspector] public bool m_isInExplorationMode = true;
  
-    public static ExplorationOrchestrator _Instance
+    public static Exploring_Manager _Instance
     {
         get;
         private set;
     }
     private void Awake()
     {
+   
+
         if (_Instance == null || _Instance == this)
         {
             _Instance = this;
@@ -39,11 +40,9 @@ public class ExplorationOrchestrator : MonoBehaviour
 
     void Start()
     {
-        m_mapDimension = MapGenerator.MapDimension.Value;
-        Debug.Log("Map dimension: " + m_mapDimension.ToString());
+        EvaluateWhenStopExploring();
 
-        m_zoneLenght = (m_mapDimension / 5) + 1;
-        Debug.Log("Length of Zones: " + m_zoneLenght.ToString());
+        GetMapDimensionAndZoneLength();
 
         SetZonePositionsForList();
 
@@ -56,10 +55,16 @@ public class ExplorationOrchestrator : MonoBehaviour
         }
     }
 
+    private void GetMapDimensionAndZoneLength()
+    {
+        m_mapDimension = MapGenerator.MapDimension.Value;
+        Debug.Log("Map dimension: " + m_mapDimension.ToString());
 
+        m_zoneLenght = (m_mapDimension / 5) + 1;
+        Debug.Log("Length of Zones: " + m_zoneLenght.ToString());
+    }
 
-     
-    /// <summary> Cette fonction sert a savoir les positions des zones </summary>
+    /// <summary> Cette fonction sert a placer les positions des zones dans une liste </summary>
     private void SetZonePositionsForList()
     {
         int mapDimension = m_mapDimension;
@@ -80,9 +85,7 @@ public class ExplorationOrchestrator : MonoBehaviour
             float y = halfMapDimension - (i * 5);
             m_yPositions.Add(y);
         }
-
     }
-
 
     /// <summary> Cette fonction initialise les listes de positions et la liste de bool </summary>
     private void ListAllZones(int i, int j)
@@ -91,7 +94,6 @@ public class ExplorationOrchestrator : MonoBehaviour
         m_zonesPositions.Add(zonePosition);
         m_zonesIsDetected.Add(false);
     }
-
 
     /// <summary> Cette fonction sert a assigner des workers comme explorateur </summary>
     public void SetWorkerForExploring(Worker_Alex worker)
@@ -105,31 +107,48 @@ public class ExplorationOrchestrator : MonoBehaviour
         switch (m_workerInExploration)
         {
             case 0:
-                worker.m_workerDirection = Worker_Alex.EDirection.left;
+                worker.m_workerDirection = EDirection.left;
                 break;
             case 1:
-                worker.m_workerDirection = Worker_Alex.EDirection.right;
+                worker.m_workerDirection = EDirection.right;
                 break;
             case 2:
-                worker.m_workerDirection = Worker_Alex.EDirection.up;
+                worker.m_workerDirection = EDirection.up;
                 break;
             case 3:
-                worker.m_workerDirection = Worker_Alex.EDirection.down;
+                worker.m_workerDirection = EDirection.down;
                 break;
             default:
                 break;
         }
 
-        worker.m_workerState = Worker_Alex.EWorkerState.exploring;
+        worker.m_workerState = EWorkerState.exploring;
         m_exploringWorkers.Add(worker);
         m_workerInExploration++;
     }
-
 
     /// <summary> Cette fonction sert a placer les zones détectés </summary>
     public void SpawnDetectedZone(Vector2 position)
     {
         GameObject zone = Instantiate(m_zone, position, transform.rotation);
         zone.transform.SetParent(transform);
+    }
+
+    private void EvaluateWhenStopExploring()
+    {
+        float totalTime = MapGenerator.SimulationDuration.Value;
+        float explorationTime = (totalTime / 100) * m_pourcentageOfTotalTimeExploration;
+        Invoke("AllWorkerStopExploring", explorationTime);
+    }
+
+    private void AllWorkerStopExploring()
+    {
+        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
+        {
+            if (worker.m_workerState == EWorkerState.exploring)
+            {
+                worker.m_workerState = EWorkerState.collecting;
+            }
+        }
     }
 }

@@ -4,12 +4,13 @@ public class VisionRange_Alex : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        var collectible = other.GetComponent<Collectible>();
+        Collectible_Alex collectible = other.GetComponent<Collectible_Alex>();
         if (collectible == null )
         {
             return;
         }
 
-        TeamOrchestrator_Alex._Instance.TryAddCollectible(collectible);
+        Collecting_Manager._Instance.TryAddCollectible(collectible);
+        
     }
 }

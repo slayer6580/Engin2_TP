@@ -6,16 +6,14 @@ using UnityEngine;
 public class TeamOrchestrator_Alex : MonoBehaviour
 {
     const int SPECIAL_SCORE = 10;
-    private const float MIN_OBJECTS_DISTANCE = 2.0f;
-    public List<Collectible> KnownCollectibles { get; private set; } = new List<Collectible>();
-    public List<Camp> Camps { get; private set; } = new List<Camp>();
+
     public List<Worker_Alex> WorkersList { get; private set; } = new List<Worker_Alex>();
 
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private TextMeshProUGUI m_remainingTimeText;
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
-    [SerializeField] [Range(1,5)] private int nbOfWorkerToSpawn;
+    [SerializeField] private int nbOfWorkerToSpawn;
 
     private float m_remainingTime;
     private int m_score = 0;
@@ -27,9 +25,9 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     }
 
     private void Awake()
-    {
-        Time.timeScale = m_timeScale;
+    {      
         SpawnStartingWorkers();
+    
 
         if (_Instance == null || _Instance == this)
         {
@@ -42,25 +40,25 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     private void Start()
     {
         m_remainingTime = MapGenerator.SimulationDuration.Value;   
+
     }
-
-
 
     private void Update()
     {
+        Time.timeScale = m_timeScale;
+
         m_remainingTime -= Time.deltaTime;
         m_remainingTimeText.text = "Remaining time: " + m_remainingTime.ToString("#.00");
+
+        CheckIfGameEnd();
     }
 
-    public void TryAddCollectible(Collectible collectible)
+    private void CheckIfGameEnd()
     {
-        if (KnownCollectibles.Contains(collectible))
+        if (MapGenerator.SimulationDuration.Value < Time.timeSinceLevelLoad)
         {
-            return;
+            OnGameEnded();
         }
-
-        KnownCollectibles.Add(collectible);
-        Debug.Log("Collectible added");
     }
 
     public void GainResource(ECollectibleType collectibleType)
@@ -98,20 +96,6 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 #endif
     }
 
-    public bool CanPlaceObject(Vector2 coordinates)
-    {
-        foreach (var collectible in KnownCollectibles)
-        {
-            var collectibleLocation = new Vector2(collectible.transform.position.x, collectible.transform.position.y);
-            if (Vector2.Distance(coordinates, collectibleLocation) < MIN_OBJECTS_DISTANCE)
-            {
-                return false;
-            }
-        }
-
-        return true;
-    }
-
     public void OnCampPlaced()
     {
         m_score -= MapGenerator.CampCost.Value;
@@ -131,4 +115,6 @@ public class TeamOrchestrator_Alex : MonoBehaviour
            worker.parent = transform;
         }
     }
+
+ 
 }

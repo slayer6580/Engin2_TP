@@ -1,7 +1,7 @@
 using MBT;
 using UnityEngine;
 
-[MBTNode("Alex/Search For Unexplored Zone")]
+[MBTNode("Alex Leaf/Search For Unexplored Zone")]
 [AddComponentMenu("")]
 public class SearchForUnexploredZone : Leaf
 {
@@ -25,7 +25,7 @@ public class SearchForUnexploredZone : Leaf
     private void CheckForNextZone()
     {
         Worker_Alex worker = m_worker.Value.gameObject.GetComponent<Worker_Alex>();
-        Worker_Alex.EDirection workerDirection = worker.m_workerDirection;
+        EDirection workerDirection = worker.m_workerDirection;
 
         if (CheckZoneAtRightDirection(workerDirection))
         {
@@ -37,14 +37,19 @@ public class SearchForUnexploredZone : Leaf
             Debug.Log("worker find a zone at is front");
             return;
         }
+        else if (CheckZoneAtLeftDirection(workerDirection))
+        {
+            Debug.Log("worker find a zone at is left");
+            return;
+        }
 
         //si le joueur ne peut pas explorer, il va commencer a collecter
         Debug.Log("Worker will start collecting because he cant explore anymore");
-        m_worker.Value.GetComponent<Worker_Alex>().m_workerState = Worker_Alex.EWorkerState.collecting;
+        m_worker.Value.GetComponent<Worker_Alex>().m_workerState = EWorkerState.collecting;
 
     }
 
-    private bool CheckZoneAtRightDirection(Worker_Alex.EDirection direction)
+    private bool CheckZoneAtRightDirection(EDirection direction)
     {
 
         Vector2 m_rightMaxDirection = GetRightDirection(direction);
@@ -57,8 +62,20 @@ public class SearchForUnexploredZone : Leaf
 
         return false;
     }
+    private bool CheckZoneAtLeftDirection(EDirection direction)
+    {
 
-    private bool CheckZoneAtFrontDirection(Worker_Alex.EDirection direction)
+        Vector2 m_leftMaxDirection = GetLeftDirection(direction);
+        if (DetectZone(m_leftMaxDirection))
+        {
+            ChangeWorkerDirection(m_targetPosition2D.Value);
+            return true;
+        }
+
+
+        return false;
+    }
+    private bool CheckZoneAtFrontDirection(EDirection direction)
     {
 
         Vector2 m_frontMaxDirection = GetFrontMaxDirection(direction);
@@ -83,15 +100,15 @@ public class SearchForUnexploredZone : Leaf
         Vector2 workerPosition = new Vector2(m_agentTransform.Value.position.x, m_agentTransform.Value.position.y);
         Vector2 targetPos = workerPosition + m_lookDirection;
 
-        if (ExplorationOrchestrator._Instance.m_zonesPositions.Contains(targetPos))
+        if (Exploring_Manager._Instance.m_zonesPositions.Contains(targetPos))
         {
-            int index = ExplorationOrchestrator._Instance.m_zonesPositions.IndexOf(targetPos);
+            int index = Exploring_Manager._Instance.m_zonesPositions.IndexOf(targetPos);
 
-            if (ExplorationOrchestrator._Instance.m_zonesIsDetected[index] == false)
+            if (Exploring_Manager._Instance.m_zonesIsDetected[index] == false)
             {
                 m_targetPosition2D.Value = targetPos;
-                ExplorationOrchestrator._Instance.m_zonesIsDetected[index] = true;
-                ExplorationOrchestrator._Instance.SpawnDetectedZone(targetPos);
+                Exploring_Manager._Instance.m_zonesIsDetected[index] = true;
+                Exploring_Manager._Instance.SpawnDetectedZone(targetPos);
                 return true;
             }
         }
@@ -103,37 +120,37 @@ public class SearchForUnexploredZone : Leaf
     {
         if (zone.x < m_agentTransform.Value.position.x)
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = Worker_Alex.EDirection.left;
+            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.left;
         }
         else if (zone.x > m_agentTransform.Value.position.x)
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = Worker_Alex.EDirection.right;
+            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.right;
         }
         else if (zone.y > m_agentTransform.Value.position.y)
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = Worker_Alex.EDirection.up;
+            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.up;
         }
         else
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = Worker_Alex.EDirection.down;
+            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.down;
         }
     }
 
-    private static Vector2 GetFrontMaxDirection(Worker_Alex.EDirection direction)
+    private static Vector2 GetFrontMaxDirection(EDirection direction)
     {
         Vector2 m_straightDirection;
         switch (direction)
         {
-            case Worker_Alex.EDirection.left:
+            case EDirection.left:
                 m_straightDirection = new Vector2(-MAX_DETECTION_DISTANCE, 0);
                 break;
-            case Worker_Alex.EDirection.right:
+            case EDirection.right:
                 m_straightDirection = new Vector2(MAX_DETECTION_DISTANCE, 0);
                 break;
-            case Worker_Alex.EDirection.up:
+            case EDirection.up:
                 m_straightDirection = new Vector2(0, MAX_DETECTION_DISTANCE);
                 break;
-            case Worker_Alex.EDirection.down:
+            case EDirection.down:
                 m_straightDirection = new Vector2(0, -MAX_DETECTION_DISTANCE);
                 break;
             default:
@@ -144,21 +161,21 @@ public class SearchForUnexploredZone : Leaf
         return m_straightDirection;
     }
 
-    private static Vector2 GetRightDirection(Worker_Alex.EDirection direction)
+    private static Vector2 GetRightDirection(EDirection direction)
     {
         Vector2 m_rightDirection;
         switch (direction)
         {
-            case Worker_Alex.EDirection.left:
+            case EDirection.left:
                 m_rightDirection = new Vector2(0, MAX_DETECTION_DISTANCE);
                 break;
-            case Worker_Alex.EDirection.right:
+            case EDirection.right:
                 m_rightDirection = new Vector2(0, -MAX_DETECTION_DISTANCE);
                 break;
-            case Worker_Alex.EDirection.up:
+            case EDirection.up:
                 m_rightDirection = new Vector2(MAX_DETECTION_DISTANCE, 0);
                 break;
-            case Worker_Alex.EDirection.down:
+            case EDirection.down:
                 m_rightDirection = new Vector2(-MAX_DETECTION_DISTANCE, 0);
                 break;
             default:
@@ -169,21 +186,46 @@ public class SearchForUnexploredZone : Leaf
         return m_rightDirection;
     }
 
-    private static Vector2 GetFrontMinDirection(Worker_Alex.EDirection direction)
+    private static Vector2 GetLeftDirection(EDirection direction)
     {
         Vector2 m_rightDirection;
         switch (direction)
         {
-            case Worker_Alex.EDirection.left:
+            case EDirection.left:
+                m_rightDirection = new Vector2(0, -MAX_DETECTION_DISTANCE);
+                break;
+            case EDirection.right:
+                m_rightDirection = new Vector2(0, MAX_DETECTION_DISTANCE);
+                break;
+            case EDirection.up:
+                m_rightDirection = new Vector2(-MAX_DETECTION_DISTANCE, 0);
+                break;
+            case EDirection.down:
+                m_rightDirection = new Vector2(MAX_DETECTION_DISTANCE, 0);
+                break;
+            default:
+                m_rightDirection = new Vector2(0, 0);
+                break;
+        }
+
+        return m_rightDirection;
+    }
+
+    private static Vector2 GetFrontMinDirection(EDirection direction)
+    {
+        Vector2 m_rightDirection;
+        switch (direction)
+        {
+            case EDirection.left:
                 m_rightDirection = new Vector2(-MIN_DETECTION_DISTANCE, MIN_DETECTION_DISTANCE);
                 break;
-            case Worker_Alex.EDirection.right:
+            case EDirection.right:
                 m_rightDirection = new Vector2(MIN_DETECTION_DISTANCE, -MIN_DETECTION_DISTANCE);
                 break;
-            case Worker_Alex.EDirection.up:
+            case EDirection.up:
                 m_rightDirection = new Vector2(MIN_DETECTION_DISTANCE, MIN_DETECTION_DISTANCE);
                 break;
-            case Worker_Alex.EDirection.down:
+            case EDirection.down:
                 m_rightDirection = new Vector2(-MIN_DETECTION_DISTANCE, -MIN_DETECTION_DISTANCE);
                 break;
             default:
