@@ -9,7 +9,7 @@ public class Collectible : MonoBehaviour
     {
         if (m_currentCooldown < 0.0f)
         {
-            Debug.Log("Collectible extracted. Last extraction was: " + (COOLDOWN - m_currentCooldown).ToString() + " seconds ago");
+           // Debug.Log("Collectible extracted. Last extraction was: " + (COOLDOWN - m_currentCooldown).ToString() + " seconds ago");
             m_currentCooldown = COOLDOWN;
             return ECollectibleType.Regular;
         }

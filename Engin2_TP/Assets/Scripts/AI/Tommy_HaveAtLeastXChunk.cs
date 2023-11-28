@@ -12,7 +12,7 @@ public class Tommy_HaveAtLeastXChunk : Condition
 	private int m_minChunkToHave;
 	public override bool Check()
     {
-		Worker_Explorer_Tommy agentScript = m_agentTransform.Value.gameObject.GetComponent<Worker_Explorer_Tommy>();
+		Tommy_Worker agentScript = m_agentTransform.Value.gameObject.GetComponent<Tommy_Worker>();
 		return agentScript.m_workerPath.Count >= m_minChunkToHave;
     }
 }

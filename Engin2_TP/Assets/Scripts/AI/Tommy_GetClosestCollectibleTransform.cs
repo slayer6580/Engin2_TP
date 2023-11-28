@@ -4,48 +4,46 @@ using UnityEngine;
 namespace MBT
 {
     [AddComponentMenu("")]
-    [MBTNode("Engin2/Get closest collectible")]
-    public class GetClosestCollectible : Leaf
+    [MBTNode("Engin2/Tommy Get closest collectible Transform")]
+    public class Tommy_GetClosestCollectibleTransform : Leaf
     {
         [Space]
         [SerializeField]
-        private Vector2Reference m_closestCollectiblePos = new Vector2Reference();
+        private TransformReference m_closestColTrans = new TransformReference();
         [SerializeField]
         private TransformReference m_workerTransform = new TransformReference();
 
         public override NodeResult Execute()
         {
-            if (TeamOrchestrator._Instance.KnownCollectibles.Count == 0)
+            if (Tommy_TeamOrchestrator._Instance.KnownCollectibles.Count == 0)
             {
-                print("FAIL");
                 //On n'a pas trouvé de collectible. On retourne sans avoir updaté
                 return NodeResult.failure;
             }
 
-            Collectible nearestCamp = TeamOrchestrator._Instance.KnownCollectibles[0];
+            Collectible nearestCollectible = Tommy_TeamOrchestrator._Instance.KnownCollectibles[0];
 
-            foreach (var camp in TeamOrchestrator._Instance.KnownCollectibles)
+            foreach (var ressource in Tommy_TeamOrchestrator._Instance.KnownCollectibles)
             {
-                if (Vector3.Distance(nearestCamp.transform.position, m_workerTransform.Value.position)
-                    > Vector3.Distance(camp.transform.position, m_workerTransform.Value.position))
+                if (Vector3.Distance(nearestCollectible.transform.position, m_workerTransform.Value.position)
+                    > Vector3.Distance(ressource.transform.position, m_workerTransform.Value.position))
                 {
-                    nearestCamp = camp;
+					nearestCollectible = ressource;
                 }
             }
 
-            //Ceci est le camp le plus près. On update sa valeur dans le blackboard et retourne true
-            m_closestCollectiblePos.Value =
-                new Vector2(nearestCamp.transform.position.x, nearestCamp.transform.position.y);
+			//Ceci est la ressource le plus près. On update sa valeur dans le blackboard et retourne true
+			m_closestColTrans.Value = nearestCollectible.transform;
 
-            print("WIN");
-            return NodeResult.success;
+
+			return NodeResult.success;
         }
     }
 }
 
 [AddComponentMenu("")]
 [MBTNode("Example/Set Random Position", 500)]
-public class SetRandomPosition : Leaf
+public class Tommy_SetRandomPosition : Leaf
 {
     public Bounds bounds;
     public Vector3Reference blackboardVariable = new Vector3Reference(VarRefMode.DisableConstant);
