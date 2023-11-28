@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
+
+
+
 	[SerializeField]
 	private GameObject m_collectiblePrefab;
 
@@ -24,7 +27,13 @@ public class MapGenerator : MonoBehaviour
 	[SerializeField]
 	private RandomIntBetweenRange m_nodesDensity;	//Valeur INCONNUE de vos workers
 	public static RandomIntBetweenRange SimulationDuration { get; private set; } = new RandomIntBetweenRange(10, 1000); //In seconds. Between 10 and 1000
-		//Valeur à laquelle vos workers peuvent accéder
+																														//Valeur à laquelle vos workers peuvent accéder
+	[Space]
+	[SerializeField] private bool m_takeTestVariables;
+	[SerializeField] [Range(5,80)] private int m_campCost;
+	[SerializeField] [Range(60,600)] private int m_mapDimension;
+	[SerializeField] [Range(10,1000)] private int m_simulationDuration;
+	[SerializeField] [Range(12,80)] private int m_nodeDensity;
 
     private void Awake()
     {
@@ -49,10 +58,22 @@ public class MapGenerator : MonoBehaviour
         }
 		UnityEngine.Random.InitState(Seed);
 
-		CampCost.RollValue();
-		MapDimension.RollValue();
-		m_nodesDensity.RollValue();
-		SimulationDuration.RollValue();
+		if (m_takeTestVariables)
+		{
+			CampCost.Value = m_campCost;
+			MapDimension.Value = m_mapDimension;
+			m_nodesDensity.Value = m_nodeDensity;
+			SimulationDuration.Value = m_simulationDuration;
+
+		}
+		else
+		{
+            CampCost.RollValue();
+            MapDimension.RollValue();
+            m_nodesDensity.RollValue();
+            SimulationDuration.RollValue();
+        }
+		
     }
 
     private void GenerateMap()
@@ -82,7 +103,7 @@ public class RandomIntBetweenRange
 	[SerializeField]
 	private int m_maximumValue = 100;
 	[field:SerializeField]
-	public int Value { get; private set; }
+	public int Value { get;  set; }
 
 	public RandomIntBetweenRange()
 	{
