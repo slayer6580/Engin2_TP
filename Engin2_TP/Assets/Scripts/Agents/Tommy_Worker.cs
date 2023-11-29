@@ -15,7 +15,7 @@ public enum ExploringDirection
 	Count
 }
 
-public class Worker_Explorer_Tommy : MonoBehaviour
+public class Tommy_Worker : MonoBehaviour
 {
     private const float EXTRACTION_DURATION = 1.0f;
     private const float DEPOSIT_DURATION = 1.0f;
@@ -41,9 +41,16 @@ public class Worker_Explorer_Tommy : MonoBehaviour
 	public Vector2Int nextChunk = new Vector2Int(0, 0);      //NEW
 	[SerializeField]
 	private GameObject m_trailVisualizer;       //NEW
-	private TeamOrchestratorTommy m_orchestrator;
-	private Vector2Int m_initialChunk;		//NEW
+	private Tommy_TeamOrchestrator m_orchestrator;
+	private Vector2Int m_initialChunk;      //NEW
+	private int m_skipFirstSpeedTest = 2;
+	private Vector2Int currentChunk;
 
+	private float speedTest = 0;
+
+	public Collectible assignedRessource;
+	public bool needToSpawnCamp = false;
+	public Vector2 campToSpawnPos;
 	public int GetExplorePathCount()
 	{
 		return m_workerPath.Count;
@@ -55,7 +62,7 @@ public class Worker_Explorer_Tommy : MonoBehaviour
 
     private void Start()
     {
-		m_orchestrator = TeamOrchestratorTommy._Instance;
+		m_orchestrator = Tommy_TeamOrchestrator._Instance;
 		m_orchestrator.WorkersList.Add(this);
     }
 
@@ -87,6 +94,7 @@ public class Worker_Explorer_Tommy : MonoBehaviour
             m_currentActionDuration = EXTRACTION_DURATION;
             m_isInExtraction = true;
             //Start countdown to collect it
+
         }
 
         var camp = collision.GetComponent<Camp>();
@@ -146,6 +154,26 @@ public class Worker_Explorer_Tommy : MonoBehaviour
 		return (ExploringDirection)0;
 	}
 
+	public void AssignRessource(Collectible ressource)
+	{
+		assignedRessource = ressource;
+
+		m_orchestrator.m_chunkList[currentChunk.x, currentChunk.y] = false;
+
+		//Set chunk from planned path as not visited
+		for (int i = 0; i< m_workerPath.Count; i++)
+		{
+			print(transform.name + " #: " + i);
+			m_orchestrator.m_chunkList[m_workerPath[i].x, m_workerPath[i].y] = false;
+		}
+		
+	}
+
+	public void AssignCamp(Vector2 campPos)
+	{
+		needToSpawnCamp = true;
+		campToSpawnPos = campPos;
+	}
 
 	public void FindNextChunk()
 	{
@@ -155,47 +183,71 @@ public class Worker_Explorer_Tommy : MonoBehaviour
 		Vector2Int directionValues;
 
 		//Try if possible to go to next direction
-		directionValues = GetDirectionValue(m_currentExploreDir + 1);	
-		directionValues += lastChunk;
+		//directionValues = GetDirectionValue(m_currentExploreDir + 1);	
+		//directionValues += lastChunk;
 
 		bool isOutOfBound = true;
-		
-		if(IsStillInRange(directionValues))
-		{
-			
-			if (m_orchestrator.m_chunkList[directionValues.x, directionValues.y] == false)
-			{
-				//The chunk in NOT in any workers path so we can add it
-				nextChunk = new Vector2Int(directionValues.x, directionValues.y);
-				m_workerPath.Add(nextChunk);
+		bool isNewDirectionWorking = false;
 
-				//Update the direction, and reset to UP if all direction has been checked
-				m_currentExploreDir++;
-				if (m_currentExploreDir >= ExploringDirection.Count)
-				{
-					m_currentExploreDir = 0;
-				}
-				isOutOfBound = false;
-			}
-			else
+		for (int i = 0; i < 4; i++)
+		{
+			//Manage if the enum get out of bound
+			int newDirection = (int)m_currentExploreDir + 1 - i;
+			if(newDirection < 0)
 			{
-				//Since we can't turn into a free chunk, continue in the same direction
-				directionValues = GetDirectionValue(m_currentExploreDir);
-				directionValues += lastChunk;
-				if (IsStillInRange(directionValues))
-				{	
+				newDirection = (int)ExploringDirection.Count -1;
+			}
+			if (newDirection >= (int)ExploringDirection.Count)
+			{
+				newDirection = 0;
+			}
+
+			directionValues = GetDirectionValue((ExploringDirection)newDirection);
+			directionValues += lastChunk;
+
+			if (IsStillInRange(directionValues))
+			{
+				if (m_orchestrator.m_chunkList[directionValues.x, directionValues.y] == false)
+				{
+					isNewDirectionWorking = true;
+					//The chunk in NOT in any workers path so we can add it
 					nextChunk = new Vector2Int(directionValues.x, directionValues.y);
 					m_workerPath.Add(nextChunk);
 
+					//Update the direction, and reset to UP if all direction has been checked
+					m_currentExploreDir = (ExploringDirection)newDirection;
+					if (m_currentExploreDir >= ExploringDirection.Count)
+					{
+						m_currentExploreDir = 0;
+					}
 					isOutOfBound = false;
-				}		
-			}
 
-			if (!isOutOfBound)
+					i = 5;
+
+				}
+			}
+		}
+
+		if(isNewDirectionWorking == false)
+		{
+			//Since we can't turn into a free chunk, continue in the same direction
+			directionValues = GetDirectionValue(m_currentExploreDir);
+			directionValues += lastChunk;
+			if (IsStillInRange(directionValues))
 			{
-				//Set chosen Chunck so it won't be chose again.
-				m_orchestrator.m_chunkList[nextChunk.x, nextChunk.y] = true;
-			}		
+				nextChunk = new Vector2Int(directionValues.x, directionValues.y);
+				m_workerPath.Add(nextChunk);
+
+				isOutOfBound = false;
+			}
+		}
+	
+
+		if (!isOutOfBound)
+		{
+			//Set chosen Chunck so it won't be chose again.
+			m_orchestrator.m_chunkList[nextChunk.x, nextChunk.y] = true;
+
 		}
 	}
 
@@ -249,10 +301,28 @@ public class Worker_Explorer_Tommy : MonoBehaviour
 	}
     public Vector2 GetChunkPosition()
     {
+		//To get the worker's movement speed, the first 2 time don't count cause the worker set his position
+		//Only check it once
+		if(m_skipFirstSpeedTest == 0)
+		{
+			Tommy_TeamOrchestrator._Instance.WorkerSpeedByChunk = Time.time - speedTest;
+			speedTest = Time.time;
+			m_skipFirstSpeedTest--;
+		}
+		else
+		{
+			//TODO this don't need to be called after speed is set
+			speedTest = Time.time;
+			m_skipFirstSpeedTest--;
+		}
+		
+		//Trail
 		Instantiate(m_trailVisualizer, transform.position, Quaternion.identity);
 
-        Vector2 chunkDif = m_workerPath[0] - m_initialChunk;
-        Vector2 wantedChunkPosition = new Vector2(chunkDif.x * VISION_RADIUS, chunkDif.y * VISION_RADIUS);
+		currentChunk = m_workerPath[0]; //Used to remove it when worker is assign to another task
+
+		Vector2 chunkDif = m_workerPath[0] - m_initialChunk;
+		Vector2 wantedChunkPosition = new Vector2(chunkDif.x * VISION_RADIUS, chunkDif.y * VISION_RADIUS);
 
         m_workerPath.RemoveAt(0);
 
@@ -264,11 +334,19 @@ public class Worker_Explorer_Tommy : MonoBehaviour
         m_collectibleInInventory = m_currentExtractingCollectible.Extract();
         m_isInExtraction = false;
         m_currentExtractingCollectible = null;
-    }
+
+		//if (Tommy_TeamOrchestrator._Instance.KnownCollectiblesTimers.ContainsKey(assignedRessource))
+		//{
+			Tommy_TeamOrchestrator._Instance.KnownCollectiblesTimers[assignedRessource] = Time.time;
+		print("Time.time: " + Time.time);
+		//}
+
+
+		}
 
     private void DepositResource()
     {
-        TeamOrchestrator._Instance.GainResource(m_collectibleInInventory);
+        Tommy_TeamOrchestrator._Instance.GainResource(m_collectibleInInventory);
         m_collectibleInInventory = ECollectibleType.None;
         m_isInDepot = false;
     }

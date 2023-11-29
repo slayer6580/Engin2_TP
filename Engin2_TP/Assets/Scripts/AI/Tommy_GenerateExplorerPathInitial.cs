@@ -11,14 +11,14 @@ public class Tommy_GenerateExplorerPathInitial : Leaf
 
     public override void OnEnter()
     {
-		Worker_Explorer_Tommy agentScript = m_agentTransform.Value.gameObject.GetComponent<Worker_Explorer_Tommy>();
+		Tommy_Worker agentScript = m_agentTransform.Value.gameObject.GetComponent<Tommy_Worker>();
         agentScript.FindInitialChunk();
 
 	}
 
     public override NodeResult Execute()
     {
-		Worker_Explorer_Tommy agentScript = m_agentTransform.Value.gameObject.GetComponent<Worker_Explorer_Tommy>();
+		Tommy_Worker agentScript = m_agentTransform.Value.gameObject.GetComponent<Tommy_Worker>();
 		if (agentScript.m_workerPath.Count == 0)
         {
             return NodeResult.failure;

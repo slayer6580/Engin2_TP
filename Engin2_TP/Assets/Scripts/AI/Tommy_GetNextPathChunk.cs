@@ -12,7 +12,7 @@ public class Tommy_GetNextPathChunk : Leaf
 
 	public override void OnEnter()
 	{
-		Worker_Explorer_Tommy agentScript = m_agentTransform.Value.gameObject.GetComponent<Worker_Explorer_Tommy>();
+		Tommy_Worker agentScript = m_agentTransform.Value.gameObject.GetComponent<Tommy_Worker>();
 		m_chunkTargetPosition2D.Value = agentScript.GetChunkPosition();
 	}
 
