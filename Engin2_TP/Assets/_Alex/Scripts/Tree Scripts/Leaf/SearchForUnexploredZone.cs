@@ -27,12 +27,23 @@ public class SearchForUnexploredZone : Leaf
         Worker_Alex worker = m_worker.Value.gameObject.GetComponent<Worker_Alex>();
         EDirection workerDirection = worker.m_workerDirection;
 
+
         if (CheckZoneAtRightDirection(workerDirection))
         {
             Debug.Log("worker find a zone at is right");
+            if (worker.m_extraExplorator == true)
+            {
+                worker.m_extraExplorator = false;
+            }
             return;
         }
-        else if (CheckZoneAtFrontDirection(workerDirection))
+        else if (CheckZoneAtFrontDirectionExtra(workerDirection) && worker.m_extraExplorator == true)
+        {
+            Debug.Log("worker find a zone at is front");
+            worker.m_extraExplorator = false;
+            return;
+        }
+        else if (CheckZoneAtFrontDirection(workerDirection) && worker.m_extraExplorator == false)
         {
             Debug.Log("worker find a zone at is front");
             return;
@@ -40,12 +51,17 @@ public class SearchForUnexploredZone : Leaf
         else if (CheckZoneAtLeftDirection(workerDirection))
         {
             Debug.Log("worker find a zone at is left");
+            if (worker.m_extraExplorator == true)
+            {
+                worker.m_extraExplorator = false;
+            }
             return;
         }
 
         //si le joueur ne peut pas explorer, il va commencer a collecter
         Debug.Log("Worker will start collecting because he cant explore anymore");
         m_worker.Value.GetComponent<Worker_Alex>().m_workerState = EWorkerState.collecting;
+        Exploring_Manager._Instance.TryRemoveWorkerFromExploring(worker);
 
     }
 
@@ -94,6 +110,25 @@ public class SearchForUnexploredZone : Leaf
         return false;
 
     }
+    private bool CheckZoneAtFrontDirectionExtra(EDirection direction)
+    {
+
+        Vector2 m_frontMaxDirection = GetFrontMaxDirection(direction);
+        if (DetectZoneExtra(m_frontMaxDirection))
+        {
+            return true;
+        }
+
+        Vector2 m_frontMinDirection = GetFrontMinDirection(direction);
+        if (DetectZoneExtra(m_frontMinDirection))
+        {
+            return true;
+        }
+
+
+        return false;
+
+    }
 
     private bool DetectZone(Vector2 m_lookDirection)
     {
@@ -109,6 +144,24 @@ public class SearchForUnexploredZone : Leaf
                 m_targetPosition2D.Value = targetPos;
                 Exploring_Manager._Instance.m_zonesIsDetected[index] = true;
                 Exploring_Manager._Instance.SpawnDetectedZone(targetPos);
+                return true;
+            }
+        }
+
+        return false;
+    }
+
+    private bool DetectZoneExtra(Vector2 m_lookDirection)
+    {
+        Vector2 workerPosition = new Vector2(m_agentTransform.Value.position.x, m_agentTransform.Value.position.y);
+        Vector2 targetPos = workerPosition + m_lookDirection;
+
+        if (Exploring_Manager._Instance.m_zonesPositions.Contains(targetPos))
+        {
+            int index = Exploring_Manager._Instance.m_zonesPositions.IndexOf(targetPos);
+            if (Exploring_Manager._Instance.m_zonesIsDetected[index] == true)
+            {
+                m_targetPosition2D.Value = targetPos;
                 return true;
             }
         }

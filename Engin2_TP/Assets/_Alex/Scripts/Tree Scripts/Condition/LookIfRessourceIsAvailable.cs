@@ -8,14 +8,28 @@ public class LookIfRessourceAvailable : Condition
 {
     public override bool Check()
     {
+        bool emptyCollectible = false;
+        bool workerWithNoCollectible = false;
+
         foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
         {
             if (collectible.m_designedWorker == null) 
             {
-                return true;
+                emptyCollectible = true;
+                break;
             }
         }
 
-        return false;
+        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList) 
+        { 
+            if (worker.m_reservedCollectible == null && worker.m_workerState != EWorkerState.exploring)
+            {
+                workerWithNoCollectible = true;
+                break;
+
+            }
+        }
+
+        return emptyCollectible && workerWithNoCollectible;
     }
 }

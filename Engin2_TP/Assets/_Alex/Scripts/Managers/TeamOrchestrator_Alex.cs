@@ -14,9 +14,11 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
     [SerializeField] private int nbOfWorkerToSpawn;
+    [SerializeField] private int m_nbOfNewWorker;
 
     private float m_remainingTime;
     private int m_score = 0;
+    private bool m_workerAlreadySpawnBasedOnPrediction = false;
 
     public static TeamOrchestrator_Alex _Instance
     {
@@ -25,9 +27,8 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     }
 
     private void Awake()
-    {      
+    {
         SpawnStartingWorkers();
-    
 
         if (_Instance == null || _Instance == this)
         {
@@ -39,8 +40,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
     private void Start()
     {
-        m_remainingTime = MapGenerator.SimulationDuration.Value;   
-
+        m_remainingTime = MapGenerator.SimulationDuration.Value;
     }
 
     private void Update()
@@ -70,7 +70,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         if (collectibleType == ECollectibleType.Special)
         {
             m_score += SPECIAL_SCORE;
-		}
+        }
 
         Debug.Log("New score = " + m_score);
         m_scoreText.text = "Score: " + m_score.ToString();
@@ -88,7 +88,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     private void PrintTextFile()
     {
         string path = Application.persistentDataPath + "/Results.txt";
-        File.AppendAllText(path, "Score of simulation with seed: " + MapGenerator.Seed +  ": " + m_score.ToString() + "\n");
+        File.AppendAllText(path, "Score of simulation with seed: " + MapGenerator.Seed + ": " + m_score.ToString() + "\n");
 
 #if UNITY_EDITOR
         UnityEditor.EditorUtility.RevealInFinder(path);
@@ -111,10 +111,39 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     {
         for (int i = 0; i < nbOfWorkerToSpawn; i++)
         {
-           Transform worker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation).transform;
-           worker.parent = transform;
+            Transform worker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation).transform;
+            worker.parent = transform;
         }
     }
 
- 
+    public void SpawnWorkerBasedOnPredictionDistance(float distancePredicted)
+    {
+        if (m_workerAlreadySpawnBasedOnPrediction)
+        {
+            return;
+        }
+
+        m_workerAlreadySpawnBasedOnPrediction = true;
+
+        //TODO logique pour savoir combien de worker je doit faire selon map et temps restant
+        // 5 == Logique temporaire pour test
+
+        Exploring_Manager._Instance.m_nbOfExploringWorkers += m_nbOfNewWorker;
+        for (int i = 0; i < m_nbOfNewWorker; i++)
+        {
+            GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
+            OnWorkerCreated();
+            newWorker.transform.SetParent(transform);
+        }
+
+
+    }
+
+    public void SpawnWorkerForCollecting()
+    {
+        GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
+        OnWorkerCreated();
+        newWorker.transform.SetParent(transform);
+    }
+
 }

@@ -3,13 +3,14 @@ using UnityEngine;
 
 public class Exploring_Manager : MonoBehaviour
 {
-    [SerializeField] private GameObject m_zone;
-    [Range(0, 4)] public int m_nbOfExploringWorkers;
-    [SerializeField][Range(1, 100)] private float m_pourcentageOfTotalTimeExploration;
+    public int m_nbOfExploringWorkers;
 
-    [HideInInspector] public int m_zoneLenght = 0;
+    [SerializeField] private GameObject m_zone;
+
+    public int m_zoneLenght = 0;
     private int m_mapDimension = 0;
     private int m_workerInExploration = 0;
+    private float m_pourcentageOfTotalTimeExploration;
 
     private List<float> m_xPositions = new List<float>();
     private List<float> m_yPositions = new List<float>();
@@ -17,7 +18,9 @@ public class Exploring_Manager : MonoBehaviour
     [HideInInspector] public List<Vector2> m_zonesPositions = new List<Vector2>();
     [HideInInspector] public List<bool> m_zonesIsDetected = new List<bool>();
     [HideInInspector] public List<Worker_Alex> m_exploringWorkers = new List<Worker_Alex>();
- 
+
+    [HideInInspector] public bool m_explorationIsDone = false;
+
     public static Exploring_Manager _Instance
     {
         get;
@@ -25,8 +28,6 @@ public class Exploring_Manager : MonoBehaviour
     }
     private void Awake()
     {
-   
-
         if (_Instance == null || _Instance == this)
         {
             _Instance = this;
@@ -37,10 +38,9 @@ public class Exploring_Manager : MonoBehaviour
 
     void Start()
     {
-        EvaluateWhenStopExploring();
-
+      
         GetMapDimensionAndZoneLength();
-
+        EvaluateWhenStopExploring();
         SetZonePositionsForList();
 
         for (int i = 0; i < m_zoneLenght; i++)
@@ -100,8 +100,20 @@ public class Exploring_Manager : MonoBehaviour
         {
             return;
         }
+        else if (m_explorationIsDone) 
+        {
+            worker.m_workerState = EWorkerState.collecting;
+            return;
+        }
 
-        switch (m_workerInExploration)
+        if (m_nbOfExploringWorkers > 4)
+        {
+            worker.m_extraExplorator = true;
+        }
+
+        int moduloForDirection = m_workerInExploration % 4;
+
+        switch (moduloForDirection)
         {
             case 0:
                 worker.m_workerDirection = EDirection.left;
@@ -132,7 +144,14 @@ public class Exploring_Manager : MonoBehaviour
     }
 
     private void EvaluateWhenStopExploring()
-    {
+    {      
+        int minDuration = MapGenerator.SimulationDuration.GetMin();
+        int maxDuration = MapGenerator.SimulationDuration.GetMax();
+        int mapDuration = MapGenerator.SimulationDuration.Value;
+
+        // retourne le pourcentage sur le temps d'une partie en comparaison a son min et max
+        m_pourcentageOfTotalTimeExploration = Mathf.InverseLerp(minDuration, maxDuration, mapDuration) * 100;
+
         float totalTime = MapGenerator.SimulationDuration.Value;
         float explorationTime = (totalTime / 100) * m_pourcentageOfTotalTimeExploration;
         Invoke("AllWorkerStopExploring", explorationTime);
@@ -140,12 +159,26 @@ public class Exploring_Manager : MonoBehaviour
 
     private void AllWorkerStopExploring()
     {
+
+        m_explorationIsDone = true;
+
         foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
         {
             if (worker.m_workerState == EWorkerState.exploring)
             {
                 worker.m_workerState = EWorkerState.collecting;
+                m_exploringWorkers.Remove(worker);
             }
         }
     }
+
+    public void TryRemoveWorkerFromExploring(Worker_Alex worker)
+    {
+        if (m_exploringWorkers.Contains(worker)) 
+        {
+            m_exploringWorkers.Remove(worker);
+        }
+    }
+
+
 }

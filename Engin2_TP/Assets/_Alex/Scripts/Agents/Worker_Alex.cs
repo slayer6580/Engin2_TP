@@ -14,6 +14,8 @@ public class Worker_Alex : MonoBehaviour
     private Collectible_Alex m_currentExtractingCollectible;
     private Color32 m_noRessourceColor = new Color32(255, 255, 0, 255); // yellow
     private Color32 m_ressourceColor = new Color32(0, 0, 255, 255);  // bleu
+    [HideInInspector] public bool m_extraExplorator = false;
+    private Vector2 m_campPositionPlacement = Vector2.zero;
 
     private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState == EWorkerState.collecting;
 
@@ -33,7 +35,7 @@ public class Worker_Alex : MonoBehaviour
     private void Start()
     {
         TeamOrchestrator_Alex._Instance.WorkersList.Add(this);
-        SetWorkerState();
+        SetWorkerState();      
     }
 
     private void FixedUpdate()
@@ -99,6 +101,15 @@ public class Worker_Alex : MonoBehaviour
         }
     }
 
+    public void SetNextCampPosition(Vector2 campPosition)
+    {
+        m_campPositionPlacement = campPosition;
+    }
+
+    public Vector2 GetCampPosition()
+    {
+        return m_campPositionPlacement;
+    }
     private void GainCollectible()
     {
         m_collectibleInInventory = m_currentExtractingCollectible.Extract();
@@ -138,7 +149,6 @@ public enum EWorkerState
 {
     // State de mes workers
     exploring,
-    wandering,
     collecting,
     constructing,
     endPhase,

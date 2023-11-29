@@ -1,5 +1,1188 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
+--- !u!1 &30566971199137537
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 3168595995666812010}
+  - component: {fileID: 4772064886949930962}
+  - component: {fileID: 5490948263577424106}
+  - component: {fileID: 8546851449816023146}
+  - component: {fileID: 1446233749596396614}
+  - component: {fileID: 6408936066877559873}
+  - component: {fileID: 1338701720097510887}
+  - component: {fileID: 8527564125040423923}
+  - component: {fileID: 4210980131571408986}
+  - component: {fileID: 4280623827557777797}
+  - component: {fileID: 4300420148294178312}
+  - component: {fileID: 1857254794160458353}
+  - component: {fileID: 7925556191996809596}
+  - component: {fileID: 6118387011072370879}
+  - component: {fileID: 7923732919916226600}
+  - component: {fileID: 8165994264560643777}
+  - component: {fileID: 7648906449712453415}
+  - component: {fileID: 428841533029633731}
+  m_Layer: 0
+  m_Name: ConstructorBrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &3168595995666812010
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2897285588116750546}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &4772064886949930962
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedEditorNode: {fileID: 0}
+  repeatOnFinish: 1
+  maxExecutionsPerTick: 60
+  parent: {fileID: 6576822107427613505}
+--- !u!114 &5490948263577424106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables:
+  - {fileID: 6408936066877559873}
+  - {fileID: 1338701720097510887}
+  - {fileID: 8527564125040423923}
+  - {fileID: 4210980131571408986}
+  masterBlackboard: {fileID: 0}
+--- !u!114 &8546851449816023146
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5f392bbea2fa2499665ed8b604ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monoBehaviourTree: {fileID: 0}
+--- !u!114 &1446233749596396614
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538645f2f9090fd43bc6154b2e89e2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Root
+  rect:
+    serializedVersion: 2
+    x: 390
+    y: -99
+    width: 160
+    height: 44
+  parent: {fileID: 0}
+  children:
+  - {fileID: 4280623827557777797}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &6408936066877559873
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e5f4db414f0ab4c82c187a7653e99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: MovingRangeRadius
+  val: 10
+--- !u!114 &1338701720097510887
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa62ce5e63cc9d45ae0efc52561ace7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: TargetPosition2D
+  val: {x: 0, y: 0}
+--- !u!114 &8527564125040423923
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: AgentTransform
+  val: {fileID: 2897285588116750546}
+--- !u!114 &4210980131571408986
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Worker
+  val: {fileID: 8024679636586000092}
+--- !u!114 &4280623827557777797
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: 392.2
+    y: -22.200012
+    width: 160
+    height: 44
+  parent: {fileID: 1446233749596396614}
+  children:
+  - {fileID: 7923732919916226600}
+  - {fileID: 1857254794160458353}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &4300420148294178312
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c8127c86dc1860644823858facafd68d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Generate Point Around Self
+  rect:
+    serializedVersion: 2
+    x: 423.2
+    y: 115.79997
+    width: 160
+    height: 59
+  parent: {fileID: 1857254794160458353}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_movementRange:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5490948263577424106}
+    key: MovingRangeRadius
+    constantValue: 0
+  m_targetPosition2D:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 5490948263577424106}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  m_agentTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+--- !u!114 &1857254794160458353
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 483.2
+    y: 42.799988
+    width: 160
+    height: 44
+  parent: {fileID: 4280623827557777797}
+  children:
+  - {fileID: 4300420148294178312}
+  - {fileID: 7925556191996809596}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &7925556191996809596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move Towards 2D
+  rect:
+    serializedVersion: 2
+    x: 597.2
+    y: 119.79997
+    width: 160
+    height: 44
+  parent: {fileID: 1857254794160458353}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0
+--- !u!114 &6118387011072370879
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c49754034df9f8f4496554fc283d9c37, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Place Camp
+  rect:
+    serializedVersion: 2
+    x: 68.2
+    y: 199.80002
+    width: 160
+    height: 44
+  parent: {fileID: 8165994264560643777}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_campPrefab: {fileID: 840567353469284312, guid: 25c66d6c555fd9244b147d73faf38302, type: 3}
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &7923732919916226600
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 139139120c66976459ff7e9d213745f0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Can Place Camp
+  rect:
+    serializedVersion: 2
+    x: 291.2
+    y: 46.80002
+    width: 160
+    height: 44
+  parent: {fileID: 4280623827557777797}
+  children:
+  - {fileID: 8165994264560643777}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &8165994264560643777
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 197.20001
+    y: 123.8
+    width: 160
+    height: 44
+  parent: {fileID: 7923732919916226600}
+  children:
+  - {fileID: 6118387011072370879}
+  - {fileID: 7648906449712453415}
+  - {fileID: 428841533029633731}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &7648906449712453415
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8961d1c070ced147adfde5d9af7ccd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait till you drop the ressource
+  rect:
+    serializedVersion: 2
+    x: 240.20001
+    y: 196.8
+    width: 160
+    height: 59
+  parent: {fileID: 8165994264560643777}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &428841533029633731
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 450daa2f1d59c4545b88e7e9ca14769b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Enter Collecting State
+  rect:
+    serializedVersion: 2
+    x: 426.2
+    y: 200.8
+    width: 160
+    height: 44
+  parent: {fileID: 8165994264560643777}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!1 &3560390117405055710
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 5590115652440031223}
+  - component: {fileID: 884495803944967363}
+  - component: {fileID: 4191507787326917845}
+  - component: {fileID: 4503194263475821786}
+  - component: {fileID: 4509307611025896770}
+  - component: {fileID: 5253447088321941696}
+  - component: {fileID: 7281950994722772447}
+  - component: {fileID: 6855159450874547015}
+  - component: {fileID: 6695187405242813719}
+  - component: {fileID: 4475834290022723365}
+  - component: {fileID: 3358752672193355123}
+  - component: {fileID: 6840834131474821786}
+  - component: {fileID: 4523286771224175348}
+  - component: {fileID: 4788483357801193096}
+  - component: {fileID: 4882599775530954222}
+  - component: {fileID: 1304876355019730612}
+  - component: {fileID: 8108334716032178005}
+  - component: {fileID: 2960785821425020124}
+  - component: {fileID: 4824523209237723960}
+  - component: {fileID: 4480099663640801853}
+  - component: {fileID: 3642769994433392976}
+  - component: {fileID: 2758041281143730369}
+  - component: {fileID: 7637405292859707960}
+  - component: {fileID: 4358598178989694917}
+  - component: {fileID: 8375854160661154006}
+  - component: {fileID: 4199173932576907403}
+  - component: {fileID: 1541710467763831490}
+  m_Layer: 0
+  m_Name: CollectorBrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &5590115652440031223
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2897285588116750546}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &884495803944967363
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedEditorNode: {fileID: 0}
+  repeatOnFinish: 1
+  maxExecutionsPerTick: 60
+  parent: {fileID: 6576822107427613505}
+--- !u!114 &4191507787326917845
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables:
+  - {fileID: 5253447088321941696}
+  - {fileID: 7281950994722772447}
+  - {fileID: 6855159450874547015}
+  - {fileID: 6695187405242813719}
+  masterBlackboard: {fileID: 0}
+--- !u!114 &4503194263475821786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5f392bbea2fa2499665ed8b604ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monoBehaviourTree: {fileID: 0}
+--- !u!114 &4509307611025896770
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538645f2f9090fd43bc6154b2e89e2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Root
+  rect:
+    serializedVersion: 2
+    x: -130
+    y: -120.000015
+    width: 160
+    height: 44
+  parent: {fileID: 0}
+  children:
+  - {fileID: 4475834290022723365}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &5253447088321941696
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e5f4db414f0ab4c82c187a7653e99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: MovingRangeRadius
+  val: 10
+--- !u!114 &7281950994722772447
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa62ce5e63cc9d45ae0efc52561ace7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: TargetPosition2D
+  val: {x: 0, y: 0}
+--- !u!114 &6855159450874547015
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: AgentTransform
+  val: {fileID: 2897285588116750546}
+--- !u!114 &6695187405242813719
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Worker
+  val: {fileID: 8024679636586000092}
+--- !u!114 &4475834290022723365
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: -129.79999
+    y: -18.199997
+    width: 160
+    height: 44
+  parent: {fileID: 4509307611025896770}
+  children:
+  - {fileID: 3358752672193355123}
+  - {fileID: 6840834131474821786}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &3358752672193355123
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b24593e28505351499b2cb83f1cb5b7e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Worker have a ressource
+  rect:
+    serializedVersion: 2
+    x: -228.80002
+    y: 55.800003
+    width: 160
+    height: 44
+  parent: {fileID: 4475834290022723365}
+  children:
+  - {fileID: 2960785821425020124}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &6840834131474821786
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Worker dont have a ressource
+  rect:
+    serializedVersion: 2
+    x: 60.200012
+    y: 55.800045
+    width: 160
+    height: 59
+  parent: {fileID: 4475834290022723365}
+  children:
+  - {fileID: 4523286771224175348}
+  - {fileID: 4788483357801193096}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &4523286771224175348
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81b9813557b02634c8213c2cdfd25c05, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Worker have a designed ressource
+  rect:
+    serializedVersion: 2
+    x: 20.200012
+    y: 149.80006
+    width: 160
+    height: 59
+  parent: {fileID: 6840834131474821786}
+  children:
+  - {fileID: 4882599775530954222}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &4788483357801193096
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Worker don't have a reserved ressource
+  rect:
+    serializedVersion: 2
+    x: 204.20001
+    y: 144.80006
+    width: 160
+    height: 59
+  parent: {fileID: 6840834131474821786}
+  children:
+  - {fileID: 4358598178989694917}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &4882599775530954222
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 20.200012
+    y: 349.80005
+    width: 160
+    height: 44
+  parent: {fileID: 4523286771224175348}
+  children:
+  - {fileID: 8375854160661154006}
+  - {fileID: 4199173932576907403}
+  - {fileID: 1304876355019730612}
+  - {fileID: 8108334716032178005}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &1304876355019730612
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f01889f0b15e4428689a7ff644ce12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Go to reserved ressource
+  rect:
+    serializedVersion: 2
+    x: 113.19992
+    y: 437.8001
+    width: 160
+    height: 44
+  parent: {fileID: 4882599775530954222}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &8108334716032178005
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ab68fa68ed1a941a51d37706b39e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait till you collect the ressource
+  rect:
+    serializedVersion: 2
+    x: 296.19995
+    y: 438.8001
+    width: 160
+    height: 59
+  parent: {fileID: 4882599775530954222}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &2960785821425020124
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: -229.79999
+    y: 119.80003
+    width: 160
+    height: 44
+  parent: {fileID: 3358752672193355123}
+  children:
+  - {fileID: 4824523209237723960}
+  - {fileID: 1541710467763831490}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &4824523209237723960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6954516b54211da40ba7b99568af3b13, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: reserved camp exist
+  rect:
+    serializedVersion: 2
+    x: -358.8
+    y: 187.8
+    width: 160
+    height: 44
+  parent: {fileID: 2960785821425020124}
+  children:
+  - {fileID: 4480099663640801853}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+  m_targetPosition2D:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 4191507787326917845}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+--- !u!114 &4480099663640801853
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -358.8
+    y: 255.79999
+    width: 160
+    height: 44
+  parent: {fileID: 4824523209237723960}
+  children:
+  - {fileID: 3642769994433392976}
+  - {fileID: 2758041281143730369}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &3642769994433392976
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move Towards 2D
+  rect:
+    serializedVersion: 2
+    x: -435
+    y: 334
+    width: 160
+    height: 44
+  parent: {fileID: 4480099663640801853}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0
+--- !u!114 &2758041281143730369
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8961d1c070ced147adfde5d9af7ccd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait till you drop the ressource
+  rect:
+    serializedVersion: 2
+    x: -274.8
+    y: 335.80008
+    width: 160
+    height: 59
+  parent: {fileID: 4480099663640801853}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &7637405292859707960
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c85dbe0a58456ec46bd698ce7a4d5f34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Set worker to closest ressource
+  rect:
+    serializedVersion: 2
+    x: 206.20001
+    y: 300.8
+    width: 160
+    height: 59
+  parent: {fileID: 4358598178989694917}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &4358598178989694917
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a45511e0dcd0f224596f7da52a7786c2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Found a Unreserved ressource
+  rect:
+    serializedVersion: 2
+    x: 206.20001
+    y: 222.79999
+    width: 160
+    height: 59
+  parent: {fileID: 4788483357801193096}
+  children:
+  - {fileID: 7637405292859707960}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &8375854160661154006
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3c012df662a75b944a1030ec9206c1bc, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Go near the reserved ressource
+  rect:
+    serializedVersion: 2
+    x: -225.80002
+    y: 433.8
+    width: 160
+    height: 59
+  parent: {fileID: 4882599775530954222}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &4199173932576907403
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 10b79578f92ab764b8115951d3fabe88, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait for ressource cooldown
+  rect:
+    serializedVersion: 2
+    x: -58.799988
+    y: 434.8
+    width: 160
+    height: 59
+  parent: {fileID: 4882599775530954222}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &1541710467763831490
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c78b9ed12b9cdbd4891ede03b85532db, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Enter Constructing State
+  rect:
+    serializedVersion: 2
+    x: -147.79999
+    y: 196.8
+    width: 160
+    height: 44
+  parent: {fileID: 2960785821425020124}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
 --- !u!1 &7367874694531944036
 GameObject:
   m_ObjectHideFlags: 0
@@ -133,6 +1316,283 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c71d53f89d0e8d24eb723c8fa822c8df, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &7634688149601164305
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 8334211427099879318}
+  - component: {fileID: 2030470393155982736}
+  - component: {fileID: 3754213540539749073}
+  - component: {fileID: 9185408328686928991}
+  - component: {fileID: 2091507204910816275}
+  - component: {fileID: 1130398638388934724}
+  - component: {fileID: 2800003401015561486}
+  - component: {fileID: 7487259782675157115}
+  - component: {fileID: 2101045054228665486}
+  - component: {fileID: 8472266093677934558}
+  - component: {fileID: 1332684680197837570}
+  - component: {fileID: 684166116785639171}
+  m_Layer: 0
+  m_Name: ExplorerBrain
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &8334211427099879318
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 2897285588116750546}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2030470393155982736
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  selectedEditorNode: {fileID: 0}
+  repeatOnFinish: 1
+  maxExecutionsPerTick: 60
+  parent: {fileID: 6576822107427613505}
+--- !u!114 &3754213540539749073
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6b2217e4d35c0c94ea02cf2166c17e4b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  variables:
+  - {fileID: 1130398638388934724}
+  - {fileID: 2800003401015561486}
+  - {fileID: 2101045054228665486}
+  - {fileID: 8472266093677934558}
+  masterBlackboard: {fileID: 0}
+--- !u!114 &9185408328686928991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4e5f392bbea2fa2499665ed8b604ff86, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  monoBehaviourTree: {fileID: 0}
+--- !u!114 &2091507204910816275
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 538645f2f9090fd43bc6154b2e89e2d3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Root
+  rect:
+    serializedVersion: 2
+    x: 444
+    y: 168.99998
+    width: 160
+    height: 44
+  parent: {fileID: 0}
+  children:
+  - {fileID: 7487259782675157115}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &1130398638388934724
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4e5f4db414f0ab4c82c187a7653e99d, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: MovingRangeRadius
+  val: 10
+--- !u!114 &2800003401015561486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: eaa62ce5e63cc9d45ae0efc52561ace7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: TargetPosition2D
+  val: {x: 0, y: 0}
+--- !u!114 &7487259782675157115
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: 446
+    y: 242
+    width: 160
+    height: 44
+  parent: {fileID: 2091507204910816275}
+  children:
+  - {fileID: 1332684680197837570}
+  - {fileID: 684166116785639171}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &2101045054228665486
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: dbc98ff6538275b4c9a8383882546ee9, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: AgentTransform
+  val: {fileID: 2897285588116750546}
+--- !u!114 &8472266093677934558
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3cdb61a66fcb1c549a844f093811f6c1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  key: Worker
+  val: {fileID: 8024679636586000092}
+--- !u!114 &1332684680197837570
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5aa6acd3e4cfa504ebd0fed0125a831f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Search For Unexplored Zone
+  rect:
+    serializedVersion: 2
+    x: 318.99994
+    y: 321
+    width: 160
+    height: 59
+  parent: {fileID: 7487259782675157115}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_targetPosition2D:
+    useConstant: 0
+    mode: 1
+    blackboard: {fileID: 3754213540539749073}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  m_agentTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3754213540539749073}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  m_worker:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3754213540539749073}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &684166116785639171
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7634688149601164305}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move Towards 2D
+  rect:
+    serializedVersion: 2
+    x: 493
+    y: 320.00006
+    width: 160
+    height: 44
+  parent: {fileID: 7487259782675157115}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3754213540539749073}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 3754213540539749073}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0
 --- !u!1 &8024679636586000092
 GameObject:
   m_ObjectHideFlags: 0
@@ -168,6 +1628,9 @@ Transform:
   m_Children:
   - {fileID: 86326481276333514}
   - {fileID: 7491167948116475377}
+  - {fileID: 8334211427099879318}
+  - {fileID: 5590115652440031223}
+  - {fileID: 3168595995666812010}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!114 &5821756136960392855
@@ -184,6 +1647,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_radius: 12
   m_radiusDebugTransform: {fileID: 86326481276333514}
+  m_extraExplorator: 0
   m_reservedCollectible: {fileID: 0}
   m_collectibleInInventory: 2
   m_workerState: 4
@@ -327,50 +1791,15 @@ GameObject:
   - component: {fileID: 2841092270851443096}
   - component: {fileID: 1351354143918856998}
   - component: {fileID: 5333905907760853543}
-  - component: {fileID: 2661608582018306423}
   - component: {fileID: 5446215398362752672}
   - component: {fileID: 3411941095620775092}
   - component: {fileID: 6747373303013722250}
   - component: {fileID: 9160126063694643300}
-  - component: {fileID: 1818245411115894836}
-  - component: {fileID: 4322643718319028337}
-  - component: {fileID: 5061029409297584139}
-  - component: {fileID: 9090015632601704140}
   - component: {fileID: 2009507359236920343}
-  - component: {fileID: 4617845832092809700}
   - component: {fileID: 7182072550975771040}
-  - component: {fileID: 2348316475629473611}
-  - component: {fileID: 4970376115857297316}
-  - component: {fileID: 3347240559796168129}
-  - component: {fileID: 1628025773648374281}
-  - component: {fileID: 8318839355133331411}
-  - component: {fileID: 3151303831900009727}
-  - component: {fileID: 7424756442549057032}
-  - component: {fileID: 9174436132705535491}
-  - component: {fileID: 864613718614935413}
-  - component: {fileID: 447490870303523794}
-  - component: {fileID: 3456718550641057675}
-  - component: {fileID: 3516913747160686115}
-  - component: {fileID: 2182824302242523549}
-  - component: {fileID: 214152912510469834}
-  - component: {fileID: 4348067915608095533}
-  - component: {fileID: 3836161628686525398}
-  - component: {fileID: 3282381538767738001}
-  - component: {fileID: 6575447306709974936}
-  - component: {fileID: 1658307233868533476}
-  - component: {fileID: 9033279330164999292}
-  - component: {fileID: 445094806637826307}
-  - component: {fileID: 261702133842582109}
-  - component: {fileID: 278040898934998477}
-  - component: {fileID: 1296445130676677912}
-  - component: {fileID: 5837978379695603276}
-  - component: {fileID: 3928898672136525603}
-  - component: {fileID: 6561822929742813888}
-  - component: {fileID: 8189450524022191780}
-  - component: {fileID: 4642024132342627197}
-  - component: {fileID: 206624246006347914}
-  - component: {fileID: 3979222343854691769}
-  - component: {fileID: 8582762604094653952}
+  - component: {fileID: 1212976191868197237}
+  - component: {fileID: 2971333905045531688}
+  - component: {fileID: 2694334185533297538}
   m_Layer: 0
   m_Name: Brain
   m_TagString: Untagged
@@ -455,8 +1884,8 @@ MonoBehaviour:
   title: Root
   rect:
     serializedVersion: 2
-    x: 408
-    y: -393
+    x: 415
+    y: 197.99997
     width: 160
     height: 44
   parent: {fileID: 0}
@@ -493,33 +1922,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: TargetPosition2D
   val: {x: 0, y: 0}
---- !u!114 &2661608582018306423
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: -319
-    y: -9.999985
-    width: 160
-    height: 44
-  parent: {fileID: 2841092270851443096}
-  children:
-  - {fileID: 1818245411115894836}
-  - {fileID: 9090015632601704140}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
 --- !u!114 &5446215398362752672
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -549,13 +1951,13 @@ MonoBehaviour:
   title: Worker is exploring?
   rect:
     serializedVersion: 2
-    x: -319
-    y: -82.999985
+    x: 208
+    y: 400
     width: 160
     height: 44
   parent: {fileID: 6747373303013722250}
   children:
-  - {fileID: 2661608582018306423}
+  - {fileID: 1212976191868197237}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -580,15 +1982,14 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 411
-    y: -264
+    x: 417
+    y: 286
     width: 160
     height: 44
   parent: {fileID: 2841092270851443096}
   children:
   - {fileID: 3411941095620775092}
   - {fileID: 2009507359236920343}
-  - {fileID: 4617845832092809700}
   - {fileID: 7182072550975771040}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -608,166 +2009,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Worker
   val: {fileID: 8024679636586000092}
---- !u!114 &1818245411115894836
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5aa6acd3e4cfa504ebd0fed0125a831f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Search For Unexplored Zone
-  rect:
-    serializedVersion: 2
-    x: -402.00006
-    y: 57
-    width: 160
-    height: 59
-  parent: {fileID: 2661608582018306423}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_targetPosition2D:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  m_agentTransform:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  m_worker:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &4322643718319028337
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8127c86dc1860644823858facafd68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Generate Point Around Self
-  rect:
-    serializedVersion: 2
-    x: 673.00006
-    y: 131
-    width: 160
-    height: 59
-  parent: {fileID: 0}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_movementRange:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 3483846891267229189}
-    key: MovingRangeRadius
-    constantValue: 0
-  m_targetPosition2D:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  m_agentTransform:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
---- !u!114 &5061029409297584139
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Move Towards 2D
-  rect:
-    serializedVersion: 2
-    x: 843
-    y: 132
-    width: 160
-    height: 44
-  parent: {fileID: 0}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  targetPosition:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  minDistance: 0.01
---- !u!114 &9090015632601704140
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Move Towards 2D
-  rect:
-    serializedVersion: 2
-    x: -244
-    y: 70.00003
-    width: 160
-    height: 44
-  parent: {fileID: 2661608582018306423}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  targetPosition:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  minDistance: 0
 --- !u!114 &2009507359236920343
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -783,44 +2024,13 @@ MonoBehaviour:
   title: Worker is collecting?
   rect:
     serializedVersion: 2
-    x: 78
-    y: -82.5
+    x: 420
+    y: 398.5
     width: 160
     height: 44
   parent: {fileID: 6747373303013722250}
   children:
-  - {fileID: 4970376115857297316}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &4617845832092809700
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: bb31bc6cf1af91f45b961550c5061572, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Worker is wandering?
-  rect:
-    serializedVersion: 2
-    x: 564
-    y: -112.500015
-    width: 160
-    height: 44
-  parent: {fileID: 6747373303013722250}
-  children:
-  - {fileID: 864613718614935413}
+  - {fileID: 2971333905045531688}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -845,13 +2055,13 @@ MonoBehaviour:
   title: Worker is constructing?
   rect:
     serializedVersion: 2
-    x: 1229
-    y: -135.50005
+    x: 626
+    y: 395.49994
     width: 160
     height: 44
   parent: {fileID: 6747373303013722250}
   children:
-  - {fileID: 1296445130676677912}
+  - {fileID: 2694334185533297538}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -861,7 +2071,7 @@ MonoBehaviour:
     blackboard: {fileID: 3483846891267229189}
     key: Worker
     constantValue: {fileID: 0}
---- !u!114 &2348316475629473611
+--- !u!114 &1212976191868197237
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -870,25 +2080,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8779436825274623627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Script: {fileID: 11500000, guid: efee2c6abc08f1d42acf5b1a33db992c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Sequence
+  title: ExplorerBrain
   rect:
     serializedVersion: 2
-    x: 672.00006
-    y: 37.50003
+    x: 210.20001
+    y: 511.8
     width: 160
     height: 44
-  parent: {fileID: 864613718614935413}
-  children:
-  - {fileID: 4322643718319028337}
-  - {fileID: 5061029409297584139}
+  parent: {fileID: 3411941095620775092}
+  children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  random: 0
---- !u!114 &4970376115857297316
+  tree: {fileID: 2030470393155982736}
+--- !u!114 &2971333905045531688
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -897,200 +2105,23 @@ MonoBehaviour:
   m_GameObject: {fileID: 8779436825274623627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Script: {fileID: 11500000, guid: efee2c6abc08f1d42acf5b1a33db992c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Selector
+  title: CollectorBrain
   rect:
     serializedVersion: 2
-    x: 78.20001
-    y: -9.199997
+    x: 421.2
+    y: 511.8
     width: 160
     height: 44
   parent: {fileID: 2009507359236920343}
-  children:
-  - {fileID: 3347240559796168129}
-  - {fileID: 1628025773648374281}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &3347240559796168129
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: b24593e28505351499b2cb83f1cb5b7e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Worker have a ressource
-  rect:
-    serializedVersion: 2
-    x: -74.80002
-    y: 56.800003
-    width: 160
-    height: 44
-  parent: {fileID: 4970376115857297316}
-  children:
-  - {fileID: 3516913747160686115}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &1628025773648374281
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Worker dont have a ressource
-  rect:
-    serializedVersion: 2
-    x: 202.20001
-    y: 54.80005
-    width: 160
-    height: 59
-  parent: {fileID: 4970376115857297316}
-  children:
-  - {fileID: 8318839355133331411}
-  - {fileID: 3151303831900009727}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &8318839355133331411
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81b9813557b02634c8213c2cdfd25c05, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Worker have a designed ressource
-  rect:
-    serializedVersion: 2
-    x: 123.20001
-    y: 134.80006
-    width: 160
-    height: 59
-  parent: {fileID: 1628025773648374281}
-  children:
-  - {fileID: 7424756442549057032}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &3151303831900009727
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Worker don't have a reserved ressource
-  rect:
-    serializedVersion: 2
-    x: 293.2
-    y: 133.80005
-    width: 160
-    height: 59
-  parent: {fileID: 1628025773648374281}
-  children:
-  - {fileID: 1658307233868533476}
-  - {fileID: 9174436132705535491}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &7424756442549057032
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: 118.20001
-    y: 309.80005
-    width: 160
-    height: 44
-  parent: {fileID: 8318839355133331411}
-  children:
-  - {fileID: 261702133842582109}
-  - {fileID: 278040898934998477}
-  - {fileID: 447490870303523794}
-  - {fileID: 3456718550641057675}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &9174436132705535491
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 540c07d29508c5944bf3bd21bafc741e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Enter Wandering State
-  rect:
-    serializedVersion: 2
-    x: 458.2
-    y: 230.80006
-    width: 160
-    height: 44
-  parent: {fileID: 3151303831900009727}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &864613718614935413
+  tree: {fileID: 884495803944967363}
+--- !u!114 &2694334185533297538
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1099,721 +2130,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 8779436825274623627}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Script: {fileID: 11500000, guid: efee2c6abc08f1d42acf5b1a33db992c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Selector
+  title: ConstructorBrain
   rect:
     serializedVersion: 2
-    x: 561.2
-    y: -42.19992
-    width: 160
-    height: 44
-  parent: {fileID: 4617845832092809700}
-  children:
-  - {fileID: 9033279330164999292}
-  - {fileID: 2348316475629473611}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &447490870303523794
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f01889f0b15e4428689a7ff644ce12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Go to reserved ressource
-  rect:
-    serializedVersion: 2
-    x: 210.19992
-    y: 424.8001
-    width: 160
-    height: 44
-  parent: {fileID: 7424756442549057032}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  minDistance: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &3456718550641057675
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ab68fa68ed1a941a51d37706b39e4f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait till you collect the ressource
-  rect:
-    serializedVersion: 2
-    x: 378.19995
-    y: 424.8001
-    width: 160
-    height: 59
-  parent: {fileID: 7424756442549057032}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &3516913747160686115
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: -73.79999
-    y: 120.80003
-    width: 160
-    height: 44
-  parent: {fileID: 3347240559796168129}
-  children:
-  - {fileID: 2182824302242523549}
-  - {fileID: 4348067915608095533}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &2182824302242523549
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 6954516b54211da40ba7b99568af3b13, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Suitable camp exist
-  rect:
-    serializedVersion: 2
-    x: -257.8
-    y: 195.8
-    width: 160
-    height: 44
-  parent: {fileID: 3516913747160686115}
-  children:
-  - {fileID: 214152912510469834}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
-  m_targetPosition2D:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
---- !u!114 &214152912510469834
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: -258.8
-    y: 257.8
-    width: 160
-    height: 44
-  parent: {fileID: 2182824302242523549}
-  children:
-  - {fileID: 3836161628686525398}
-  - {fileID: 3282381538767738001}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &4348067915608095533
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c78b9ed12b9cdbd4891ede03b85532db, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Enter Constructing State
-  rect:
-    serializedVersion: 2
-    x: -60.799988
-    y: 198.80002
-    width: 160
-    height: 44
-  parent: {fileID: 3516913747160686115}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &3836161628686525398
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Move Towards 2D
-  rect:
-    serializedVersion: 2
-    x: -359
-    y: 341
-    width: 160
-    height: 44
-  parent: {fileID: 214152912510469834}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  targetPosition:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  minDistance: 0
---- !u!114 &3282381538767738001
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8961d1c070ced147adfde5d9af7ccd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait till you drop the ressource
-  rect:
-    serializedVersion: 2
-    x: -183.79999
-    y: 335.80008
-    width: 160
-    height: 59
-  parent: {fileID: 214152912510469834}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &6575447306709974936
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85dbe0a58456ec46bd698ce7a4d5f34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Set ressource to closest worker
-  rect:
-    serializedVersion: 2
-    x: 291.2
-    y: 306.8
-    width: 160
-    height: 59
-  parent: {fileID: 1658307233868533476}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
---- !u!114 &1658307233868533476
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a45511e0dcd0f224596f7da52a7786c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Look for available ressource?
-  rect:
-    serializedVersion: 2
-    x: 291.2
-    y: 224.79999
-    width: 160
-    height: 59
-  parent: {fileID: 3151303831900009727}
-  children:
-  - {fileID: 6575447306709974936}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
---- !u!114 &9033279330164999292
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a45511e0dcd0f224596f7da52a7786c2, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Look for available ressource?
-  rect:
-    serializedVersion: 2
-    x: 492.2
-    y: 25.799973
-    width: 160
-    height: 59
-  parent: {fileID: 864613718614935413}
-  children:
-  - {fileID: 445094806637826307}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
---- !u!114 &445094806637826307
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c85dbe0a58456ec46bd698ce7a4d5f34, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Set ressource to closest worker
-  rect:
-    serializedVersion: 2
-    x: 491.2
-    y: 130.79997
-    width: 160
-    height: 59
-  parent: {fileID: 9033279330164999292}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
---- !u!114 &261702133842582109
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3c012df662a75b944a1030ec9206c1bc, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Go near the reserved ressource
-  rect:
-    serializedVersion: 2
-    x: -126.8
-    y: 424.8
-    width: 160
-    height: 59
-  parent: {fileID: 7424756442549057032}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &278040898934998477
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 10b79578f92ab764b8115951d3fabe88, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait for ressource cooldown
-  rect:
-    serializedVersion: 2
-    x: 39.200012
-    y: 424.8
-    width: 160
-    height: 59
-  parent: {fileID: 7424756442549057032}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &1296445130676677912
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: 1226.2
-    y: -68.19998
+    x: 629.19995
+    y: 509.8
     width: 160
     height: 44
   parent: {fileID: 7182072550975771040}
-  children:
-  - {fileID: 8189450524022191780}
-  - {fileID: 5837978379695603276}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &5837978379695603276
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: 1340.2
-    y: 6.800003
-    width: 160
-    height: 44
-  parent: {fileID: 1296445130676677912}
-  children:
-  - {fileID: 3928898672136525603}
-  - {fileID: 6561822929742813888}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &3928898672136525603
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c8127c86dc1860644823858facafd68d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Generate Point Around Self
-  rect:
-    serializedVersion: 2
-    x: 1265.2
-    y: 74.79999
-    width: 160
-    height: 59
-  parent: {fileID: 5837978379695603276}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  m_movementRange:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 3483846891267229189}
-    key: MovingRangeRadius
-    constantValue: 0
-  m_targetPosition2D:
-    useConstant: 0
-    mode: 1
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  m_agentTransform:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
---- !u!114 &6561822929742813888
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Move Towards 2D
-  rect:
-    serializedVersion: 2
-    x: 1434.2
-    y: 75.79999
-    width: 160
-    height: 44
-  parent: {fileID: 5837978379695603276}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  targetPosition:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: TargetPosition2D
-    constantValue: {x: 0, y: 0}
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  minDistance: 0
---- !u!114 &8189450524022191780
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 139139120c66976459ff7e9d213745f0, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Can Place Camp
-  rect:
-    serializedVersion: 2
-    x: 1085.2
-    y: 10.800003
-    width: 160
-    height: 44
-  parent: {fileID: 1296445130676677912}
-  children:
-  - {fileID: 206624246006347914}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
---- !u!114 &4642024132342627197
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c49754034df9f8f4496554fc283d9c37, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Place Camp
-  rect:
-    serializedVersion: 2
-    x: 952.19995
-    y: 192.79999
-    width: 160
-    height: 44
-  parent: {fileID: 206624246006347914}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_campPrefab: {fileID: 840567353469284312, guid: 25c66d6c555fd9244b147d73faf38302, type: 3}
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &206624246006347914
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Sequence
-  rect:
-    serializedVersion: 2
-    x: 1083.2
-    y: 88.80002
-    width: 160
-    height: 44
-  parent: {fileID: 8189450524022191780}
-  children:
-  - {fileID: 4642024132342627197}
-  - {fileID: 3979222343854691769}
-  - {fileID: 8582762604094653952}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &3979222343854691769
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8961d1c070ced147adfde5d9af7ccd4, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Wait till you drop the ressource
-  rect:
-    serializedVersion: 2
-    x: 1129.2
-    y: 191.79999
-    width: 160
-    height: 59
-  parent: {fileID: 206624246006347914}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &8582762604094653952
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 8779436825274623627}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 450daa2f1d59c4545b88e7e9ca14769b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Enter Collecting State
-  rect:
-    serializedVersion: 2
-    x: 1301.2
-    y: 195.79999
-    width: 160
-    height: 44
-  parent: {fileID: 206624246006347914}
-  children: []
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 3483846891267229189}
-    key: Worker
-    constantValue: {fileID: 0}
+  tree: {fileID: 4772064886949930962}

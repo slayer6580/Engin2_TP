@@ -9,31 +9,38 @@ public class RessourceAvailable : Leaf
 
     public override NodeResult Execute()
     {
-        foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
+        Collectible_Alex closestCollectible = null;
+        Worker_Alex closestWorker = null;
+        float minDistance = 1000; // test
+
+        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
         {
-            if (collectible.m_designedWorker == null)
+            if (worker.m_reservedCollectible == null && worker.m_workerState == EWorkerState.collecting)
             {
-                float minDistance = 1000; // test
-                Worker_Alex closestWorker = null;
-                foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
+                foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
                 {
-                    if (worker.m_reservedCollectible == null &&
-                        (worker.m_workerState == EWorkerState.wandering || worker.m_workerState == EWorkerState.collecting))
+                    float distanceBetweenRessourceAndWorker = Vector2.Distance(worker.transform.position, collectible.transform.position);
+
+                    if (collectible.m_designedWorker == null && distanceBetweenRessourceAndWorker < minDistance)
                     {
-                        if (Vector2.Distance(worker.transform.position, collectible.transform.position) < minDistance)
-                        {
-                            minDistance = Vector2.Distance(worker.transform.position, collectible.transform.position);
-                            closestWorker = worker;
-                        }
+                        minDistance = distanceBetweenRessourceAndWorker;
+                        closestCollectible = collectible;
+                        closestWorker = worker;
+
+                        closestCollectible.m_designedWorker = closestWorker;
+                        closestWorker.m_reservedCollectible = closestCollectible;
+                        closestWorker.m_workerState = EWorkerState.collecting;
+                        return NodeResult.success;
+                      
                     }
                 }
-
-                collectible.m_designedWorker = closestWorker;
-                closestWorker.m_reservedCollectible = collectible;
-                closestWorker.m_workerState = EWorkerState.collecting;
-                return NodeResult.success;
             }
         }
+
+       
+            return NodeResult.failure;
+    
+
 
         return NodeResult.success;
     }

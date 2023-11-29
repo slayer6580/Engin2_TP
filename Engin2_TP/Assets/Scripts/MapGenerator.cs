@@ -115,7 +115,17 @@ public class RandomIntBetweenRange
 		m_minimumValue = min; m_maximumValue = max;
     }
 
-	public void RollValue()
+	public int GetMin()
+	{
+		return m_minimumValue;
+	}
+
+    public int GetMax()
+    {
+        return m_maximumValue;
+    }
+
+    public void RollValue()
 	{
         Value = UnityEngine.Random.Range(m_minimumValue, m_maximumValue + 1);
 	}
