@@ -1813,6 +1813,7 @@ MonoBehaviour:
   m_visitedChunk: 0
   nbOfChunckInLine: 0
   newTimeScale: 5
+  m_minimumDistanceBetweenRessources: 1000
   m_averageNumberOfRessourcesByDistance: 0
   m_averageNumberOfRessourcesByPercentage: 0
   m_mixedResultAverageRessources: 0
@@ -4348,6 +4349,11 @@ MonoBehaviour:
     m_minimumValue: 12
     m_maximumValue: 80
     <Value>k__BackingField: 0
+  m_takeTestVariables: 1
+  m_campCost: 55
+  m_mapDimension: 397
+  m_simulationDuration: 838
+  m_nodeDensity: 37
 --- !u!1 &667614399 stripped
 GameObject:
   m_CorrespondingSourceObject: {fileID: 4157857182145598295, guid: af1890a8b2a3b60498f60822bc749e4a, type: 3}

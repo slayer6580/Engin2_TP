@@ -308,12 +308,14 @@ public class Tommy_Worker : MonoBehaviour
 			Tommy_TeamOrchestrator._Instance.WorkerSpeedByChunk = Time.time - speedTest;
 			speedTest = Time.time;
 			m_skipFirstSpeedTest--;
+			
 		}
 		else
 		{
 			//TODO this don't need to be called after speed is set
 			speedTest = Time.time;
 			m_skipFirstSpeedTest--;
+			
 		}
 		
 		//Trail
