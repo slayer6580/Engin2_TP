@@ -12,10 +12,11 @@ public class Worker_Alex : MonoBehaviour
     private bool m_isInExtraction = false;
     private float m_currentActionDuration = 0.0f;
     private Collectible_Alex m_currentExtractingCollectible;
+
     private Color32 m_noRessourceColor = new Color32(255, 255, 0, 255); // yellow
     private Color32 m_ressourceColor = new Color32(0, 0, 255, 255);  // bleu
+
     [HideInInspector] public bool m_extraExplorator = false;
-    private Vector2 m_campPositionPlacement = Vector2.zero;
 
     private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState == EWorkerState.collecting;
 

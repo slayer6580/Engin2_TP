@@ -137,9 +137,10 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
         int nbOfNewExplorator = (numberOfRessourcePossibleInZoneLenght * numberOfRessourcePossibleInZoneLenght) - STARTING_WORKER;
 
-
         // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
+
+        // TODO spawn un lot de 4 workers et moins a la fois sur une petite durée
         for (int i = 0; i < nbOfNewExplorator; i++)
         {
             GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);

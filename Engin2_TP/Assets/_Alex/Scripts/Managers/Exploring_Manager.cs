@@ -161,9 +161,9 @@ public class Exploring_Manager : MonoBehaviour
     private void EvaluateWhenStopExploring()
     {      
         //TODO améliorer fonction
-        int minDuration = MapGenerator.SimulationDuration.GetMin();
-        int maxDuration = MapGenerator.SimulationDuration.GetMax();
-        int mapDuration = MapGenerator.SimulationDuration.Value;
+        int minDuration = MapGenerator.SimulationDuration.GetMin(); // 10
+        int maxDuration = MapGenerator.SimulationDuration.GetMax(); // 1000
+        int mapDuration = MapGenerator.SimulationDuration.Value; 
 
         // retourne le pourcentage sur le temps d'une partie en comparaison a son min et max
         m_pourcentageOfTotalTimeExploration = Mathf.InverseLerp(minDuration, maxDuration, mapDuration) * 100;
@@ -172,7 +172,7 @@ public class Exploring_Manager : MonoBehaviour
         float explorationTime = (totalTime / 100) * m_pourcentageOfTotalTimeExploration;
 
         // dire a mes explorateur de collecté apres un certain temps calculer plus haut
-        Invoke("WorkersStopExploring", explorationTime);
+        Invoke("WorkersStopExploringAndSpawnCollectors", explorationTime);
     }
 
     // Arreter l'exploration et spawner les collecteur manquant
@@ -193,6 +193,8 @@ public class Exploring_Manager : MonoBehaviour
                 m_exploringWorkers.Remove(worker);
             }
         }
+
+       
         int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
         int workerCount = TeamOrchestrator_Alex._Instance.WorkersList.Count;
 
