@@ -5,9 +5,7 @@ public class Collectible_Alex : MonoBehaviour
     private const float COOLDOWN = 5.0f;
     private float m_currentCooldown = 0.0f;
     [HideInInspector] public Worker_Alex m_designedWorker = null;
-    [HideInInspector] public bool m_hasBeenPickedInTheLastFiveSeconds = false;
-    public bool m_reservedCamp = false;
-    public Vector2 m_reservedCampPosition;
+    public bool m_hasBeenPickedInTheLastFiveSeconds = false;
 
     public ECollectibleType Extract()
     {

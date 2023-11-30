@@ -7,7 +7,7 @@ public class GoNearRessource : Leaf
 {
     public TransformReference transformToMove;
     public float speed = 0.1f;
-    private const float MIN_DISTANCE = 2f;
+    private const float MIN_DISTANCE = 4f;
     public GameObjectReference m_workerGO = new GameObjectReference();
     private Vector2 m_target;
 

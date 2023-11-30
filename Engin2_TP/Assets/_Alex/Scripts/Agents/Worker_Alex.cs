@@ -7,7 +7,7 @@ public class Worker_Alex : MonoBehaviour
 
     [SerializeField] private float m_radius = 5.0f;
     [SerializeField] private Transform m_radiusDebugTransform;
-  
+
     private bool m_isInDepot = false;
     private bool m_isInExtraction = false;
     private float m_currentActionDuration = 0.0f;
@@ -23,9 +23,9 @@ public class Worker_Alex : MonoBehaviour
     [HideInInspector] public ECollectibleType m_collectibleInInventory = ECollectibleType.None;
 
     // Pour exploration initiale
-     public EWorkerState m_workerState = EWorkerState.none;
+    public EWorkerState m_workerState = EWorkerState.none;
     [HideInInspector] public EDirection m_workerDirection = EDirection.left;
-  
+
 
     private void OnValidate()
     {
@@ -35,7 +35,7 @@ public class Worker_Alex : MonoBehaviour
     private void Start()
     {
         TeamOrchestrator_Alex._Instance.WorkersList.Add(this);
-        SetWorkerState();      
+        SetWorkerState();
     }
 
     private void FixedUpdate()
@@ -134,14 +134,7 @@ public class Worker_Alex : MonoBehaviour
 
     private void SetWorkerState()
     {
-        if (Exploring_Manager._Instance.m_exploringWorkers.Count < Exploring_Manager._Instance.m_nbOfExploringWorkers)
-        {
-            Exploring_Manager._Instance.SetWorkerForExploring(this);
-        }
-        else
-        {
-            m_workerState = EWorkerState.collecting;
-        }
+        Exploring_Manager._Instance.SetWorkerForExploring(this);
     }
 }
 

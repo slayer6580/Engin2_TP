@@ -72,6 +72,10 @@ public class MapGenerator : MonoBehaviour
             MapDimension.RollValue();
             m_nodesDensity.RollValue();
             SimulationDuration.RollValue();
+			m_campCost = CampCost.GetValue();
+			m_mapDimension = MapDimension.GetValue();
+			m_nodeDensity = m_nodesDensity.GetValue();
+			m_simulationDuration = SimulationDuration.GetValue();
         }
 		
     }
@@ -124,6 +128,11 @@ public class RandomIntBetweenRange
     {
         return m_maximumValue;
     }
+
+	public int GetValue()
+	{
+		return Value;
+	}
 
     public void RollValue()
 	{

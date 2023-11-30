@@ -40,12 +40,15 @@ public class SearchForUnexploredZone : Leaf
         else if (CheckZoneAtFrontDirectionExtra(workerDirection) && worker.m_extraExplorator == true)
         {
             Debug.Log("worker find a zone at is front");
-            worker.m_extraExplorator = false;
             return;
         }
-        else if (CheckZoneAtFrontDirection(workerDirection) && worker.m_extraExplorator == false)
+        else if (CheckZoneAtFrontDirection(workerDirection))
         {
             Debug.Log("worker find a zone at is front");
+            if (worker.m_extraExplorator == true)
+            {
+                worker.m_extraExplorator = false;
+            }
             return;
         }
         else if (CheckZoneAtLeftDirection(workerDirection))

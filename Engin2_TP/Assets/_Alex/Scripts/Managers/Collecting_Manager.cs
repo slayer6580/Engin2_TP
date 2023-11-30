@@ -70,7 +70,7 @@ public class Collecting_Manager : MonoBehaviour
             }
         }
 
-        TeamOrchestrator_Alex._Instance.SpawnWorkerBasedOnPredictionDistance(m_predictionDistance);
+        TeamOrchestrator_Alex._Instance.SpawnExplorerBasedOnPredictionDistance(m_predictionDistance);
 
     }
 

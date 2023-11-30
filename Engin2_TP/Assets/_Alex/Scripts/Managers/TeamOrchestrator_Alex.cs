@@ -14,11 +14,12 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
     [SerializeField] private int nbOfWorkerToSpawn;
-    [SerializeField] private int m_nbOfNewWorker;
 
     private float m_remainingTime;
     private int m_score = 0;
     private bool m_workerAlreadySpawnBasedOnPrediction = false;
+
+    private const int STARTING_WORKER = 5;
 
     public static TeamOrchestrator_Alex _Instance
     {
@@ -116,30 +117,29 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         }
     }
 
-    public void SpawnWorkerBasedOnPredictionDistance(float distancePredicted)
+    public void SpawnExplorerBasedOnPredictionDistance(float distancePredicted)
     {
         if (m_workerAlreadySpawnBasedOnPrediction)
         {
             return;
         }
-
         m_workerAlreadySpawnBasedOnPrediction = true;
 
-        //TODO logique pour savoir combien de worker je doit faire selon map et temps restant
-        // 5 == Logique temporaire pour test
+        int mapDimension = MapGenerator.MapDimension.Value;
+        int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
+        int nbOfNewExplorator = numberOfRessourcePossibleInZoneLenght * 2;
 
-        Exploring_Manager._Instance.m_nbOfExploringWorkers += m_nbOfNewWorker;
-        for (int i = 0; i < m_nbOfNewWorker; i++)
+        Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
+        for (int i = 0; i < nbOfNewExplorator; i++)
         {
             GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
             OnWorkerCreated();
             newWorker.transform.SetParent(transform);
         }
 
-
     }
 
-    public void SpawnWorkerForCollecting()
+    public void SpawnCollectingWorker()
     {
         GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
         OnWorkerCreated();

@@ -1,6 +1,6 @@
 using MBT;
 using UnityEngine;
-using static Unity.Burst.Intrinsics.X86.Avx;
+
 
 [AddComponentMenu("")]
 [MBTNode(name = "Alex Condition/Suitable camp exist")]
@@ -23,18 +23,38 @@ public class SuitableCampExist : Condition
         }
 
         float minDistance = 35;
+        bool suitableCampExist = false;
 
+        suitableCampExist = LookForCloseCamp(minDistance, suitableCampExist);
+
+        if (suitableCampExist)
+        {
+            return true;
+        }
+
+        return false;
+
+    }
+
+    private bool LookForCloseCamp(float minDistance, bool suitableCampExist)
+    {
         foreach (Camp_Alex camp in Constructing_Manager._Instance.Camps)
         {
             if (Vector2.Distance(camp.transform.position, m_workerPos) < minDistance)
             {
-                m_targetPosition2D.Value = camp.transform.position;
-                return true;
+                suitableCampExist = FoundCloseCampAndSetPosition(camp);
             }
-           
+
         }
 
-        return false;
-       
+        return suitableCampExist;
+    }
+
+    private bool FoundCloseCampAndSetPosition(Camp_Alex camp)
+    {
+        bool suitableCampExist;
+        m_targetPosition2D.Value = camp.transform.position;
+        suitableCampExist = true;
+        return suitableCampExist;
     }
 }

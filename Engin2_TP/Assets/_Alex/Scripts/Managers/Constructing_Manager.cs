@@ -49,67 +49,7 @@ public class Constructing_Manager : MonoBehaviour
     }
 
 
-    public void SetCamp(Collectible_Alex reservedCollectible)
-    {
-
-        if (!Collecting_Manager._Instance.m_predictionDistanceDone)
-        {
-            return;
-        }
-
-        Vector2 reservedCollectiblePosition = reservedCollectible.transform.position;
 
 
-        foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
-        {
 
-            if (collectible == reservedCollectible) 
-            {
-                continue;
-            }
-
-            if (collectible.m_reservedCamp == true)
-            {
-                continue;
-            }
-
-            Vector2 colPos = collectible.transform.position;
-            float distance = Vector2.Distance(colPos, reservedCollectiblePosition);            
-
-            if (distance <= (Collecting_Manager._Instance.m_predictionDistance + 1))
-            {
-                Vector2 campPosition = (colPos + reservedCollectiblePosition) / 2;
-                reservedCollectible.m_reservedCamp = true;
-                collectible.m_reservedCamp = true;
-                reservedCollectible.m_reservedCampPosition = campPosition;
-                collectible.m_reservedCampPosition = campPosition;
-                SetWorkerToConstructCamp(campPosition);
-                return;
-            }         
-        }
-
-    }
-
-    private void SetWorkerToConstructCamp(Vector2 campPosition)
-    {
-        float distance = 1000;
-        Worker_Alex designedWorker = null;
-        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList) 
-        {
-            if (worker.m_workerState == EWorkerState.collecting) 
-            { 
-                Vector2 workerPos = worker.transform.position;
-                if (Vector2.Distance(workerPos, campPosition) <  distance)
-                { 
-                    designedWorker = worker;
-                }
-            }
-        }
-        if (designedWorker)
-        {
-            designedWorker.m_workerState = EWorkerState.constructing;
-            designedWorker.SetNextCampPosition(campPosition);
-        }
-     
-    }
 }
