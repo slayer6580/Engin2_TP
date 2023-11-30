@@ -104,7 +104,7 @@ public class Exploring_Manager : MonoBehaviour
     public void SetWorkerForExploring(Worker_Alex worker)
     {
 
-        if (m_workerInExploration >= m_nbOfExploringWorkers)
+        if (m_workerInExploration > m_nbOfExploringWorkers)
         {
             worker.m_workerState = EWorkerState.collecting;
             return;
@@ -188,10 +188,9 @@ public class Exploring_Manager : MonoBehaviour
         int workerCount = TeamOrchestrator_Alex._Instance.WorkersList.Count;
 
         int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
-        for (int i = 0; i < numberOfCollectorToSpawn; i++)
-        {
-            TeamOrchestrator_Alex._Instance.SpawnCollectingWorker();
-        }
+      
+        TeamOrchestrator_Alex._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
+      
 
     }
 

@@ -137,11 +137,30 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         }
     }
 
-    public void SpawnCollectingWorker()
+    public void SpawnCollectingWorker(int numberToSpawn)
     {
-        GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
-        OnWorkerCreated();
-        newWorker.transform.SetParent(transform);
+        List<Collectible_Alex> m_unreservedCollectible = new List<Collectible_Alex>();
+
+        foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
+        {
+            if (collectible.m_designedWorker == null)
+            {
+                m_unreservedCollectible.Add(collectible);
+            }
+        }
+
+        for (int i = 0; i < numberToSpawn; i++)
+        {
+            GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
+            OnWorkerCreated();
+            newWorker.transform.SetParent(transform);
+            newWorker.GetComponent<Worker_Alex>().m_reservedCollectible = m_unreservedCollectible[i];
+            int index = Collecting_Manager._Instance.KnownCollectibles.IndexOf(m_unreservedCollectible[i]);
+            Collecting_Manager._Instance.KnownCollectibles[index].m_designedWorker = newWorker.GetComponent<Worker_Alex>();
+
+
+        }
+
     }
 
 }
