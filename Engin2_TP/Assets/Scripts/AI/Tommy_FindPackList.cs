@@ -1,56 +1,11 @@
-using MBT;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-[MBTNode("Engin2/Search Best Camp Position")]
-[AddComponentMenu("")]
-public class Tommy_SearchBestCampPosition : Leaf
+public class Tommy_FindPackList : MonoBehaviour
 {
-	List<Collectible> pack = new List<Collectible>();
 
-
-	public override void OnEnter()
-    {
-		// (OLD) pack = Tommy_TeamOrchestrator._Instance.FindRessourcePackWithMiddlePoint();
-
-
-		/* Variable NÉCÉSSAIRE dans TeamOrchestrator
-        m_ressourceToUse =    List<Collectible> : liste des ressources choisi pour être miné par les workers, la ressource est enlevé de la liste une fois
-		                      qu'un worker y a été assigné
-		
-		m_alreadyUsedRessources = List<Collectible> : Les ressource y sont ajouter en même temps que dans m_ressourceToUse mais il ne sont jamais retiré
-		                          cette liste est utilisé afin d'éviter de réassigner plusieurs fois la même ressource.
-		
-		m_campToSpawn =    List<Vector2> : Liste de position de camps à spawné bien centré par rapport a ressource dans m_ressourceToUse
-         
-        m_workerSpeedUnitBySecond = vitesse des worker (m/secondes)
-         */
-
-		Tommy_TeamOrchestrator instance = Tommy_TeamOrchestrator._Instance;
-		float remainingTime = MapGenerator.SimulationDuration.Value - Time.timeSinceLevelLoad;
-
-		pack = FindBestPackOfRessources(instance.KnownCollectibles, instance.m_ressourceToUse, instance.m_alreadyUsedRessources, instance.m_campToSpawn, instance.m_workerSpeedUnitBySecond, instance.m_minimumDistanceBetweenRessources, remainingTime);
-
-
-	}
-
-    public override NodeResult Execute()
-    {
-
-        if(pack.Count > 0)
-        {
-            print("SEARCH SUCESS");
-			//Debug.Log("On SEARCH BEST CAMP execute");
-			return NodeResult.success;
-		}
-		print("SEARCH FAILURE");
-		return NodeResult.failure;
-		
-    }
-
-
-	public List<Collectible> FindBestPackOfRessources(List<Collectible> knownCollectibles, List<Collectible> ressourceToUse, List<Collectible> alreadyUsedRessources, List<Vector2> campToSpawn, float workerSpeedUnitBySecond, float minimumDistanceBetweenRessources, float remainingTime)
+	public List<Collectible> FindBestPackOfRessources(List<Collectible> knownCollectibles,  List<Collectible> ressourceToUse, List<Collectible> alreadyUsedRessources, List<Vector2> campToSpawn,  float workerSpeedUnitBySecond, float minimumDistanceBetweenRessources, float remainingTime)
 	{
 
 		int packSize = 4;   //Taile maximal d'un pack de ressource
@@ -201,4 +156,6 @@ public class Tommy_SearchBestCampPosition : Leaf
 		// print("Possible points with " + ressourcePack.Count + " ressources. = " + possiblePoints);
 		return possiblePoints;
 	}
+
+
 }

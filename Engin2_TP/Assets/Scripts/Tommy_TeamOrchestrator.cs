@@ -33,7 +33,7 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
     public int m_visitedChunk;
     public int nbOfChunckInLine;        //NEW
     public float newTimeScale;        //NEW
-    private float m_minimumDistanceBetweenRessources = 1000;    //NEW
+    public float m_minimumDistanceBetweenRessources = 1000;    //NEW
     public int m_averageNumberOfRessourcesByDistance = 0;
     public int m_averageNumberOfRessourcesByPercentage = 0;
     public int m_mixedResultAverageRessources = 0;
@@ -81,7 +81,7 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
     private void CreateChunkList()      //NEW
     {
 		float mapDimension = MapGenerator.MapDimension.Value;
-		nbOfChunckInLine = (int)Mathf.Floor(mapDimension / 5.0f);
+		nbOfChunckInLine = (int)Mathf.Ceil(mapDimension / 5.0f);
 
 		m_chunkList = new bool[nbOfChunckInLine, nbOfChunckInLine];
         m_totalChunk = nbOfChunckInLine * nbOfChunckInLine;
@@ -150,9 +150,7 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
 
     private void Update()
     {
-
-
-        if (Input.GetKeyDown(KeyCode.Space))
+		if (Input.GetKeyDown(KeyCode.Space))
         {
             print("TEST");
 			SceneManager.LoadScene("SampleScene_Tommy");
@@ -229,19 +227,28 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
 
     public List<Collectible> FindRessourcePackWithMiddlePoint()
     {
+        Tommy_FindPackList knownRessourceManager = new Tommy_FindPackList();
+
+		
+
+		return knownRessourceManager.FindBestPackOfRessources(KnownCollectibles, m_ressourceToUse, m_alreadyUsedRessources, m_campToSpawn, m_workerSpeedUnitBySecond, m_minimumDistanceBetweenRessources, m_remainingTime);
+		
         
+        
+        /*
         int packSize = 4;   //Taile maximal d'un pack de ressource
 
 		List<Collectible> bestPack = new List<Collectible>();
 		float bestPossiblePoints = 0;
-
+		
+        List<Collectible> potentialRessourcePack = new List<Collectible>();
 
 		foreach (Collectible ressourceToCheck in KnownCollectibles)
         {
-			List<Collectible> potentialRessourcePack = new List<Collectible>();
+            potentialRessourcePack.Clear();
 
-            //Reduce packSize if not enough ressource available
-            int availableRessourceToCheck = KnownCollectibles.Count - m_alreadyUsedRessources.Count;
+			//Reduce packSize if not enough ressource available
+			int availableRessourceToCheck = KnownCollectibles.Count - m_alreadyUsedRessources.Count;
 			while (availableRessourceToCheck < packSize)
 			{
 				packSize--;
@@ -341,6 +348,8 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
 		}
 		
 		return bestPack;
+
+        */
 	}
 
     public int CheckPossiblePointAtThatPosition(List<Collectible> ressourcePack, Vector2 positionToCheck)
