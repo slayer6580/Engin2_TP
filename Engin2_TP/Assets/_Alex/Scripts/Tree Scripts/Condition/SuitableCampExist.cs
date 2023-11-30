@@ -22,7 +22,8 @@ public class SuitableCampExist : Condition
             return false;
         }
 
-        float minDistance = 35;
+        float minDistance = (MapGenerator.CampCost.GetValue() * 1.5f);
+
         bool suitableCampExist = false;
 
         suitableCampExist = LookForCloseCamp(minDistance, suitableCampExist);
