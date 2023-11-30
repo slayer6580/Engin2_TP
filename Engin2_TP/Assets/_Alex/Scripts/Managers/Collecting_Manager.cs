@@ -32,7 +32,7 @@ public class Collecting_Manager : MonoBehaviour
 
         KnownCollectibles.Add(collectible);
 
-        if (KnownCollectibles.Count >= 2)
+        if (KnownCollectibles.Count >= 2 && !m_predictionDistanceDone)
         {
             PredictRessourceDistance();
         }
@@ -40,6 +40,7 @@ public class Collecting_Manager : MonoBehaviour
         Debug.Log("Collectible added");
     }
 
+    // Fonction qui prédit une distance des deux premiers collectible trouvé
     private void PredictRessourceDistance()
     {      
 
@@ -53,27 +54,15 @@ public class Collecting_Manager : MonoBehaviour
                 }
 
                 float distance = Vector2.Distance(collectible.transform.position, collectible2.transform.position);
-
-                if (!m_predictionDistanceDone)
-                {
+               
                     m_predictionDistanceDone = true;
                     m_predictionDistance = distance;
-                }
-                else
-                {
-                    if (distance < m_predictionDistance)
-                    {
-                        m_predictionDistance = distance;
-                    }
-                }
-
+                
             }
         }
 
         TeamOrchestrator_Alex._Instance.SpawnExplorerBasedOnPredictionDistance(m_predictionDistance);
 
-    }
-
-   
+    }  
 
 }

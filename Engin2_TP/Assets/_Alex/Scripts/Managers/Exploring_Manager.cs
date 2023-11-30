@@ -60,6 +60,7 @@ public class Exploring_Manager : MonoBehaviour
         }
     }
 
+    // Fonction pour créer les chunks
     private void GetMapDimensionAndZoneLength()
     {
         m_mapDimension = MapGenerator.MapDimension.Value;
@@ -104,24 +105,28 @@ public class Exploring_Manager : MonoBehaviour
     public void SetWorkerForExploring(Worker_Alex worker)
     {
 
+        // Si on prévoit pas d'explorateur
         if (m_workerInExploration > m_nbOfExploringWorkers)
         {
             worker.m_workerState = EWorkerState.collecting;
             return;
         }
+        // Si l'exploration est considérée finie
         else if (m_explorationIsDone) 
         {
             worker.m_workerState = EWorkerState.collecting;
             return;
         }
-
+        // Pour les extra explorateur
         if (m_workerInExploration > 4)
         {
             worker.m_extraExplorator = true;
         }
 
+        // modulo pour s'assurer que les workers vont dans des directions calculer
         int moduloForDirection = m_workerInExploration % 4;
 
+        // donner des direction de départ au worker
         switch (moduloForDirection)
         {
             case 0:
@@ -152,8 +157,10 @@ public class Exploring_Manager : MonoBehaviour
         zone.transform.SetParent(transform);
     }
 
+    // calcule un temps d'arret de l'exploration
     private void EvaluateWhenStopExploring()
     {      
+        //TODO améliorer fonction
         int minDuration = MapGenerator.SimulationDuration.GetMin();
         int maxDuration = MapGenerator.SimulationDuration.GetMax();
         int mapDuration = MapGenerator.SimulationDuration.Value;
@@ -164,9 +171,11 @@ public class Exploring_Manager : MonoBehaviour
         float totalTime = MapGenerator.SimulationDuration.Value;
         float explorationTime = (totalTime / 100) * m_pourcentageOfTotalTimeExploration;
 
+        // dire a mes explorateur de collecté apres un certain temps calculer plus haut
         Invoke("WorkersStopExploring", explorationTime);
     }
 
+    // Arreter l'exploration et spawner les collecteur manquant
     private void WorkersStopExploringAndSpawnCollectors()
     {
         if (m_explorationIsDone) 
@@ -189,11 +198,11 @@ public class Exploring_Manager : MonoBehaviour
 
         int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
       
-        TeamOrchestrator_Alex._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
-      
+        TeamOrchestrator_Alex._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);     
 
     }
 
+    // Fonction pour enlever worker d'une liste pour le temps d'arreter l'exploration
     public void TryRemoveWorkerFromExploring(Worker_Alex worker)
     {
         if (m_exploringWorkers.Contains(worker)) 
@@ -202,6 +211,7 @@ public class Exploring_Manager : MonoBehaviour
         }
     }
 
+    // Fonction qui calcule le pourcentage de la map explorer
     public float GetPourcentageOfMapExpored()
     {
         float pourcentage = 100;
@@ -220,6 +230,7 @@ public class Exploring_Manager : MonoBehaviour
         return pourcentage;
     }
 
+    // Fonction qui regarde si mes explorateur on tous finis d'explorer en temps réel
     private void CheckIfExploratorsAreDoneExploring()
     {
       

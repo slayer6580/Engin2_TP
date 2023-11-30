@@ -101,15 +101,10 @@ public class Worker_Alex : MonoBehaviour
         }
     }
 
-    public void SetNextCampPosition(Vector2 campPosition)
-    {
-        m_campPositionPlacement = campPosition;
-    }
 
-    public Vector2 GetCampPosition()
-    {
-        return m_campPositionPlacement;
-    }
+
+
+    //Code a max
     private void GainCollectible()
     {
         m_collectibleInInventory = m_currentExtractingCollectible.Extract();
@@ -124,6 +119,7 @@ public class Worker_Alex : MonoBehaviour
         GetComponent<SpriteRenderer>().color = m_ressourceColor;
     }
 
+    //Code a max
     private void DepositResource()
     {
         TeamOrchestrator_Alex._Instance.GainResource(m_collectibleInInventory);
@@ -132,6 +128,7 @@ public class Worker_Alex : MonoBehaviour
         GetComponent<SpriteRenderer>().color = m_noRessourceColor;
     }
 
+    // Fonction qui va décider du role de mes workers
     private void SetWorkerState()
     {
         Exploring_Manager._Instance.SetWorkerForExploring(this);
