@@ -10,7 +10,7 @@ public class RessourceAvailable : Leaf
     public override NodeResult Execute()
     {
         Collectible_Alex closestCollectible = null;
-        Worker_Alex closestWorker = null;
+
         float minDistance = 1000; // test
 
         foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
@@ -25,23 +25,25 @@ public class RessourceAvailable : Leaf
                     {
                         minDistance = distanceBetweenRessourceAndWorker;
                         closestCollectible = collectible;
-                        closestWorker = worker;
-
-                        closestCollectible.m_designedWorker = closestWorker;
-                        closestWorker.m_reservedCollectible = closestCollectible;
-                        closestWorker.m_workerState = EWorkerState.collecting;
-                        return NodeResult.success;
-                      
+                                        
                     }
                 }
+
+                if (closestCollectible != null)
+                {
+                    closestCollectible.m_designedWorker = worker;
+                    worker.m_reservedCollectible = closestCollectible;
+                    worker.m_workerState = EWorkerState.collecting;
+                    return NodeResult.success;
+                }
+
             }
-        }
 
        
+        }
+
+        
             return NodeResult.failure;
-    
-
-
-      
+          
     }
 }

@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class MapGenerator : MonoBehaviour
 {
-
-
-
 	[SerializeField]
 	private GameObject m_collectiblePrefab;
 

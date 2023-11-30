@@ -22,11 +22,20 @@ public class SuitableCampExist : Condition
             return false;
         }
 
-        float minDistance = (MapGenerator.CampCost.GetValue() * 1.5f);
+        float minDistance = (MapGenerator.CampCost.GetValue() * Constructing_Manager._Instance.m_campDistanceByCostMultiplier) + 10;
 
         bool suitableCampExist = false;
 
-        suitableCampExist = LookForCloseCamp(minDistance, suitableCampExist);
+        foreach (Camp_Alex camp in Constructing_Manager._Instance.Camps)
+        {
+            if (Vector2.Distance(camp.transform.position, m_workerPos) < minDistance)
+            {
+                minDistance = Vector2.Distance(camp.transform.position, m_workerPos);
+                m_targetPosition2D.Value = camp.transform.position;
+                suitableCampExist = true;
+            }
+
+        }
 
         if (suitableCampExist)
         {
@@ -37,25 +46,5 @@ public class SuitableCampExist : Condition
 
     }
 
-    private bool LookForCloseCamp(float minDistance, bool suitableCampExist)
-    {
-        foreach (Camp_Alex camp in Constructing_Manager._Instance.Camps)
-        {
-            if (Vector2.Distance(camp.transform.position, m_workerPos) < minDistance)
-            {
-                suitableCampExist = FoundCloseCampAndSetPosition(camp);
-            }
-
-        }
-
-        return suitableCampExist;
-    }
-
-    private bool FoundCloseCampAndSetPosition(Camp_Alex camp)
-    {
-        bool suitableCampExist;
-        m_targetPosition2D.Value = camp.transform.position;
-        suitableCampExist = true;
-        return suitableCampExist;
-    }
+  
 }

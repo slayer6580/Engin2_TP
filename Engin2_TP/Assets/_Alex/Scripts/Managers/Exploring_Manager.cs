@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class Exploring_Manager : MonoBehaviour
 {
+    [Header("Le nombre d'exploreur au début de la simulation")]
     public int m_nbOfExploringWorkers;
-    public int m_zoneLenght = 0;
 
     [SerializeField] private GameObject m_zone;
 
@@ -15,6 +15,7 @@ public class Exploring_Manager : MonoBehaviour
     private List<float> m_xPositions = new List<float>();
     private List<float> m_yPositions = new List<float>();
 
+    [HideInInspector] public int m_zoneLenght = 0;
     [HideInInspector] public List<Vector2> m_zonesPositions = new List<Vector2>();
     [HideInInspector] public List<bool> m_zonesIsDetected = new List<bool>();
     [HideInInspector] public List<Worker_Alex> m_exploringWorkers = new List<Worker_Alex>();
@@ -39,7 +40,7 @@ public class Exploring_Manager : MonoBehaviour
     {
         if (!m_explorationIsDone)
         {
-            CheckIfExploratorAreDoneExploring();
+            CheckIfExploratorsAreDoneExploring();
         }
     }
 
@@ -163,11 +164,16 @@ public class Exploring_Manager : MonoBehaviour
         float totalTime = MapGenerator.SimulationDuration.Value;
         float explorationTime = (totalTime / 100) * m_pourcentageOfTotalTimeExploration;
 
-        Invoke("AllWorkerStopExploring", explorationTime);
+        Invoke("WorkersStopExploring", explorationTime);
     }
 
-    private void AllWorkerStopExploring()
+    private void WorkersStopExploringAndSpawnCollectors()
     {
+        if (m_explorationIsDone) 
+        {
+            return;
+        }
+
         m_explorationIsDone = true;
 
         foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
@@ -178,8 +184,10 @@ public class Exploring_Manager : MonoBehaviour
                 m_exploringWorkers.Remove(worker);
             }
         }
+        int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
+        int workerCount = TeamOrchestrator_Alex._Instance.WorkersList.Count;
 
-        int numberOfCollectorToSpawn = Collecting_Manager._Instance.KnownCollectibles.Count - TeamOrchestrator_Alex._Instance.WorkersList.Count;
+        int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
         for (int i = 0; i < numberOfCollectorToSpawn; i++)
         {
             TeamOrchestrator_Alex._Instance.SpawnCollectingWorker();
@@ -213,7 +221,7 @@ public class Exploring_Manager : MonoBehaviour
         return pourcentage;
     }
 
-    private void CheckIfExploratorAreDoneExploring()
+    private void CheckIfExploratorsAreDoneExploring()
     {
       
         foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
@@ -224,6 +232,6 @@ public class Exploring_Manager : MonoBehaviour
             }
         }
 
-        AllWorkerStopExploring();
+        WorkersStopExploringAndSpawnCollectors();
     }
 }

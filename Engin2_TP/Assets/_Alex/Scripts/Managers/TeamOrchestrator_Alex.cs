@@ -13,11 +13,10 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_remainingTimeText;
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
-    [SerializeField] private int nbOfWorkerToSpawn;
 
     private float m_remainingTime;
     private int m_score = 0;
-    private bool m_workerAlreadySpawnBasedOnPrediction = false;
+    private bool m_workersAlreadySpawnBasedOnPrediction = false;
 
     private const int STARTING_WORKER = 5;
 
@@ -110,7 +109,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
     private void SpawnStartingWorkers()
     {
-        for (int i = 0; i < nbOfWorkerToSpawn; i++)
+        for (int i = 0; i < STARTING_WORKER; i++)
         {
             Transform worker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation).transform;
             worker.parent = transform;
@@ -119,15 +118,15 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
     public void SpawnExplorerBasedOnPredictionDistance(float distancePredicted)
     {
-        if (m_workerAlreadySpawnBasedOnPrediction)
+        if (m_workersAlreadySpawnBasedOnPrediction)
         {
             return;
         }
-        m_workerAlreadySpawnBasedOnPrediction = true;
+        m_workersAlreadySpawnBasedOnPrediction = true;
 
         int mapDimension = MapGenerator.MapDimension.Value;
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
-        int nbOfNewExplorator = numberOfRessourcePossibleInZoneLenght * 2;
+        int nbOfNewExplorator = (numberOfRessourcePossibleInZoneLenght * 2) - STARTING_WORKER;
 
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
         for (int i = 0; i < nbOfNewExplorator; i++)
@@ -136,7 +135,6 @@ public class TeamOrchestrator_Alex : MonoBehaviour
             OnWorkerCreated();
             newWorker.transform.SetParent(transform);
         }
-
     }
 
     public void SpawnCollectingWorker()

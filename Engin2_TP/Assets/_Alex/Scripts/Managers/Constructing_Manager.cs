@@ -6,7 +6,8 @@ using UnityEngine.Rendering;
 public class Constructing_Manager : MonoBehaviour
 {
     public List<Camp_Alex> Camps { get; private set; } = new List<Camp_Alex>();
-
+    [Header("Plus ce chiffre es haut, plus loin un worker cherchera une ressource")]
+    public int m_campDistanceByCostMultiplier;
 
     private const float MIN_OBJECTS_DISTANCE = 2.0f;
 
@@ -47,9 +48,5 @@ public class Constructing_Manager : MonoBehaviour
 
         return true;
     }
-
-
-
-
 
 }
