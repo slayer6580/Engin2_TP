@@ -21,6 +21,8 @@ public class Exploring_Manager : MonoBehaviour
     [HideInInspector] public List<Worker_Alex> m_exploringWorkers = new List<Worker_Alex>();
     [HideInInspector] public bool m_explorationIsDone = false;
 
+    private const int MAX_WORKER = 40;
+
     public static Exploring_Manager _Instance
     {
         get;
@@ -46,7 +48,7 @@ public class Exploring_Manager : MonoBehaviour
 
     void Start()
     {
-      
+
         GetMapDimensionAndZoneLength();
         EvaluateWhenStopExploring();
         SetZonePositionsForList();
@@ -112,7 +114,7 @@ public class Exploring_Manager : MonoBehaviour
             return;
         }
         // Si l'exploration est considérée finie
-        else if (m_explorationIsDone) 
+        else if (m_explorationIsDone)
         {
             worker.m_workerState = EWorkerState.collecting;
             return;
@@ -159,11 +161,11 @@ public class Exploring_Manager : MonoBehaviour
 
     // calcule un temps d'arret de l'exploration
     private void EvaluateWhenStopExploring()
-    {      
+    {
         //TODO améliorer fonction
         int minDuration = MapGenerator.SimulationDuration.GetMin(); // 10
         int maxDuration = MapGenerator.SimulationDuration.GetMax(); // 1000
-        int mapDuration = MapGenerator.SimulationDuration.Value; 
+        int mapDuration = MapGenerator.SimulationDuration.Value;
 
         // retourne le pourcentage sur le temps d'une partie en comparaison a son min et max
         m_pourcentageOfTotalTimeExploration = Mathf.InverseLerp(minDuration, maxDuration, mapDuration) * 100;
@@ -178,7 +180,7 @@ public class Exploring_Manager : MonoBehaviour
     // Arreter l'exploration et spawner les collecteur manquant
     private void WorkersStopExploringAndSpawnCollectors()
     {
-        if (m_explorationIsDone) 
+        if (m_explorationIsDone)
         {
             return;
         }
@@ -194,20 +196,29 @@ public class Exploring_Manager : MonoBehaviour
             }
         }
 
-       
+
         int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
         int workerCount = TeamOrchestrator_Alex._Instance.WorkersList.Count;
 
+        if (workerCount >= MAX_WORKER)
+        {
+            return;
+        }
+
         int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
-      
-        TeamOrchestrator_Alex._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);     
+
+        if (numberOfCollectorToSpawn + workerCount > MAX_WORKER)
+        {
+            numberOfCollectorToSpawn = MAX_WORKER - workerCount;
+        }
+        TeamOrchestrator_Alex._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
 
     }
 
     // Fonction pour enlever worker d'une liste pour le temps d'arreter l'exploration
     public void TryRemoveWorkerFromExploring(Worker_Alex worker)
     {
-        if (m_exploringWorkers.Contains(worker)) 
+        if (m_exploringWorkers.Contains(worker))
         {
             m_exploringWorkers.Remove(worker);
         }
@@ -235,7 +246,7 @@ public class Exploring_Manager : MonoBehaviour
     // Fonction qui regarde si mes explorateur on tous finis d'explorer en temps réel
     private void CheckIfExploratorsAreDoneExploring()
     {
-      
+
         foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
         {
             if (worker.m_workerState == EWorkerState.exploring)

@@ -137,6 +137,11 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
         int nbOfNewExplorator = (numberOfRessourcePossibleInZoneLenght * numberOfRessourcePossibleInZoneLenght) - STARTING_WORKER;
 
+        if (nbOfNewExplorator > 34)
+        {
+            nbOfNewExplorator = 35;
+        }
+
         // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
 
