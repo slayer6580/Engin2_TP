@@ -11,13 +11,11 @@ public class GoNearRessource : Leaf
     public GameObjectReference m_workerGO = new GameObjectReference();
     private Vector2 m_target;
 
-
     public override void OnEnter()
     {
         Collectible_Alex collectible = m_workerGO.Value.GetComponent<Worker_Alex>().m_reservedCollectible;
         m_target = collectible.transform.position;
     }
-
 
     public override NodeResult Execute()
     {

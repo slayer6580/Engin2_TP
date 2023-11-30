@@ -23,18 +23,20 @@ public class SuitableCampExist : Condition
         }
 
         float minDistance = (MapGenerator.CampCost.GetValue() * Constructing_Manager._Instance.m_campDistanceByCostMultiplier) + 10;
-
         bool suitableCampExist = false;
 
+        // regarde si la distance d'un camp est plus petit qu'une formule selon le cout du camp
         foreach (Camp_Alex camp in Constructing_Manager._Instance.Camps)
         {
+            // trouver le camp le plus proche
             if (Vector2.Distance(camp.transform.position, m_workerPos) < minDistance)
             {
+            
                 minDistance = Vector2.Distance(camp.transform.position, m_workerPos);
+                // donner une position du camp
                 m_targetPosition2D.Value = camp.transform.position;
                 suitableCampExist = true;
             }
-
         }
 
         if (suitableCampExist)
