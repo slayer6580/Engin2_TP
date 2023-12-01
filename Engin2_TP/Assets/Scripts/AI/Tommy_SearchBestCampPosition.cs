@@ -163,6 +163,7 @@ public class Tommy_SearchBestCampPosition : Leaf
 				float distance = Vector2.Distance(campPosition, collectible.transform.position);
 				while (distance < 1)
 				{
+
 					campPosition.x += 1;
 					campPosition.y += 1;
 					distance = Vector2.Distance(campPosition, collectible.transform.position);
