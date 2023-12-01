@@ -21,6 +21,8 @@ public class Exploring_Manager : MonoBehaviour
     [HideInInspector] public bool m_explorationIsDone = false;
 
     private const int MAX_WORKER = 40;
+    private const int RESSOURCE_TO_FOUND_TO_STOP_EXPLORING = 60;    //Bigger than max nb of worker
+
 
     public static Exploring_Manager _Instance
     {
@@ -252,7 +254,7 @@ public class Exploring_Manager : MonoBehaviour
 
 	private void StopExploringWhenEnoughRessourceFound()
 	{
-		if (Collecting_Manager._Instance.KnownCollectibles.Count > 44)
+		if (Collecting_Manager._Instance.KnownCollectibles.Count > RESSOURCE_TO_FOUND_TO_STOP_EXPLORING)
 		{
 			WorkersStopExploringAndSpawnCollectors();
 		}
