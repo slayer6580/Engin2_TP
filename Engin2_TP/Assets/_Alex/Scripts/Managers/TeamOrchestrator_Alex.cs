@@ -11,6 +11,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private TextMeshProUGUI m_remainingTimeText;
+    [SerializeField] private TextMeshProUGUI m_numberOfWorkersText;
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
 
@@ -49,6 +50,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
         m_remainingTime -= Time.deltaTime;
         m_remainingTimeText.text = "Remaining time: " + m_remainingTime.ToString("#.00");
+        m_numberOfWorkersText.text = "Number of workers: " + WorkersList.Count;
 
         CheckIfGameEnd();
     }
