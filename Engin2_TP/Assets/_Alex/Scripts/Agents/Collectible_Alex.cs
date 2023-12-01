@@ -1,3 +1,4 @@
+using Unity.VisualScripting;
 using UnityEngine;
 
 public class Collectible_Alex : MonoBehaviour
@@ -6,12 +7,13 @@ public class Collectible_Alex : MonoBehaviour
     private float m_currentCooldown = 0.0f;
     [HideInInspector] public Worker_Alex m_designedWorker = null;
     public bool m_hasBeenPickedInTheLastFiveSeconds = false;
-
+    public Vector2 m_associatedCamp = Vector2.positiveInfinity;
+    
     public ECollectibleType Extract()
     {
         if (m_currentCooldown < 0.0f)
         {
-            Debug.Log("Collectible extracted. Last extraction was: " + (COOLDOWN - m_currentCooldown).ToString() + " seconds ago");
+           // Debug.Log("Collectible extracted. Last extraction was: " + (COOLDOWN - m_currentCooldown).ToString() + " seconds ago");
             m_currentCooldown = COOLDOWN;
             m_hasBeenPickedInTheLastFiveSeconds = true;
             return ECollectibleType.Regular;

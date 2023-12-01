@@ -4,8 +4,8 @@ using UnityEngine;
 namespace MBT
 {
     [AddComponentMenu("")]
-    [MBTNode("Engin2/Get New Camp Position")]
-    public class Tommy_GetNewCampPosition : Leaf
+    [MBTNode("Engin2/Get Camp Position")]
+    public class Tommy_GetCampPosition : Leaf
     {
         [Space]
         [SerializeField]
@@ -15,10 +15,10 @@ namespace MBT
 
         public override NodeResult Execute()
         {
-            Vector2 campPos = m_workerTransform.Value.gameObject.GetComponent<Worker_Alex>().m_reservedCollectible.m_associatedCamp;
+            Vector2 campPos = m_workerTransform.Value.gameObject.GetComponent<Worker_Alex>().m_campPosition;
             m_assignedPosition.Value = campPos;
 
-            Collecting_Manager._Instance.m_campList.Add(campPos);
+            //Collecting_Manager._Instance.m_campList.Add(campPos);
 
 			return NodeResult.success;
         }

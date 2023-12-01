@@ -18,7 +18,6 @@ public class Exploring_Manager : MonoBehaviour
     [HideInInspector] public int m_zoneLenght = 0;
     [HideInInspector] public List<Vector2> m_zonesPositions = new List<Vector2>();
     [HideInInspector] public List<bool> m_zonesIsDetected = new List<bool>();
-    [HideInInspector] public List<Worker_Alex> m_exploringWorkers = new List<Worker_Alex>();
     [HideInInspector] public bool m_explorationIsDone = false;
 
     private const int MAX_WORKER = 40;
@@ -43,7 +42,9 @@ public class Exploring_Manager : MonoBehaviour
         if (!m_explorationIsDone)
         {
             CheckIfExploratorsAreDoneExploring();
-        }
+            StopExploringWhenEnoughRessourceFound();
+
+		}
     }
 
     void Start()
@@ -120,7 +121,7 @@ public class Exploring_Manager : MonoBehaviour
             return;
         }
         // Pour les extra explorateur
-        if (m_workerInExploration > 4)
+        if (m_workerInExploration > 3)
         {
             worker.m_extraExplorator = true;
         }
@@ -148,7 +149,6 @@ public class Exploring_Manager : MonoBehaviour
         }
 
         worker.m_workerState = EWorkerState.exploring;
-        m_exploringWorkers.Add(worker);
         m_workerInExploration++;
     }
 
@@ -192,7 +192,6 @@ public class Exploring_Manager : MonoBehaviour
             if (worker.m_workerState == EWorkerState.exploring)
             {
                 worker.m_workerState = EWorkerState.collecting;
-                m_exploringWorkers.Remove(worker);
             }
         }
 
@@ -215,14 +214,7 @@ public class Exploring_Manager : MonoBehaviour
 
     }
 
-    // Fonction pour enlever worker d'une liste pour le temps d'arreter l'exploration
-    public void TryRemoveWorkerFromExploring(Worker_Alex worker)
-    {
-        if (m_exploringWorkers.Contains(worker))
-        {
-            m_exploringWorkers.Remove(worker);
-        }
-    }
+  
 
     // Fonction qui calcule le pourcentage de la map explorer
     public float GetPourcentageOfMapExpored()
@@ -257,4 +249,12 @@ public class Exploring_Manager : MonoBehaviour
 
         WorkersStopExploringAndSpawnCollectors();
     }
+
+	private void StopExploringWhenEnoughRessourceFound()
+	{
+		if (Collecting_Manager._Instance.KnownCollectibles.Count > 44)
+		{
+			WorkersStopExploringAndSpawnCollectors();
+		}
+	}
 }

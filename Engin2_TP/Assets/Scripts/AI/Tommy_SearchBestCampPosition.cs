@@ -7,7 +7,7 @@ using UnityEngine;
 [AddComponentMenu("")]
 public class Tommy_SearchBestCampPosition : Leaf
 {
-	List<Collectible> pack = new List<Collectible>();
+	List<Collectible_Alex> pack = new List<Collectible_Alex>();
 
 
 	public override void OnEnter()
@@ -27,10 +27,10 @@ public class Tommy_SearchBestCampPosition : Leaf
         m_workerSpeedUnitBySecond = vitesse des worker (m/secondes)
          */
 
-		Tommy_TeamOrchestrator instance = Tommy_TeamOrchestrator._Instance;
+		Collecting_Manager instance = Collecting_Manager._Instance;
 		float remainingTime = MapGenerator.SimulationDuration.Value - Time.timeSinceLevelLoad;
 
-		pack = FindBestPackOfRessources(instance.KnownCollectibles, instance.m_ressourceToUse, instance.m_alreadyUsedRessources, instance.m_campToSpawn, instance.m_workerSpeedUnitBySecond, instance.m_minimumDistanceBetweenRessources, remainingTime);
+		pack = FindBestPackOfRessources(instance.KnownCollectibles, instance.m_ressourceToUse, instance.m_alreadyUsedRessources, instance.WORKER_SPEED_BY_SECOND, instance.m_predictionDistance, remainingTime);
 
 
 	}
@@ -45,22 +45,22 @@ public class Tommy_SearchBestCampPosition : Leaf
 			return NodeResult.success;
 		}
 		print("SEARCH FAILURE");
-		return NodeResult.failure;
+		return NodeResult.success;
 		
     }
 
 
-	public List<Collectible> FindBestPackOfRessources(List<Collectible> knownCollectibles, List<Collectible> ressourceToUse, List<Collectible> alreadyUsedRessources, List<Vector2> campToSpawn, float workerSpeedUnitBySecond, float minimumDistanceBetweenRessources, float remainingTime)
+	public List<Collectible_Alex> FindBestPackOfRessources(List<Collectible_Alex> knownCollectibles, List<Collectible_Alex> ressourceToUse, List<Collectible_Alex> alreadyUsedRessources, float workerSpeedUnitBySecond, float minimumDistanceBetweenRessources, float remainingTime)
 	{
 
 		int packSize = 4;   //Taile maximal d'un pack de ressource
 
-		List<Collectible> bestPack = new List<Collectible>();
+		List<Collectible_Alex> bestPack = new List<Collectible_Alex>();
 		float bestPossiblePoints = 0;
 
-		List<Collectible> potentialRessourcePack = new List<Collectible>();
+		List<Collectible_Alex> potentialRessourcePack = new List<Collectible_Alex>();
 
-		foreach (Collectible ressourceToCheck in knownCollectibles)
+		foreach (Collectible_Alex ressourceToCheck in knownCollectibles)
 		{
 			potentialRessourcePack.Clear();
 
@@ -81,15 +81,15 @@ public class Tommy_SearchBestCampPosition : Leaf
 
 			Vector2 packCenterPos = ressourceToCheck.transform.position;
 
-			//On ne veux pas de ressource seule (pour l'instant) d'où le >1
+			
 			//TODO si les ressource sont TRES éloigné, il peut valloir la peine de faire un camps par ressource, si camps est pas cher
 			while (packSize > 1)
 			{
 				float closestDistance = Mathf.Infinity;
-				Collectible closestRessource = null;
+				Collectible_Alex closestRessource = null;
 
 				//Find closest collectible
-				foreach (Collectible collectible in knownCollectibles)
+				foreach (Collectible_Alex collectible in knownCollectibles)
 				{
 					//Test with all ressource EXCEPT for those already in the pack AND those used by other pack
 					if (potentialRessourcePack.Contains(collectible) == false)
@@ -144,7 +144,7 @@ public class Tommy_SearchBestCampPosition : Leaf
 
 						bestPossiblePoints = checkPossiblePoint - campCost;
 						bestPack.Clear();
-						foreach (Collectible collectible in potentialRessourcePack)
+						foreach (Collectible_Alex collectible in potentialRessourcePack)
 						{
 							bestPack.Add(collectible);
 						}
@@ -156,22 +156,35 @@ public class Tommy_SearchBestCampPosition : Leaf
 
 		if (bestPack.Count > 0)
 		{
-			foreach (Collectible collectible in bestPack)
+			Vector2 campPosition = GetCenterOfPack(bestPack);
+
+			foreach (Collectible_Alex collectible in bestPack)
 			{
+				float distance = Vector2.Distance(campPosition, collectible.transform.position);
+				while (distance < 1)
+				{
+					campPosition.x += 1;
+					campPosition.y += 1;
+					distance = Vector2.Distance(campPosition, collectible.transform.position);
+				}
+			}
+
+			foreach (Collectible_Alex collectible in bestPack)
+			{
+				collectible.m_associatedCamp = campPosition;
 				ressourceToUse.Add(collectible);
 				alreadyUsedRessources.Add(collectible);
 			}
-			campToSpawn.Add(GetCenterOfPack(bestPack));
 		}
 
 		return bestPack;
 	}
 
-	public Vector2 GetCenterOfPack(List<Collectible> pack)
+	public Vector2 GetCenterOfPack(List<Collectible_Alex> pack)
 	{
 		Vector3 center = Vector3.zero;
 
-		foreach (Collectible collectible in pack)
+		foreach (Collectible_Alex collectible in pack)
 		{
 			center += collectible.transform.position;
 		}
@@ -180,11 +193,11 @@ public class Tommy_SearchBestCampPosition : Leaf
 		return new Vector2(center.x, center.y);
 	}
 
-	public int CheckPossiblePointAtThatPosition(List<Collectible> ressourcePack, Vector2 positionToCheck, float workerSpeedUnitBySecond, float remainingTime)
+	public int CheckPossiblePointAtThatPosition(List<Collectible_Alex> ressourcePack, Vector2 positionToCheck, float workerSpeedUnitBySecond, float remainingTime)
 	{
 		int possiblePoints = 0;
 
-		foreach (Collectible collectible in ressourcePack)
+		foreach (Collectible_Alex collectible in ressourcePack)
 		{
 			float distanceFromRessource = Vector2.Distance(positionToCheck, collectible.transform.position);
 			float travelTime = distanceFromRessource / workerSpeedUnitBySecond;

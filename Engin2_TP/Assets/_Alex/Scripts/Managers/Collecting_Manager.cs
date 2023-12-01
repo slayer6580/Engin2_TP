@@ -4,6 +4,11 @@ using UnityEngine;
 public class Collecting_Manager : MonoBehaviour
 {
     public List<Collectible_Alex> KnownCollectibles { get; private set; } = new List<Collectible_Alex>();
+    public List<Collectible_Alex> m_ressourceToUse = new List<Collectible_Alex>();
+    public List<Collectible_Alex> m_alreadyUsedRessources = new List<Collectible_Alex>();
+    public List<Vector2> m_campList = new List<Vector2>();
+    public float WORKER_SPEED_BY_SECOND = 4.8076f;
+
    [HideInInspector] public bool m_predictionDistanceDone = false;
    [HideInInspector] public float m_predictionDistance;
     

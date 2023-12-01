@@ -12,19 +12,26 @@ public class SearchForUnexploredZone : Leaf
     private const int MAX_DETECTION_DISTANCE = 5;
     private const float MIN_DETECTION_DISTANCE = 2.5f;
 
+    private bool m_foundZone = true;
     public override void OnEnter()
     {
         CheckForNextZone();
-    }
+		
+	}
 
     public override NodeResult Execute()
     {
-        return NodeResult.success;
-    }
+		if (m_foundZone)
+		{
+			return NodeResult.success;
+		}
+		return NodeResult.failure;
+	}
 
     private void CheckForNextZone()
     {
-        Worker_Alex worker = m_worker.Value.gameObject.GetComponent<Worker_Alex>();
+
+		Worker_Alex worker = m_worker.Value.gameObject.GetComponent<Worker_Alex>();
         EDirection workerDirection = worker.m_workerDirection;
 
 
@@ -64,9 +71,9 @@ public class SearchForUnexploredZone : Leaf
         //si le joueur ne peut pas explorer, il va commencer a collecter
         Debug.Log("Worker will start collecting because he cant explore anymore");
         m_worker.Value.GetComponent<Worker_Alex>().m_workerState = EWorkerState.collecting;
-        Exploring_Manager._Instance.TryRemoveWorkerFromExploring(worker);
+        m_foundZone = false;
 
-    }
+	}
 
     private bool CheckZoneAtRightDirection(EDirection direction)
     {

@@ -15,20 +15,25 @@ public class Worker_Alex : MonoBehaviour
 
     private Color32 m_noRessourceColor = new Color32(255, 255, 0, 255); // yellow
     private Color32 m_ressourceColor = new Color32(0, 0, 255, 255);  // bleu
+    private Color32 m_specialRessourceColor = new Color32(255, 0, 0, 255);  // red
 
     [HideInInspector] public bool m_extraExplorator = false;
 
     private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState == EWorkerState.collecting;
 
     [HideInInspector] public Collectible_Alex m_reservedCollectible = null;
-    [HideInInspector] public ECollectibleType m_collectibleInInventory = ECollectibleType.None;
+    /*[HideInInspector]*/ public ECollectibleType m_collectibleInInventory = ECollectibleType.None;     //ReadOnly
 
     // Pour exploration initiale
     public EWorkerState m_workerState = EWorkerState.none;
     [HideInInspector] public EDirection m_workerDirection = EDirection.left;
 
+    [SerializeField]
+    public bool hasCollectibleReserverd;        //ReadOnly
 
-    private void OnValidate()
+    public Vector2 m_campPosition = Vector2.positiveInfinity;
+
+	private void OnValidate()
     {
         m_radiusDebugTransform.localScale = new Vector3(m_radius, m_radius, m_radius);
     }
@@ -41,7 +46,9 @@ public class Worker_Alex : MonoBehaviour
 
     private void FixedUpdate()
     {
-        if (m_isInDepot || m_isInExtraction)
+		hasCollectibleReserverd = m_reservedCollectible != null;
+
+		if (m_isInDepot || m_isInExtraction)
         {
             m_currentActionDuration -= Time.fixedDeltaTime;
             if (m_currentActionDuration < 0.0f)
@@ -110,15 +117,16 @@ public class Worker_Alex : MonoBehaviour
     {
         m_collectibleInInventory = m_currentExtractingCollectible.Extract();
 
-        if (m_collectibleInInventory == ECollectibleType.Special)
-        {
-            m_reservedCollectible = null;
-        }
-
         m_isInExtraction = false;
         m_currentExtractingCollectible = null;
         GetComponent<SpriteRenderer>().color = m_ressourceColor;
-    }
+
+		if (m_collectibleInInventory == ECollectibleType.Special)
+		{
+			m_reservedCollectible = null;
+			GetComponent<SpriteRenderer>().color = m_specialRessourceColor;
+		}
+	}
 
     //Code a max
     private void DepositResource()

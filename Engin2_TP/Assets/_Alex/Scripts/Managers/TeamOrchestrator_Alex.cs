@@ -53,8 +53,10 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         CheckIfGameEnd();
     }
 
-    // Code a Max
-    private void CheckIfGameEnd()
+	
+
+	// Code a Max
+	private void CheckIfGameEnd()
     {
         if (MapGenerator.SimulationDuration.Value < Time.timeSinceLevelLoad)
         {
@@ -74,7 +76,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
             m_score += SPECIAL_SCORE;
         }
 
-        Debug.Log("New score = " + m_score);
+       // Debug.Log("New score = " + m_score);
         m_scoreText.text = "Score: " + m_score.ToString();
     }
 
@@ -157,16 +159,9 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     // Fonction qui spawn des collector manquant a la fin de l'exploration
     public void SpawnCollectingWorker(int numberToSpawn)
     {
-        List<Collectible_Alex> m_unreservedCollectible = new List<Collectible_Alex>();
+     
 
-        // prendre toute les ressource non réservé
-        foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
-        {
-            if (collectible.m_designedWorker == null)
-            {
-                m_unreservedCollectible.Add(collectible);
-            }
-        }
+
 
         for (int i = 0; i < numberToSpawn; i++)
         {
@@ -175,10 +170,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
             OnWorkerCreated();
             newWorker.transform.SetParent(transform);
 
-            // donne une resource non réservé a chaque nouveau collecteur et tout réserrvé des deux cotés.
-            newWorker.GetComponent<Worker_Alex>().m_reservedCollectible = m_unreservedCollectible[i];
-            int index = Collecting_Manager._Instance.KnownCollectibles.IndexOf(m_unreservedCollectible[i]);
-            Collecting_Manager._Instance.KnownCollectibles[index].m_designedWorker = newWorker.GetComponent<Worker_Alex>();
+           
         }
 
     }
