@@ -141,6 +141,15 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
         int nbOfNewExplorator = (numberOfRessourcePossibleInZoneLenght * numberOfRessourcePossibleInZoneLenght) - STARTING_WORKER;
 
+        if (m_remainingTime < 201)
+        { nbOfNewExplorator = 10; }
+        else if (m_remainingTime < 401)
+        { nbOfNewExplorator = 20; }
+        else if (m_remainingTime < 601)
+        { nbOfNewExplorator = 30; }
+
+        // approche naive; on limite les explorers selon le temps. Voir livre IA - simplicité avant tout
+
         if (nbOfNewExplorator > 34)
         {
             nbOfNewExplorator = 35;
