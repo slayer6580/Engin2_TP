@@ -9,13 +9,19 @@ public class Collectible_Alex : MonoBehaviour
     public bool m_hasBeenPickedInTheLastFiveSeconds = false;
     public Vector2 m_associatedCamp = Vector2.positiveInfinity;
     
-    public ECollectibleType Extract()
+    public ECollectibleType Extract(EWorkerState state)
     {
         if (m_currentCooldown < 0.0f)
         {
             m_currentCooldown = COOLDOWN;
             m_hasBeenPickedInTheLastFiveSeconds = true;
             return ECollectibleType.Regular;
+        }
+
+        // si pas en endphase, il peut pas prendre une ressource spécial
+        if (state != EWorkerState.endPhase)
+        {
+            return ECollectibleType.None;
         }
 
         //We have been extracted twice under 5 seconds

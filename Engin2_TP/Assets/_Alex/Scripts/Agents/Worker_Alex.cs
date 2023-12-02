@@ -114,14 +114,14 @@ public class Worker_Alex : MonoBehaviour
 
     //Code a max
     private void GainCollectible()
-    {
-        // si pas en endphase, il peut pas prendre une ressource spécial
-        if (m_currentExtractingCollectible.Extract() == ECollectibleType.Special && m_workerState != EWorkerState.endPhase)
+    { 
+        m_collectibleInInventory = m_currentExtractingCollectible.Extract(m_workerState);
+
+        // si jamais peut pas extraire
+        if (m_collectibleInInventory == ECollectibleType.None)
         {
             return;
         }
-
-        m_collectibleInInventory = m_currentExtractingCollectible.Extract();
 
         m_isInExtraction = false;
         m_currentExtractingCollectible = null;
