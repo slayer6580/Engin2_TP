@@ -623,6 +623,10 @@ GameObject:
   - component: {fileID: 6066577228363854348}
   - component: {fileID: 1609475605711804436}
   - component: {fileID: 6136042906815814339}
+  - component: {fileID: 1283616958625498596}
+  - component: {fileID: 7962700107496507163}
+  - component: {fileID: 3192454416741762991}
+  - component: {fileID: 4123613395707178169}
   m_Layer: 0
   m_Name: CollectorBrain
   m_TagString: Untagged
@@ -657,7 +661,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 9117839050213348453}
+  selectedEditorNode: {fileID: 4123613395707178169}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -1087,11 +1091,11 @@ MonoBehaviour:
   title: Set ressource from Pack to closest worker
   rect:
     serializedVersion: 2
-    x: 880
-    y: 480
+    x: 700
+    y: 680
     width: 160
     height: 59
-  parent: {fileID: 622805383506023006}
+  parent: {fileID: 1283616958625498596}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -1117,8 +1121,8 @@ MonoBehaviour:
   title: Search Best Camp Position
   rect:
     serializedVersion: 2
-    x: 557
-    y: 517
+    x: 500
+    y: 520
     width: 160
     height: 45
   parent: {fileID: 622805383506023006}
@@ -1172,14 +1176,14 @@ MonoBehaviour:
   title: Sequence
   rect:
     serializedVersion: 2
-    x: 660
-    y: 260
+    x: 640
+    y: 220
     width: 160
     height: 45
   parent: {fileID: 2959212905807081376}
   children:
   - {fileID: 9117839050213348453}
-  - {fileID: 3646769216990143401}
+  - {fileID: 3192454416741762991}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -1376,6 +1380,126 @@ MonoBehaviour:
     blackboard: {fileID: 4191507787326917845}
     key: Worker
     constantValue: {fileID: 0}
+--- !u!114 &1283616958625498596
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 9c6d3de7ac0325e48af0a5fc051038fd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Has One Or More Ressource To Use
+  rect:
+    serializedVersion: 2
+    x: 720
+    y: 540
+    width: 160
+    height: 59
+  parent: {fileID: 3192454416741762991}
+  children:
+  - {fileID: 3646769216990143401}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  worker:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+--- !u!114 &7962700107496507163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7576235a6911ac842bedad790f428fa8, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Find Remaining Suitable Ressource
+  rect:
+    serializedVersion: 2
+    x: 950
+    y: 525
+    width: 160
+    height: 59
+  parent: {fileID: 3192454416741762991}
+  children:
+  - {fileID: 4123613395707178169}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &3192454416741762991
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: 777
+    y: 386
+    width: 160
+    height: 45
+  parent: {fileID: 622805383506023006}
+  children:
+  - {fileID: 1283616958625498596}
+  - {fileID: 7962700107496507163}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &4123613395707178169
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 972372c47008c4a478b60e5bd93b3ee1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Get Nearest Camp From That Ressource
+  rect:
+    serializedVersion: 2
+    x: 980
+    y: 662
+    width: 160
+    height: 59
+  parent: {fileID: 7962700107496507163}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+  workerCollectible: {fileID: 0}
 --- !u!1 &7367874694531944036
 GameObject:
   m_ObjectHideFlags: 0
