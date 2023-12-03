@@ -519,7 +519,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 6354347145485238777}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -563,8 +563,8 @@ MonoBehaviour:
   title: Selector
   rect:
     serializedVersion: 2
-    x: 371
-    y: 354
+    x: 390
+    y: 339
     width: 160
     height: 45
   parent: {fileID: 1690231367814896013}
@@ -627,6 +627,8 @@ GameObject:
   - component: {fileID: 7962700107496507163}
   - component: {fileID: 3192454416741762991}
   - component: {fileID: 4123613395707178169}
+  - component: {fileID: 5033294007304755884}
+  - component: {fileID: 1436807623333854413}
   m_Layer: 0
   m_Name: CollectorBrain
   m_TagString: Untagged
@@ -661,7 +663,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 4123613395707178169}
+  selectedEditorNode: {fileID: 1436807623333854413}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -785,6 +787,7 @@ MonoBehaviour:
     height: 45
   parent: {fileID: 4509307611025896770}
   children:
+  - {fileID: 5033294007304755884}
   - {fileID: 4523286771224175348}
   - {fileID: 2959212905807081376}
   behaviourTree: {fileID: 0}
@@ -836,8 +839,8 @@ MonoBehaviour:
   title: Worker have a designed ressource
   rect:
     serializedVersion: 2
-    x: -340
-    y: -100
+    x: -290
+    y: -74
     width: 160
     height: 59
   parent: {fileID: 4475834290022723365}
@@ -1500,6 +1503,61 @@ MonoBehaviour:
     key: Worker
     constantValue: {fileID: 0}
   workerCollectible: {fileID: 0}
+--- !u!114 &5033294007304755884
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 699932bf932f1a647a2e1ed585c2ce0e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Time For Endphase
+  rect:
+    serializedVersion: 2
+    x: -860
+    y: 45
+    width: 160
+    height: 45
+  parent: {fileID: 4475834290022723365}
+  children:
+  - {fileID: 1436807623333854413}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+--- !u!114 &1436807623333854413
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5ef255305b05bd444b88431bd57cf618, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Enter Endphase State
+  rect:
+    serializedVersion: 2
+    x: -881
+    y: 167
+    width: 160
+    height: 45
+  parent: {fileID: 5033294007304755884}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
 --- !u!1 &7367874694531944036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2142,7 +2200,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 7428164170836635905}
+  selectedEditorNode: {fileID: 2025218397955266044}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 0}
@@ -2446,7 +2504,7 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 629.19995
-    y: 509.8
+    y: 508.8
     width: 160
     height: 45
   parent: {fileID: 7182072550975771040}
