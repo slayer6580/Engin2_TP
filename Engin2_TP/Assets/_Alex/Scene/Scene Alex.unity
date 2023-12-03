@@ -849,8 +849,8 @@ MonoBehaviour:
   m_takeTestVariables: 1
   m_campCost: 64
   m_mapDimension: 298
-  m_simulationDuration: 519
-  m_nodeDensity: 44
+  m_simulationDuration: 315
+  m_nodeDensity: 12
 --- !u!1 &810867466
 GameObject:
   m_ObjectHideFlags: 0

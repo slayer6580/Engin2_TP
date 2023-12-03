@@ -18,11 +18,12 @@ public class TimeForEndPhase : Condition
     {
         m_remainingTime = MapGenerator.SimulationDuration.Value;
 
-        if (m_remainingTime<20)
+        if (m_remainingTime<100)
         {
             return true;
+            Debug.Log("ENDPHASE  yet");
         }
-
+        Debug.Log("ENDPHASE not yet");
         return false;
       
     }
