@@ -8,6 +8,7 @@ public class TimeForEndPhase : Condition
 {
     //public GameObjectReference m_workerGO = new GameObjectReference();
     private float m_remainingTime;
+    [SerializeField]private float timeForEndPhase=100.0f; // formule de Chris pour calculer
 
 
     private void Start()
@@ -18,12 +19,12 @@ public class TimeForEndPhase : Condition
     {
         m_remainingTime = MapGenerator.SimulationDuration.Value;
 
-        if (m_remainingTime<100)
+        if (m_remainingTime< timeForEndPhase)
         {
             return true;
-            Debug.Log("ENDPHASE  yet");
+            Debug.Log("ENDPHASE  yet time left" + m_remainingTime+ "time for endphase" + timeForEndPhase);
         }
-        Debug.Log("ENDPHASE not yet");
+        Debug.Log("ENDPHASE not yet time left" + m_remainingTime + "time for endphase" + timeForEndPhase);
         return false;
       
     }
