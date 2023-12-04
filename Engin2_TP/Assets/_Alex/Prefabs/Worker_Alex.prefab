@@ -1630,6 +1630,7 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
+  timeForEndPhase: 100
 --- !u!114 &1436807623333854413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1682,6 +1683,10 @@ GameObject:
   - component: {fileID: 5640690358699923642}
   - component: {fileID: 1535724342155945578}
   - component: {fileID: 4914040867574076083}
+  - component: {fileID: 6084633672078689031}
+  - component: {fileID: 24988360014648901}
+  - component: {fileID: 2946422457578642901}
+  - component: {fileID: 5808741119026145578}
   m_Layer: 0
   m_Name: EndphaseBrain
   m_TagString: Untagged
@@ -1874,6 +1879,10 @@ MonoBehaviour:
   - {fileID: 5640690358699923642}
   - {fileID: 1535724342155945578}
   - {fileID: 4914040867574076083}
+  - {fileID: 6084633672078689031}
+  - {fileID: 24988360014648901}
+  - {fileID: 2946422457578642901}
+  - {fileID: 5808741119026145578}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -1931,7 +1940,7 @@ MonoBehaviour:
   title: Wait till you collect the ressource
   rect:
     serializedVersion: 2
-    x: -200
+    x: -195
     y: 86
     width: 160
     height: 59
@@ -1961,7 +1970,7 @@ MonoBehaviour:
   title: Get Camp Position
   rect:
     serializedVersion: 2
-    x: -10
+    x: -9
     y: 91
     width: 160
     height: 45
@@ -1998,7 +2007,149 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: 208
-    y: 94
+    y: 93
+    width: 160
+    height: 45
+  parent: {fileID: 7940002035965276380}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0
+--- !u!114 &6084633672078689031
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 00f01889f0b15e4428689a7ff644ce12, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Go to reserved ressource
+  rect:
+    serializedVersion: 2
+    x: 441
+    y: 93
+    width: 160
+    height: 45
+  parent: {fileID: 7940002035965276380}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &24988360014648901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 05ab68fa68ed1a941a51d37706b39e4f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait till you collect the ressource
+  rect:
+    serializedVersion: 2
+    x: 629
+    y: 89
+    width: 160
+    height: 59
+  parent: {fileID: 7940002035965276380}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &2946422457578642901
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8a2a53ff8f5ced2489e9189031233505, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Get Camp Position
+  rect:
+    serializedVersion: 2
+    x: 808
+    y: 98
+    width: 160
+    height: 45
+  parent: {fileID: 7940002035965276380}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_assignedPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  m_workerTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+--- !u!114 &5808741119026145578
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Move Towards 2D
+  rect:
+    serializedVersion: 2
+    x: 1022
+    y: 98
     width: 160
     height: 45
   parent: {fileID: 7940002035965276380}

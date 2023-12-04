@@ -17,7 +17,7 @@ public class TimeForEndPhase : Condition
     }
     public override bool Check()
     {
-        m_remainingTime = MapGenerator.SimulationDuration.Value;
+        m_remainingTime = TeamOrchestrator_Alex._Instance.ShareTimeLeft();
 
         if (m_remainingTime< timeForEndPhase)
         {
@@ -28,4 +28,6 @@ public class TimeForEndPhase : Condition
         return false;
       
     }
+
+
 }
