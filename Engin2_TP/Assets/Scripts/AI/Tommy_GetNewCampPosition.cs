@@ -18,6 +18,7 @@ namespace MBT
             Vector2 campPos = m_workerTransform.Value.gameObject.GetComponent<Worker_Team>().m_reservedCollectible.m_associatedCamp;
             m_assignedPosition.Value = campPos;
 
+            print("ADD");
             Collecting_Manager._Instance.m_campList.Add(campPos);
 
 			return NodeResult.success;

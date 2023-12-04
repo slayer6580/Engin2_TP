@@ -28,9 +28,8 @@ public class AssociatedCampExist : Condition
       
         if (Collecting_Manager._Instance.m_campList.Contains(reservedRessource.m_associatedCamp))
         {
-			return true;
+    		return true;
 		}
-
         return false;
     }
 
