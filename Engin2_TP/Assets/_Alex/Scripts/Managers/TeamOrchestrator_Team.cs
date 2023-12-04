@@ -142,10 +142,10 @@ public class TeamOrchestrator_Team : MonoBehaviour
 
         //TODO améliorer la formule pour résultat plus efficace (avec temps restant aussi)
         int mapDimension = MapGenerator.MapDimension.Value;
-        float mapDimensionScale = mapDimension / 600; //600 = max
+        float mapDimensionScale = (float)mapDimension / 600; //600 = max
 
         int timeLeft = MapGenerator.SimulationDuration.GetValue();
-        float simulationDurationScale = timeLeft / 1000; //1000 = max
+        float simulationDurationScale = (float)timeLeft / 1000; //1000 = max
 
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
         int numberOfRessourcePossible = (int)Mathf.Pow(numberOfRessourcePossibleInZoneLenght, 2);
@@ -154,9 +154,8 @@ public class TeamOrchestrator_Team : MonoBehaviour
 
         //Pas la facon la plus optimal donc feel free de changer
         nbsOfWorkers = Mathf.Clamp(nbsOfWorkers, 0, numberOfRessourcePossible);
-
+        
         int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_WORKERS));
-        //Debug.LogWarning(numberOfRessourcePossible);
 
         // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
