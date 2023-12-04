@@ -55,8 +55,11 @@ public class TeamOrchestrator_Alex : MonoBehaviour
         CheckIfGameEnd();
     }
 
-	
 
+    public float ShareTimeLeft()
+    {
+        return m_remainingTime;
+    }
 	// Code a Max
 	private void CheckIfGameEnd()
     {
