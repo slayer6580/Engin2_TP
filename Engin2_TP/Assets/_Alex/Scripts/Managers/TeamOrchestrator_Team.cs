@@ -6,7 +6,7 @@ using UnityEngine;
 public class TeamOrchestrator_Team : MonoBehaviour
 {
     const int SPECIAL_SCORE = 10;
-    const int MAX_WORKERS = 35;
+    const int MAX_SPAWNABLE_WORKERS = 35;
 
     public List<Worker_Team> WorkersList { get; private set; } = new List<Worker_Team>();
 
@@ -15,6 +15,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
     [SerializeField] private TextMeshProUGUI m_numberOfWorkersText;
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
+
 
     private float m_remainingTime;
     private int m_score = 0;
@@ -61,8 +62,8 @@ public class TeamOrchestrator_Team : MonoBehaviour
     {
         return m_remainingTime;
     }
-	// Code a Max
-	private void CheckIfGameEnd()
+    // Code a Max
+    private void CheckIfGameEnd()
     {
         if (MapGenerator.SimulationDuration.Value < Time.timeSinceLevelLoad)
         {
@@ -82,7 +83,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
             m_score += SPECIAL_SCORE;
         }
 
-       // Debug.Log("New score = " + m_score);
+        // Debug.Log("New score = " + m_score);
         m_scoreText.text = "Score: " + m_score.ToString();
     }
 
@@ -150,12 +151,26 @@ public class TeamOrchestrator_Team : MonoBehaviour
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
         int numberOfRessourcePossible = (int)Mathf.Pow(numberOfRessourcePossibleInZoneLenght, 2);
 
-        float nbsOfWorkers = ((MAX_WORKERS * mapDimensionScale) + (MAX_WORKERS * simulationDurationScale)) / 2;
+        float nbsOfWorkers;
+
+        if (m_remainingTime > (int)(MapGenerator.CampCost.GetValue() / 4) * 5 + 100) // new
+        {
+            nbsOfWorkers = numberOfRessourcePossible;
+
+            if (nbsOfWorkers > MAX_SPAWNABLE_WORKERS)
+            {
+                nbsOfWorkers = MAX_SPAWNABLE_WORKERS;
+            }
+        }
+        else
+        {
+            nbsOfWorkers = ((MAX_SPAWNABLE_WORKERS * mapDimensionScale) + (MAX_SPAWNABLE_WORKERS * simulationDurationScale)) / 2;
+        }
 
         //Pas la facon la plus optimal donc feel free de changer
         nbsOfWorkers = Mathf.Clamp(nbsOfWorkers, 0, numberOfRessourcePossible);
-        
-        int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_WORKERS));
+
+        int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_SPAWNABLE_WORKERS));
 
         // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
@@ -180,7 +195,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
             OnWorkerCreated();
             newWorker.transform.SetParent(transform);
 
-           
+
         }
 
     }

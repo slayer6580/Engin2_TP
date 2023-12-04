@@ -848,8 +848,8 @@ MonoBehaviour:
     <Value>k__BackingField: 0
   m_takeTestVariables: 1
   m_campCost: 15
-  m_mapDimension: 243
-  m_simulationDuration: 361
+  m_mapDimension: 205
+  m_simulationDuration: 1000
   m_nodeDensity: 12
 --- !u!1 &810867466
 GameObject:

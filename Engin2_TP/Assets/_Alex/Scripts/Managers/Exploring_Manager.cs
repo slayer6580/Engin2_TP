@@ -247,7 +247,8 @@ public class Exploring_Manager : MonoBehaviour
 
 	private void StopExploringWhenEnoughRessourceFound()
 	{
-		if (Collecting_Manager._Instance.KnownCollectibles.Count > RESSOURCE_TO_FOUND_TO_STOP_EXPLORING)
+
+        if (Collecting_Manager._Instance.KnownCollectibles.Count >= (int)(TeamOrchestrator_Team._Instance.WorkersList.Count * 1.5f))
 		{
 			WorkersStopExploringAndSpawnCollectors();
 		}
