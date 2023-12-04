@@ -17,7 +17,7 @@ public class AssociatedCampExist : Condition
 
     public override bool Check()
     {
-        Collectible_Alex reservedRessource = m_workerGO.Value.gameObject.GetComponent<Worker_Alex>().m_reservedCollectible;
+        Collectible_Team reservedRessource = m_workerGO.Value.gameObject.GetComponent<Worker_Team>().m_reservedCollectible;
 
         if (reservedRessource == null)
         {

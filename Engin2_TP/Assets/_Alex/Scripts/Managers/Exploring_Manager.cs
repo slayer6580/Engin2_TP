@@ -107,7 +107,7 @@ public class Exploring_Manager : MonoBehaviour
     }
 
     /// <summary> Cette fonction sert a assigner des workers comme explorateur </summary>
-    public void SetWorkerForExploring(Worker_Alex worker)
+    public void SetWorkerForExploring(Worker_Team worker)
     {
 
         // Si on prévoit pas d'explorateur
@@ -189,7 +189,7 @@ public class Exploring_Manager : MonoBehaviour
 
         m_explorationIsDone = true;
 
-        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
+        foreach (Worker_Team worker in TeamOrchestrator_Team._Instance.WorkersList)
         {
             if (worker.m_workerState == EWorkerState.exploring)
             {
@@ -199,7 +199,7 @@ public class Exploring_Manager : MonoBehaviour
 
 
         int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
-        int workerCount = TeamOrchestrator_Alex._Instance.WorkersList.Count;
+        int workerCount = TeamOrchestrator_Team._Instance.WorkersList.Count;
 
         if (workerCount >= MAX_WORKER)
         {
@@ -212,7 +212,7 @@ public class Exploring_Manager : MonoBehaviour
         {
             numberOfCollectorToSpawn = MAX_WORKER - workerCount;
         }
-        TeamOrchestrator_Alex._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
+        TeamOrchestrator_Team._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
 
     }
 
@@ -241,7 +241,7 @@ public class Exploring_Manager : MonoBehaviour
     private void CheckIfExploratorsAreDoneExploring()
     {
 
-        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
+        foreach (Worker_Team worker in TeamOrchestrator_Team._Instance.WorkersList)
         {
             if (worker.m_workerState == EWorkerState.exploring)
             {

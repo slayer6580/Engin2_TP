@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Camp_Alex : MonoBehaviour
+public class Camp_Team : MonoBehaviour
 {
 
     void Start()

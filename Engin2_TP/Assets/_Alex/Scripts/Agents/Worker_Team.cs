@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class Worker_Alex : MonoBehaviour
+public class Worker_Team : MonoBehaviour
 {
     private const float EXTRACTION_DURATION = 1.0f;
     private const float DEPOSIT_DURATION = 1.0f;
@@ -11,7 +11,7 @@ public class Worker_Alex : MonoBehaviour
     private bool m_isInDepot = false;
     private bool m_isInExtraction = false;
     private float m_currentActionDuration = 0.0f;
-    private Collectible_Alex m_currentExtractingCollectible;
+    private Collectible_Team m_currentExtractingCollectible;
 
     private Color32 m_noRessourceColor = new Color32(255, 255, 0, 255); // yellow
     private Color32 m_ressourceColor = new Color32(0, 0, 255, 255);  // bleu
@@ -22,7 +22,7 @@ public class Worker_Alex : MonoBehaviour
 
     private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState == EWorkerState.collecting ;
 
-    [HideInInspector] public Collectible_Alex m_reservedCollectible = null;
+    [HideInInspector] public Collectible_Team m_reservedCollectible = null;
     /*[HideInInspector]*/ public ECollectibleType m_collectibleInInventory = ECollectibleType.None;     //ReadOnly
 
     // Pour exploration initiale
@@ -41,7 +41,7 @@ public class Worker_Alex : MonoBehaviour
 
     private void Start()
     {
-        TeamOrchestrator_Alex._Instance.WorkersList.Add(this);
+        TeamOrchestrator_Team._Instance.WorkersList.Add(this);
         collecting_manager = Collecting_Manager._Instance;
         SetWorkerState();
     }
@@ -71,7 +71,7 @@ public class Worker_Alex : MonoBehaviour
     private void OnTriggerEnter2D(Collider2D collision)
     {
 
-        Collectible_Alex collectible = collision.GetComponent<Collectible_Alex>();
+        Collectible_Team collectible = collision.GetComponent<Collectible_Team>();
         if (collectible != null && m_isCollectingAndEmptyHands) 
         {
             m_currentExtractingCollectible = collectible;
@@ -88,21 +88,18 @@ public class Worker_Alex : MonoBehaviour
 
         }
 
-
-        Camp_Alex camp = collision.GetComponent<Camp_Alex>();
+        Camp_Team camp = collision.GetComponent<Camp_Team>();
         if (camp != null && m_collectibleInInventory != ECollectibleType.None)
         {
             m_currentActionDuration = DEPOSIT_DURATION;
             m_isInDepot = true;
             //Start countdown to deposit my current collectible (if it exists)
         }
-
-
     }
 
     private void OnTriggerExit2D(Collider2D collision)
     {
-        Collectible_Alex collectible = collision.GetComponent<Collectible_Alex>();
+        Collectible_Team collectible = collision.GetComponent<Collectible_Team>();
         if (collectible != null && m_collectibleInInventory == ECollectibleType.None) 
         {
             if (m_currentExtractingCollectible == collectible)
@@ -113,16 +110,13 @@ public class Worker_Alex : MonoBehaviour
             m_isInExtraction = false;
         }
 
-        Camp_Alex camp = collision.GetComponent<Camp_Alex>();
+        Camp_Team camp = collision.GetComponent<Camp_Team>();
         if (camp != null && m_collectibleInInventory != ECollectibleType.None)
         {
             m_isInDepot = false;
             m_currentActionDuration = DEPOSIT_DURATION;
         }
     }
-
-
-
 
     //Code a max
     private void GainCollectible()
@@ -152,7 +146,7 @@ public class Worker_Alex : MonoBehaviour
     //Code a max
     private void DepositResource()
     {
-        TeamOrchestrator_Alex._Instance.GainResource(m_collectibleInInventory);
+        TeamOrchestrator_Team._Instance.GainResource(m_collectibleInInventory);
         m_collectibleInInventory = ECollectibleType.None;
         m_isInDepot = false;
         GetComponent<SpriteRenderer>().color = m_noRessourceColor;

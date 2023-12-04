@@ -17,7 +17,7 @@ public class TimeForEndPhase : Condition
     }
     public override bool Check()
     {
-        m_remainingTime = TeamOrchestrator_Alex._Instance.ShareTimeLeft();
+        m_remainingTime = TeamOrchestrator_Team._Instance.ShareTimeLeft();
 
         if (m_remainingTime< timeForEndPhase)
         {

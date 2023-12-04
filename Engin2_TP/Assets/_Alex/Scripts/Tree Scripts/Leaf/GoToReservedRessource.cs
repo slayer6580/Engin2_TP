@@ -14,7 +14,7 @@ public class GoToReservedRessource : Leaf
 
     public override void OnEnter()
     {
-        Collectible_Alex collectible = m_workerGO.Value.GetComponent<Worker_Alex>().m_reservedCollectible;
+        Collectible_Team collectible = m_workerGO.Value.GetComponent<Worker_Team>().m_reservedCollectible;
         m_target = collectible.transform.position;
     }
 

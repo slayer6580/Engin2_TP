@@ -7,11 +7,11 @@ using UnityEngine;
 public class Tommy_RessourceAvailable : Leaf
 {
 	public GameObjectReference m_workerGo = new GameObjectReference();
-    private Worker_Alex m_worker;
+    private Worker_Team m_worker;
 	public override NodeResult Execute()
     {
-		m_worker = m_workerGo.Value.GetComponent<Worker_Alex>();
-		Collectible_Alex closestCollectible = null;
+		m_worker = m_workerGo.Value.GetComponent<Worker_Team>();
+		Collectible_Team closestCollectible = null;
 
         float minDistance = 10000; // test
    
@@ -20,7 +20,7 @@ public class Tommy_RessourceAvailable : Leaf
             if (m_worker.m_reservedCollectible == null)
             {
                 // regarder dans la liste des ressource à utiliser
-                foreach (Collectible_Alex collectible in Collecting_Manager._Instance.m_ressourceToUse)
+                foreach (Collectible_Team collectible in Collecting_Manager._Instance.m_ressourceToUse)
                 {
                     float distanceBetweenRessourceAndWorker = Vector2.Distance(m_worker.transform.position, collectible.transform.position);
 

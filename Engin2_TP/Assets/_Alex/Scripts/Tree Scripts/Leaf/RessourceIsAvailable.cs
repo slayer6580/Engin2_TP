@@ -8,17 +8,17 @@ public class RessourceAvailable : Leaf
 {
     public override NodeResult Execute()
     {
-        Collectible_Alex closestCollectible = null;
+        Collectible_Team closestCollectible = null;
 
         float minDistance = 1000; // test
    
-        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList)
+        foreach (Worker_Team worker in TeamOrchestrator_Team._Instance.WorkersList)
         {
             // si un worker n'a pas de ressource
             if (worker.m_reservedCollectible == null && worker.m_workerState == EWorkerState.collecting)
             {
                 // regarder dans mes ressources
-                foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
+                foreach (Collectible_Team collectible in Collecting_Manager._Instance.KnownCollectibles)
                 {
                     float distanceBetweenRessourceAndWorker = Vector2.Distance(worker.transform.position, collectible.transform.position);
 

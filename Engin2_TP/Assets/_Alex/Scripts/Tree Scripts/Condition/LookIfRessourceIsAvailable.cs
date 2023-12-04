@@ -11,7 +11,7 @@ public class LookIfRessourceAvailable : Condition
         bool emptyCollectible = false;
         bool workerWithNoCollectible = false;
 
-        foreach (Collectible_Alex collectible in Collecting_Manager._Instance.KnownCollectibles)
+        foreach (Collectible_Team collectible in Collecting_Manager._Instance.KnownCollectibles)
         {
             if (collectible.m_designedWorker == null) 
             {
@@ -20,7 +20,7 @@ public class LookIfRessourceAvailable : Condition
             }
         }
 
-        foreach (Worker_Alex worker in TeamOrchestrator_Alex._Instance.WorkersList) 
+        foreach (Worker_Team worker in TeamOrchestrator_Team._Instance.WorkersList) 
         { 
             if (worker.m_reservedCollectible == null && worker.m_workerState != EWorkerState.exploring)
             {

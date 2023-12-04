@@ -11,7 +11,7 @@ public class PlaceCamp_Alex : Leaf
     public override NodeResult Execute()
     {
         Instantiate(m_campPrefab, transform.position, Quaternion.identity);
-        TeamOrchestrator_Alex._Instance.OnCampPlaced();
+        TeamOrchestrator_Team._Instance.OnCampPlaced();
         return NodeResult.success;
     }
 }

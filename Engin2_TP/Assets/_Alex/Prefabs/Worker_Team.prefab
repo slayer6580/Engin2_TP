@@ -2675,7 +2675,7 @@ GameObject:
   - component: {fileID: 4299022324419489314}
   - component: {fileID: 7278710830268734309}
   m_Layer: 0
-  m_Name: Worker_Alex
+  m_Name: Worker_Team
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

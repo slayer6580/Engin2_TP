@@ -9,7 +9,7 @@ public class EnterConstructingState : Leaf
 
     public override NodeResult Execute()
     {
-        m_workerGO.Value.GetComponent<Worker_Alex>().m_workerState = EWorkerState.constructing;
+        m_workerGO.Value.GetComponent<Worker_Team>().m_workerState = EWorkerState.constructing;
         return NodeResult.success;
 
     }

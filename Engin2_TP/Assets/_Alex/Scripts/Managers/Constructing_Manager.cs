@@ -5,7 +5,7 @@ using UnityEngine.Rendering;
 
 public class Constructing_Manager : MonoBehaviour
 {
-    public List<Camp_Alex> Camps { get; private set; } = new List<Camp_Alex>();
+    public List<Camp_Team> Camps { get; private set; } = new List<Camp_Team>();
     [Header("Plus ce chiffre es haut, plus loin un worker cherchera une ressource")]
     public int m_campDistanceByCostMultiplier;
 

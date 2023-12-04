@@ -7,11 +7,11 @@ using UnityEngine;
 public class Tommy_GetNearestCampFromThatRessource : Leaf
 {
     public GameObjectReference m_workerGO = new GameObjectReference();
-    public Collectible_Alex workerCollectible;
+    public Collectible_Team workerCollectible;
 
     public override NodeResult Execute()
 	{
-		workerCollectible = m_workerGO.Value.gameObject.GetComponent<Worker_Alex>().m_reservedCollectible;
+		workerCollectible = m_workerGO.Value.gameObject.GetComponent<Worker_Team>().m_reservedCollectible;
 
 		float minDistance = float.PositiveInfinity;
 		bool suitableCampExist = false;
@@ -25,8 +25,8 @@ public class Tommy_GetNearestCampFromThatRessource : Leaf
 			{
 				minDistance = tempDistance;
 				//Associé la position du camp au worker ET à la ressource
-				m_workerGO.Value.gameObject.GetComponent<Worker_Alex>().m_campPosition = camp;
-				workerCollectible.GetComponent<Collectible_Alex>().m_associatedCamp = camp;
+				m_workerGO.Value.gameObject.GetComponent<Worker_Team>().m_campPosition = camp;
+				workerCollectible.GetComponent<Collectible_Team>().m_associatedCamp = camp;
 				suitableCampExist = true;
 			}
 		}
