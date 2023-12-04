@@ -6,12 +6,12 @@ using UnityEngine;
 public class WaitTillYouDropRessource : Leaf
 {
     public GameObjectReference m_workerGO = new GameObjectReference();
-    private Worker_Alex m_worker;
+    private Worker_Team m_worker;
     private bool m_workerHaveNoRessource = false;
 
     public override void OnEnter()
     {
-        m_worker = m_workerGO.Value.GetComponent<Worker_Alex>();
+        m_worker = m_workerGO.Value.GetComponent<Worker_Team>();
     }
 
     public override NodeResult Execute()

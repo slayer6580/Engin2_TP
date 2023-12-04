@@ -26,7 +26,7 @@ public class SuitableCampExist : Condition
         bool suitableCampExist = false;
 
         // regarde si la distance d'un camp est plus petit qu'une formule selon le cout du camp
-        foreach (Camp_Alex camp in Constructing_Manager._Instance.Camps)
+        foreach (Camp_Team camp in Constructing_Manager._Instance.Camps)
         {
             // trouver le camp le plus proche
             if (Vector2.Distance(camp.transform.position, m_workerPos) < minDistance)

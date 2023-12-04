@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 325813586}
   - component: {fileID: 325813587}
   m_Layer: 0
-  m_Name: TeamOrchestrator_Alex
+  m_Name: TeamOrchestrator_Team
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -847,9 +847,9 @@ MonoBehaviour:
     m_maximumValue: 80
     <Value>k__BackingField: 0
   m_takeTestVariables: 1
-  m_campCost: 64
-  m_mapDimension: 298
-  m_simulationDuration: 315
+  m_campCost: 24
+  m_mapDimension: 243
+  m_simulationDuration: 1000
   m_nodeDensity: 12
 --- !u!1 &810867466
 GameObject:

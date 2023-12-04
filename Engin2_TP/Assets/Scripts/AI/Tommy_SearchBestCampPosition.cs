@@ -7,7 +7,7 @@ using UnityEngine;
 [AddComponentMenu("")]
 public class Tommy_SearchBestCampPosition : Leaf
 {
-	List<Collectible_Alex> pack = new List<Collectible_Alex>();
+	List<Collectible_Team> pack = new List<Collectible_Team>();
 
 
 	public override void OnEnter()
@@ -50,17 +50,17 @@ public class Tommy_SearchBestCampPosition : Leaf
     }
 
 
-	public List<Collectible_Alex> FindBestPackOfRessources(List<Collectible_Alex> knownCollectibles, List<Collectible_Alex> ressourceToUse, List<Collectible_Alex> alreadyUsedRessources, float workerSpeedUnitBySecond, float minimumDistanceBetweenRessources, float remainingTime)
+	public List<Collectible_Team> FindBestPackOfRessources(List<Collectible_Team> knownCollectibles, List<Collectible_Team> ressourceToUse, List<Collectible_Team> alreadyUsedRessources, float workerSpeedUnitBySecond, float minimumDistanceBetweenRessources, float remainingTime)
 	{
 
 		int packSize = 4;   //Taile maximal d'un pack de ressource
 
-		List<Collectible_Alex> bestPack = new List<Collectible_Alex>();
+		List<Collectible_Team> bestPack = new List<Collectible_Team>();
 		float bestPossiblePoints = 0;
 
-		List<Collectible_Alex> potentialRessourcePack = new List<Collectible_Alex>();
+		List<Collectible_Team> potentialRessourcePack = new List<Collectible_Team>();
 
-		foreach (Collectible_Alex ressourceToCheck in knownCollectibles)
+		foreach (Collectible_Team ressourceToCheck in knownCollectibles)
 		{
 			potentialRessourcePack.Clear();
 
@@ -86,10 +86,10 @@ public class Tommy_SearchBestCampPosition : Leaf
 			while (packSize > 1)
 			{
 				float closestDistance = Mathf.Infinity;
-				Collectible_Alex closestRessource = null;
+                Collectible_Team closestRessource = null;
 
 				//Find closest collectible
-				foreach (Collectible_Alex collectible in knownCollectibles)
+				foreach (Collectible_Team collectible in knownCollectibles)
 				{
 					//Test with all ressource EXCEPT for those already in the pack AND those used by other pack
 					if (potentialRessourcePack.Contains(collectible) == false)
@@ -144,7 +144,7 @@ public class Tommy_SearchBestCampPosition : Leaf
 
 						bestPossiblePoints = checkPossiblePoint - campCost;
 						bestPack.Clear();
-						foreach (Collectible_Alex collectible in potentialRessourcePack)
+						foreach (Collectible_Team collectible in potentialRessourcePack)
 						{
 							bestPack.Add(collectible);
 						}
@@ -158,7 +158,7 @@ public class Tommy_SearchBestCampPosition : Leaf
 		{
 			Vector2 campPosition = GetCenterOfPack(bestPack);
 
-			foreach (Collectible_Alex collectible in bestPack)
+			foreach (Collectible_Team collectible in bestPack)
 			{
 				float distance = Vector2.Distance(campPosition, collectible.transform.position);
 				while (distance < 1)
@@ -170,7 +170,7 @@ public class Tommy_SearchBestCampPosition : Leaf
 				}
 			}
 
-			foreach (Collectible_Alex collectible in bestPack)
+			foreach (Collectible_Team collectible in bestPack)
 			{
 				collectible.m_associatedCamp = campPosition;
 				ressourceToUse.Add(collectible);
@@ -181,11 +181,11 @@ public class Tommy_SearchBestCampPosition : Leaf
 		return bestPack;
 	}
 
-	public Vector2 GetCenterOfPack(List<Collectible_Alex> pack)
+	public Vector2 GetCenterOfPack(List<Collectible_Team> pack)
 	{
 		Vector3 center = Vector3.zero;
 
-		foreach (Collectible_Alex collectible in pack)
+		foreach (Collectible_Team collectible in pack)
 		{
 			center += collectible.transform.position;
 		}
@@ -194,11 +194,11 @@ public class Tommy_SearchBestCampPosition : Leaf
 		return new Vector2(center.x, center.y);
 	}
 
-	public int CheckPossiblePointAtThatPosition(List<Collectible_Alex> ressourcePack, Vector2 positionToCheck, float workerSpeedUnitBySecond, float remainingTime)
+	public int CheckPossiblePointAtThatPosition(List<Collectible_Team> ressourcePack, Vector2 positionToCheck, float workerSpeedUnitBySecond, float remainingTime)
 	{
 		int possiblePoints = 0;
 
-		foreach (Collectible_Alex collectible in ressourcePack)
+		foreach (Collectible_Team collectible in ressourcePack)
 		{
 			float distanceFromRessource = Vector2.Distance(positionToCheck, collectible.transform.position);
 			float travelTime = distanceFromRessource / workerSpeedUnitBySecond;

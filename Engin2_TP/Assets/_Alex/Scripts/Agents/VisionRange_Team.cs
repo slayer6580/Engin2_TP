@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class VisionRange_Alex : MonoBehaviour
+public class VisionRange_Team : MonoBehaviour
 {
     private void OnTriggerEnter2D(Collider2D other)
     {
-        Collectible_Alex collectible = other.GetComponent<Collectible_Alex>();
+        Collectible_Team collectible = other.GetComponent<Collectible_Team>();
         if (collectible == null )
         {
             return;

@@ -31,7 +31,7 @@ public class SearchForUnexploredZone : Leaf
     private void CheckForNextZone()
     {
 
-		Worker_Alex worker = m_worker.Value.gameObject.GetComponent<Worker_Alex>();
+        Worker_Team worker = m_worker.Value.gameObject.GetComponent<Worker_Team>();
         EDirection workerDirection = worker.m_workerDirection;
 
 
@@ -70,7 +70,7 @@ public class SearchForUnexploredZone : Leaf
 
         //si le joueur ne peut pas explorer, il va commencer a collecter
         Debug.Log("Worker will start collecting because he cant explore anymore");
-        m_worker.Value.GetComponent<Worker_Alex>().m_workerState = EWorkerState.collecting;
+        m_worker.Value.GetComponent<Worker_Team>().m_workerState = EWorkerState.collecting;
         m_foundZone = false;
 
 	}
@@ -183,19 +183,19 @@ public class SearchForUnexploredZone : Leaf
     {
         if (zone.x < m_agentTransform.Value.position.x)
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.left;
+            m_worker.Value.gameObject.GetComponent<Worker_Team>().m_workerDirection = EDirection.left;
         }
         else if (zone.x > m_agentTransform.Value.position.x)
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.right;
+            m_worker.Value.gameObject.GetComponent<Worker_Team>().m_workerDirection = EDirection.right;
         }
         else if (zone.y > m_agentTransform.Value.position.y)
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.up;
+            m_worker.Value.gameObject.GetComponent<Worker_Team>().m_workerDirection = EDirection.up;
         }
         else
         {
-            m_worker.Value.gameObject.GetComponent<Worker_Alex>().m_workerDirection = EDirection.down;
+            m_worker.Value.gameObject.GetComponent<Worker_Team>().m_workerDirection = EDirection.down;
         }
     }
 

@@ -3,12 +3,12 @@ using System.IO;
 using TMPro;
 using UnityEngine;
 
-public class TeamOrchestrator_Alex : MonoBehaviour
+public class TeamOrchestrator_Team : MonoBehaviour
 {
     const int SPECIAL_SCORE = 10;
     const int MAX_WORKERS = 35;
 
-    public List<Worker_Alex> WorkersList { get; private set; } = new List<Worker_Alex>();
+    public List<Worker_Team> WorkersList { get; private set; } = new List<Worker_Team>();
 
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private TextMeshProUGUI m_remainingTimeText;
@@ -22,7 +22,7 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
     private const int STARTING_WORKER = 5;
 
-    public static TeamOrchestrator_Alex _Instance
+    public static TeamOrchestrator_Team _Instance
     {
         get;
         private set;
@@ -173,9 +173,6 @@ public class TeamOrchestrator_Alex : MonoBehaviour
     // Fonction qui spawn des collector manquant a la fin de l'exploration
     public void SpawnCollectingWorker(int numberToSpawn)
     {
-     
-
-
 
         for (int i = 0; i < numberToSpawn; i++)
         {

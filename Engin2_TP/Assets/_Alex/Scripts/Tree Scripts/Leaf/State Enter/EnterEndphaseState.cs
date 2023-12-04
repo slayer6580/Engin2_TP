@@ -10,7 +10,7 @@ public class EnterEndphaseState : Leaf
 
     public override NodeResult Execute()
     {
-        m_workerGO.Value.GetComponent<Worker_Alex>().m_workerState = EWorkerState.endPhase;
+        m_workerGO.Value.GetComponent<Worker_Team>().m_workerState = EWorkerState.endPhase;
         return NodeResult.success;
 
     }

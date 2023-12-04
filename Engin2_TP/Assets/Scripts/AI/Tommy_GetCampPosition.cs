@@ -15,7 +15,7 @@ namespace MBT
 
         public override NodeResult Execute()
         {
-            Vector2 campPos = m_workerTransform.Value.gameObject.GetComponent<Worker_Alex>().m_campPosition;
+            Vector2 campPos = m_workerTransform.Value.gameObject.GetComponent<Worker_Team>().m_campPosition;
             m_assignedPosition.Value = campPos;
 
             //Collecting_Manager._Instance.m_campList.Add(campPos);
