@@ -6,6 +6,7 @@ using UnityEngine;
 public class TeamOrchestrator_Alex : MonoBehaviour
 {
     const int SPECIAL_SCORE = 10;
+    const int MAX_WORKERS = 35;
 
     public List<Worker_Alex> WorkersList { get; private set; } = new List<Worker_Alex>();
 
@@ -141,22 +142,21 @@ public class TeamOrchestrator_Alex : MonoBehaviour
 
         //TODO améliorer la formule pour résultat plus efficace (avec temps restant aussi)
         int mapDimension = MapGenerator.MapDimension.Value;
+        float mapDimensionScale = mapDimension / 600; //600 = max
+
+        int timeLeft = MapGenerator.SimulationDuration.GetValue();
+        float simulationDurationScale = timeLeft / 1000; //1000 = max
+
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
-        int nbOfNewExplorator = (numberOfRessourcePossibleInZoneLenght * numberOfRessourcePossibleInZoneLenght) - STARTING_WORKER;
+        int numberOfRessourcePossible = (int)Mathf.Pow(numberOfRessourcePossibleInZoneLenght, 2);
 
-        if (m_remainingTime < 201)
-        { nbOfNewExplorator = 10; }
-        else if (m_remainingTime < 401)
-        { nbOfNewExplorator = 20; }
-        else if (m_remainingTime < 601)
-        { nbOfNewExplorator = 30; }
+        float nbsOfWorkers = ((MAX_WORKERS * mapDimensionScale) + (MAX_WORKERS * simulationDurationScale)) / 2;
 
-        // approche naive; on limite les explorers selon le temps. Voir livre IA - simplicité avant tout
+        //Pas la facon la plus optimal donc feel free de changer
+        nbsOfWorkers = Mathf.Clamp(nbsOfWorkers, 0, numberOfRessourcePossible);
 
-        if (nbOfNewExplorator > 34)
-        {
-            nbOfNewExplorator = 35;
-        }
+        int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_WORKERS));
+        //Debug.LogWarning(numberOfRessourcePossible);
 
         // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
