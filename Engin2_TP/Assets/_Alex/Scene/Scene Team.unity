@@ -605,7 +605,7 @@ GameObject:
   - component: {fileID: 325813586}
   - component: {fileID: 325813587}
   m_Layer: 0
-  m_Name: TeamOrchestrator_Alex
+  m_Name: TeamOrchestrator_Team
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
