@@ -794,7 +794,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_minimumCameraSize: 3
-  m_maximumCameraSize: 40
+  m_maximumCameraSize: 160
   m_movementSpeed: 1.5
 --- !u!1 &667309041
 GameObject:
@@ -847,9 +847,9 @@ MonoBehaviour:
     m_maximumValue: 80
     <Value>k__BackingField: 0
   m_takeTestVariables: 1
-  m_campCost: 24
+  m_campCost: 15
   m_mapDimension: 243
-  m_simulationDuration: 1000
+  m_simulationDuration: 361
   m_nodeDensity: 12
 --- !u!1 &810867466
 GameObject:

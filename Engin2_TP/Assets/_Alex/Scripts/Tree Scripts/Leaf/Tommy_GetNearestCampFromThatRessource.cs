@@ -7,7 +7,7 @@ using UnityEngine;
 public class Tommy_GetNearestCampFromThatRessource : Leaf
 {
     public GameObjectReference m_workerGO = new GameObjectReference();
-    public Collectible_Team workerCollectible;
+    private Collectible_Team workerCollectible; 
 
     public override NodeResult Execute()
 	{

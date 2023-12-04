@@ -121,7 +121,12 @@ public class Worker_Team : MonoBehaviour
     //Code a max
     private void GainCollectible()
     {
-       
+        if (m_currentExtractingCollectible == null)
+        {
+            return;
+        }
+
+
         m_collectibleInInventory = m_currentExtractingCollectible.Extract(m_workerState);
         
         // si jamais peut pas extraire
@@ -135,13 +140,13 @@ public class Worker_Team : MonoBehaviour
         GetComponent<SpriteRenderer>().color = m_ressourceColor;
 
 		if (m_collectibleInInventory == ECollectibleType.Special)
-		{
-			
+		{			
 			GetComponent<SpriteRenderer>().color = m_specialRessourceColor;
             collecting_manager.RemoveCollectible(m_reservedCollectible); // le fait deja dans collectible mais somehow ca marche pas!
             m_reservedCollectible = null; // to be sure
         }
-	}
+
+    }
 
     //Code a max
     private void DepositResource()

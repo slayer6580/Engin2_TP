@@ -43,7 +43,9 @@ public class FindRemainingSuitableRessource : Condition
         if (suitableRessourceExist)
         {
             m_workerGO.Value.gameObject.GetComponent<Worker_Team>().m_reservedCollectible = chosenRessource;
-			return true;
+            Collecting_Manager._Instance.m_alreadyUsedRessources.Add(chosenRessource); // test
+
+            return true;
         }
 
         return false;

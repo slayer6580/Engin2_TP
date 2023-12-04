@@ -35,7 +35,7 @@ public class Collectible_Team : MonoBehaviour
     {
         m_currentCooldown -= Time.fixedDeltaTime;
 
-        if (m_currentCooldown <= 0 && m_hasBeenPickedInTheLastFiveSeconds)
+        if (m_currentCooldown <= 0.9f && m_hasBeenPickedInTheLastFiveSeconds)
         {
             m_hasBeenPickedInTheLastFiveSeconds = false;
         }
