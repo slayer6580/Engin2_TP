@@ -10,7 +10,9 @@ public class PlaceCamp_Alex : Leaf
 
     public override NodeResult Execute()
     {
-        Instantiate(m_campPrefab, transform.position, Quaternion.identity);
+        Transform parentManager = Constructing_Manager._Instance.transform;
+        GameObject camp = Instantiate(m_campPrefab, transform.position, Quaternion.identity);
+        camp.transform.SetParent(parentManager);
         TeamOrchestrator_Team._Instance.OnCampPlaced();
         return NodeResult.success;
     }
