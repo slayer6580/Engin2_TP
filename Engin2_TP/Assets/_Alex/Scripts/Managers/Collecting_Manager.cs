@@ -45,6 +45,20 @@ public class Collecting_Manager : MonoBehaviour
         Debug.Log("Collectible added");
     }
 
+
+    public void RemoveCollectible (Collectible_Alex collectible)
+
+
+    {
+        KnownCollectibles.Remove(collectible);
+        
+    }
+
+
+
+
+
+
     // Fonction qui prédit une distance des deux premiers collectible trouvé
     private void PredictRessourceDistance()
     {      

@@ -8,7 +8,7 @@ public class TimeForEndPhase : Condition
 {
     //public GameObjectReference m_workerGO = new GameObjectReference();
     private float m_remainingTime;
-    [SerializeField]private float timeForEndPhase=100.0f; // formule de Chris pour calculer
+    private float timeForEndPhase =40.0f; // formule de Chris pour calculer
 
 
     private void Start()
@@ -22,7 +22,7 @@ public class TimeForEndPhase : Condition
         if (m_remainingTime< timeForEndPhase)
         {
             return true;
-            Debug.Log("ENDPHASE  yet time left" + m_remainingTime+ "time for endphase" + timeForEndPhase);
+                //Debug.Log("ENDPHASE  yet time left" + m_remainingTime+ "time for endphase" + timeForEndPhase);
         }
         Debug.Log("ENDPHASE not yet time left" + m_remainingTime + "time for endphase" + timeForEndPhase);
         return false;

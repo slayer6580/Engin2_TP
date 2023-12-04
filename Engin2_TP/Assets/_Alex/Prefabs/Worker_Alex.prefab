@@ -765,7 +765,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 1436807623333854413}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -1630,7 +1630,6 @@ MonoBehaviour:
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  timeForEndPhase: 100
 --- !u!114 &1436807623333854413
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1687,6 +1686,9 @@ GameObject:
   - component: {fileID: 24988360014648901}
   - component: {fileID: 2946422457578642901}
   - component: {fileID: 5808741119026145578}
+  - component: {fileID: 5798854123864653227}
+  - component: {fileID: 2720917311728471650}
+  - component: {fileID: 2082306746181357349}
   m_Layer: 0
   m_Name: EndphaseBrain
   m_TagString: Untagged
@@ -1721,7 +1723,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 5798854123864653227}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -1883,6 +1885,8 @@ MonoBehaviour:
   - {fileID: 24988360014648901}
   - {fileID: 2946422457578642901}
   - {fileID: 5808741119026145578}
+  - {fileID: 2082306746181357349}
+  - {fileID: 2720917311728471650}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -1902,8 +1906,8 @@ MonoBehaviour:
   title: Go to reserved ressource
   rect:
     serializedVersion: 2
-    x: -435
-    y: 86
+    x: -495
+    y: 80
     width: 160
     height: 45
   parent: {fileID: 7940002035965276380}
@@ -1940,8 +1944,8 @@ MonoBehaviour:
   title: Wait till you collect the ressource
   rect:
     serializedVersion: 2
-    x: -195
-    y: 86
+    x: -309
+    y: 80
     width: 160
     height: 59
   parent: {fileID: 7940002035965276380}
@@ -1970,8 +1974,8 @@ MonoBehaviour:
   title: Get Camp Position
   rect:
     serializedVersion: 2
-    x: -9
-    y: 91
+    x: -125
+    y: 87
     width: 160
     height: 45
   parent: {fileID: 7940002035965276380}
@@ -2006,8 +2010,8 @@ MonoBehaviour:
   title: Move Towards 2D
   rect:
     serializedVersion: 2
-    x: 208
-    y: 93
+    x: 34
+    y: 85
     width: 160
     height: 45
   parent: {fileID: 7940002035965276380}
@@ -2044,8 +2048,8 @@ MonoBehaviour:
   title: Go to reserved ressource
   rect:
     serializedVersion: 2
-    x: 441
-    y: 93
+    x: 398
+    y: 89
     width: 160
     height: 45
   parent: {fileID: 7940002035965276380}
@@ -2082,8 +2086,8 @@ MonoBehaviour:
   title: Wait till you collect the ressource
   rect:
     serializedVersion: 2
-    x: 629
-    y: 89
+    x: 599
+    y: 85
     width: 160
     height: 59
   parent: {fileID: 7940002035965276380}
@@ -2112,8 +2116,8 @@ MonoBehaviour:
   title: Get Camp Position
   rect:
     serializedVersion: 2
-    x: 808
-    y: 98
+    x: 776
+    y: 89
     width: 160
     height: 45
   parent: {fileID: 7940002035965276380}
@@ -2148,8 +2152,8 @@ MonoBehaviour:
   title: Move Towards 2D
   rect:
     serializedVersion: 2
-    x: 1022
-    y: 98
+    x: 944
+    y: 92
     width: 160
     height: 45
   parent: {fileID: 7940002035965276380}
@@ -2171,6 +2175,96 @@ MonoBehaviour:
     constantValue: {fileID: 0}
   speed: 0.1
   minDistance: 0
+--- !u!114 &5798854123864653227
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05202fed66e0944d961f6dec33d5b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Find Remaining EndPhase
+  rect:
+    serializedVersion: 2
+    x: 207
+    y: 86
+    width: 160
+    height: 45
+  parent: {fileID: 0}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &2720917311728471650
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e05202fed66e0944d961f6dec33d5b63, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Find Remaining EndPhase
+  rect:
+    serializedVersion: 2
+    x: 1339
+    y: 88
+    width: 160
+    height: 45
+  parent: {fileID: 7940002035965276380}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &2082306746181357349
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a8961d1c070ced147adfde5d9af7ccd4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait till you drop the ressource
+  rect:
+    serializedVersion: 2
+    x: 1118
+    y: 87
+    width: 160
+    height: 59
+  parent: {fileID: 7940002035965276380}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: Worker
+    constantValue: {fileID: 0}
 --- !u!1 &7367874694531944036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2618,6 +2712,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   m_radius: 12
   m_radiusDebugTransform: {fileID: 86326481276333514}
+  collecting_manager: {fileID: 0}
   m_extraExplorator: 0
   m_reservedCollectible: {fileID: 0}
   m_collectibleInInventory: 2
