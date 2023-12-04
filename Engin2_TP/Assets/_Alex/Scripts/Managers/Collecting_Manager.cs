@@ -51,7 +51,6 @@ public class Collecting_Manager : MonoBehaviour
         
     }
 
-    // Fonction qui prédit une distance des deux premiers collectible trouvé
     private void PredictRessourceDistance()
     {
         Collectible_Team firstCollectible = KnownCollectibles[0];

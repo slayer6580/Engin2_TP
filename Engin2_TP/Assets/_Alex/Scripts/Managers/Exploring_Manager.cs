@@ -110,25 +110,20 @@ public class Exploring_Manager : MonoBehaviour
     public void SetWorkerForExploring(Worker_Team worker)
     {
 
-        // Si on prévoit pas d'explorateur
-        if (m_workerInExploration > m_nbOfExploringWorkers)
+        // Si on prévoit pas d'explorateur ou si l'exploration est considérée finie
+        if (m_workerInExploration > m_nbOfExploringWorkers || m_explorationIsDone)
         {
             worker.m_workerState = EWorkerState.collecting;
             return;
         }
-        // Si l'exploration est considérée finie
-        else if (m_explorationIsDone)
-        {
-            worker.m_workerState = EWorkerState.collecting;
-            return;
-        }
+     
         // Pour les extra explorateur
         if (m_workerInExploration > 3)
         {
             worker.m_extraExplorator = true;
         }
 
-        // modulo pour s'assurer que les workers vont dans des directions calculer
+        // modulo pour s'assurer que les workers vont dans des directions séparer équalement
         int moduloForDirection = m_workerInExploration % 4;
 
         // donner des direction de départ au worker
@@ -214,9 +209,7 @@ public class Exploring_Manager : MonoBehaviour
         }
         TeamOrchestrator_Team._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
 
-    }
-
-  
+    }  
 
     // Fonction qui calcule le pourcentage de la map explorer
     public float GetPourcentageOfMapExpored()
