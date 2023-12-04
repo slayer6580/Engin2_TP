@@ -10,6 +10,7 @@ using UnityEngine.SceneManagement;  //To restart scene
 
 public class Tommy_TeamOrchestrator : MonoBehaviour
 {
+    /*
     const int CHUNK_SIZE = 5;
     const int SPECIAL_SCORE = 10;
     const int ACTION_TIME_ON_RESSOURCE = 1;
@@ -63,15 +64,7 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
 	public Dictionary<Collectible, float> KnownCollectiblesTimers = new Dictionary<Collectible, float>();
 
 
-	/*
-    //POur tester quel formule est le plus proche
-    //Doit mettre cette ligne dans MapGenerator
-		Tommy_TeamOrchestrator._Instance.totalPoint = points.Count;
-    [HideInInspector] public int totalPoint;
-    public int a;
-    public int b;
-    public int c;
-    */
+	
 
 	public static Tommy_TeamOrchestrator _Instance
     {
@@ -175,25 +168,8 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
 		}
         m_mixedResultAverageRessources = (m_averageNumberOfRessourcesByPercentage + m_averageNumberOfRessourcesByDistance) / 2;
 
-
-        /*
-         //Test quel formule est le plus proche le plus souvent
-        int testA = Mathf.Abs(totalPoint - m_averageNumberOfRessourcesByDistance);
-		int testB = Mathf.Abs(totalPoint - m_averageNumberOfRessourcesByPercentage);
-		int testC = Mathf.Abs(totalPoint - m_mixedResultAverageRessources);
-        if(testA <= testB && testA <= testC)
-        {
-            a++;
-        }
-		if (testB <= testA && testB <= testC)
-		{
-			b++;
-		}
-		if (testC <= testB && testC <= testA)
-		{
-			c++;
-		}
-        */
+        
+      
 	}
 
     public void TryAddCollectible(Collectible collectible)
@@ -233,123 +209,7 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
 
 		return knownRessourceManager.FindBestPackOfRessources(KnownCollectibles, m_ressourceToUse, m_alreadyUsedRessources, m_campToSpawn, m_workerSpeedUnitBySecond, m_minimumDistanceBetweenRessources, m_remainingTime);
 		
-        
-        
-        /*
-        int packSize = 4;   //Taile maximal d'un pack de ressource
-
-		List<Collectible> bestPack = new List<Collectible>();
-		float bestPossiblePoints = 0;
-		
-        List<Collectible> potentialRessourcePack = new List<Collectible>();
-
-		foreach (Collectible ressourceToCheck in KnownCollectibles)
-        {
-            potentialRessourcePack.Clear();
-
-			//Reduce packSize if not enough ressource available
-			int availableRessourceToCheck = KnownCollectibles.Count - m_alreadyUsedRessources.Count;
-			while (availableRessourceToCheck < packSize)
-			{
-				packSize--;
-			}
-
-            //Avoid using same ressource twice
-			if (m_alreadyUsedRessources.Contains(ressourceToCheck) == true)
-			{         
-                continue;
-			}
-
-			potentialRessourcePack.Add(ressourceToCheck);
-
-			Vector2 packCenterPos = ressourceToCheck.transform.position;
-			
-            //On ne veux pas de ressource seule (pour l'instant) d'où le >1
-            //TODO si les ressource sont TRES éloigné, il peut valloir la peine de faire un camps par ressource, si camps est pas cher
-			while (packSize > 1)
-			{
-				float closestDistance = Mathf.Infinity;
-				Collectible closestRessource = null;
-
-				//Find closest collectible
-				foreach (Collectible collectible in KnownCollectibles)
-				{
-                    //Test with all ressource EXCEPT for those already in the pack AND those used by other pack
-					if (potentialRessourcePack.Contains(collectible) == false)
-					{
-                        if (m_alreadyUsedRessources.Contains(collectible) == false)
-                        {
-                            //Only keep the nearest ressource of the pack center
-							float currentDistance = Vector2.Distance(packCenterPos, collectible.transform.position);
-							if (currentDistance < closestDistance)
-							{
-								closestDistance = currentDistance;
-								closestRessource = collectible;
-							}
-						}					
-					}
-				}
-
-				potentialRessourcePack.Add(closestRessource);
-				packCenterPos = GetCenterOfPack(potentialRessourcePack);
-				int checkPossiblePoint = CheckPossiblePointAtThatPosition(potentialRessourcePack, packCenterPos);
-
-				//If there's not the maximum of ressource for one camp (4), suggest that another camp will be required somewhere else
-				int campCost = MapGenerator.CampCost.Value;        
-                if (potentialRessourcePack.Count < 4)
-                {
-                    campCost += campCost;
-				}
-
-				//Calculate if it's currently the best option
-				if (checkPossiblePoint - campCost >= bestPossiblePoints)
-				{
-					//Verify if ressource are not too far from each other
-					bool closeEnough = true;
-					for (int i = 0; i < potentialRessourcePack.Count; i++)
-					{
-                        //We check the distance of each ressource from the pack with each other
-						int j = i + 1;
-						if (j >= potentialRessourcePack.Count)
-						{
-							j = 0;
-						}
-						float dist = Vector2.Distance(potentialRessourcePack[i].transform.position, potentialRessourcePack[j].transform.position);
-                        //TODO change 2 to global const to make some test
-						if (dist > (m_minimumDistanceBetweenRessources * 2f))
-						{
-							closeEnough = false;
-						}
-					}
-					//All test has passed, this potentialPack is for now the best option
-					if (closeEnough == true)
-					{
-                        
-						bestPossiblePoints = checkPossiblePoint - campCost;
-						bestPack.Clear();
-						foreach (Collectible collectible in potentialRessourcePack)
-						{
-							bestPack.Add(collectible);
-						}
-					}
-				}
-				packSize--;
-			}	
-		}//End foreach
-
-        if(bestPack.Count > 0)
-        {
-			foreach (Collectible collectible in bestPack)
-			{
-				m_ressourceToUse.Add(collectible);
-				m_alreadyUsedRessources.Add(collectible);
-			}
-			m_campToSpawn.Add(GetCenterOfPack(bestPack));
-		}
-		
-		return bestPack;
-
-        */
+    
 	}
 
     public int CheckPossiblePointAtThatPosition(List<Collectible> ressourcePack, Vector2 positionToCheck)
@@ -432,4 +292,5 @@ public class Tommy_TeamOrchestrator : MonoBehaviour
         //TODO élèves. À vous de trouver quand utiliser cette méthode et l'utiliser.
         m_score -= MapGenerator.WORKER_COST;
     }
+    */
 }
