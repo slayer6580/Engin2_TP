@@ -53,7 +53,7 @@ public class Exploring_Manager : MonoBehaviour
     {
 
         GetMapDimensionAndZoneLength();
-        EvaluateWhenStopExploring();
+       // EvaluateWhenStopExploring();
         SetZonePositionsForList();
 
         for (int i = 0; i < m_zoneLenght; i++)
@@ -192,22 +192,28 @@ public class Exploring_Manager : MonoBehaviour
             }
         }
 
+		
 
-        int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
+		int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
         int workerCount = TeamOrchestrator_Team._Instance.WorkersList.Count;
+		int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
 
-        if (workerCount >= MAX_WORKER)
+		if (workerCount >= MAX_WORKER)
         {
             return;
         }
 
-        int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
+        
 
-        if (numberOfCollectorToSpawn + workerCount > MAX_WORKER)
+		if (TeamOrchestrator_Team._Instance.m_remainingTime > (int)(MapGenerator.CampCost.GetValue() / 4) * 5 + 100)
         {
-            numberOfCollectorToSpawn = MAX_WORKER - workerCount;
-        }
-        TeamOrchestrator_Team._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
+			if (numberOfCollectorToSpawn + workerCount > MAX_WORKER)
+			{
+				numberOfCollectorToSpawn = MAX_WORKER - workerCount;
+			}
+			TeamOrchestrator_Team._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
+		}
+			
 
     }  
 

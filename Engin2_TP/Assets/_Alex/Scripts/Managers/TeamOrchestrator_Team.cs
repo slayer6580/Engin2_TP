@@ -17,7 +17,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
     [SerializeField] private GameObject m_workersPrefab;
 
 
-    private float m_remainingTime;
+    [HideInInspector] public float m_remainingTime;
     private int m_score = 0;
     private bool m_workersAlreadySpawnBasedOnPrediction = false;
 
@@ -151,7 +151,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
         int numberOfRessourcePossible = (int)Mathf.Pow(numberOfRessourcePossibleInZoneLenght, 2);
 
-        float nbsOfWorkers;
+        int nbsOfWorkers;
 
         if (m_remainingTime > (int)(MapGenerator.CampCost.GetValue() / 4) * 5 + 100) // new
         {
@@ -164,19 +164,20 @@ public class TeamOrchestrator_Team : MonoBehaviour
         }
         else
         {
-            nbsOfWorkers = ((MAX_SPAWNABLE_WORKERS * mapDimensionScale) + (MAX_SPAWNABLE_WORKERS * simulationDurationScale)) / 2;
-        }
+			nbsOfWorkers = 0;
+			//nbsOfWorkers = ((MAX_SPAWNABLE_WORKERS * mapDimensionScale) + (MAX_SPAWNABLE_WORKERS * simulationDurationScale)) / 2;
+		}
 
         //Pas la facon la plus optimal donc feel free de changer
-        nbsOfWorkers = Mathf.Clamp(nbsOfWorkers, 0, numberOfRessourcePossible);
+        //nbsOfWorkers = Mathf.Clamp(nbsOfWorkers, 0, numberOfRessourcePossible);
 
-        int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_SPAWNABLE_WORKERS));
+        //int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_SPAWNABLE_WORKERS));
 
         // Spawn le nombre d'explorateur selon la formule du haut
-        Exploring_Manager._Instance.m_nbOfExploringWorkers += nbOfNewExplorator;
+        Exploring_Manager._Instance.m_nbOfExploringWorkers += nbsOfWorkers;
 
         // TODO spawn un lot de 4 workers et moins a la fois sur une petite durée
-        for (int i = 0; i < nbOfNewExplorator; i++)
+        for (int i = 0; i < nbsOfWorkers; i++)
         {
             GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
             OnWorkerCreated();

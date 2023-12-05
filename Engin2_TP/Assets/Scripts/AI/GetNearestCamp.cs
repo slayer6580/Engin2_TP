@@ -2,36 +2,37 @@ using MBT;
 using UnityEngine;
 
 [AddComponentMenu("")]
-[MBTNode(name = "Engin2/Get nearest camp condition")]
-public class GetNearestCamp : Condition
+[MBTNode(name = "Engin2/Get nearest camp")]
+public class GetNearestCamp : Leaf
 {
-    [SerializeField]
-    private TransformReference m_workerTransform = new TransformReference();
-    [SerializeField]
-    private Vector2Reference m_nearestCampVec2 = new Vector2Reference();
+	public GameObjectReference m_workerGO = new GameObjectReference();
 
-    public override bool Check()
-    {
-        if (TeamOrchestrator._Instance.Camps.Count == 0)
-        {
-            //On n'a pas trouvé de camp. On retourne faux
-            return false;
-        }
+	public Vector2Reference m_nearestCampPos = new Vector2Reference();
 
-        Camp nearestCamp = TeamOrchestrator._Instance.Camps[0];
+	public override NodeResult Execute()
+	{
 
-        foreach (var camp in TeamOrchestrator._Instance.Camps)
-        {
-            if (Vector3.Distance(nearestCamp.transform.position, m_workerTransform.Value.position) 
-                > Vector3.Distance(camp.transform.position, m_workerTransform.Value.position))
-            {
-                nearestCamp = camp;
-            }
-        }
+		float minDistance = float.PositiveInfinity;
+		bool suitableCampExist = false;
 
-        //Ceci est le camp le plus près. On update sa valeur dans le blackboard et retourne true
-        m_nearestCampVec2.Value = new Vector2(nearestCamp.transform.position.x, nearestCamp.transform.position.y);
 
-        return true;
-    }
+		foreach (Vector2 camp in Collecting_Manager._Instance.m_campList)
+		{
+			float tempDistance = Vector2.Distance(camp, m_workerGO.Value.transform.position);
+			// trouver le camp le plus proche
+			if (tempDistance < minDistance)
+			{
+				m_nearestCampPos.Value = camp;
+				minDistance = tempDistance;
+				suitableCampExist = true;
+			}
+		}
+
+		if (suitableCampExist)
+		{
+			return NodeResult.success;
+		}
+
+		return NodeResult.failure;
+	}
 }

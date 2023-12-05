@@ -18,6 +18,10 @@ public class WaitTillYouCollectRessource : Leaf
     {
         m_workerHaveRessource = m_worker.m_collectibleInInventory != ECollectibleType.None;
 
+        if(m_worker.m_reservedCollectible == null)
+        {
+			return NodeResult.failure;
+		}
         if (!m_workerHaveRessource)
         {          
             return NodeResult.running;

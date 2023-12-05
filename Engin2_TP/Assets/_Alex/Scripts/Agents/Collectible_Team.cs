@@ -26,7 +26,7 @@ public class Collectible_Team : MonoBehaviour
 
         //We have been extracted twice under 5 seconds
         Collecting_Manager._Instance.KnownCollectibles.Remove(this);
-        m_designedWorker.m_reservedCollectible = null;
+        
         Destroy(gameObject);
         return ECollectibleType.Special;
     }

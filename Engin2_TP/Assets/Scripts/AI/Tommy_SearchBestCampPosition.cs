@@ -12,20 +12,7 @@ public class Tommy_SearchBestCampPosition : Leaf
 
 	public override void OnEnter()
     {
-		// (OLD) pack = Tommy_TeamOrchestrator._Instance.FindRessourcePackWithMiddlePoint();
-
-
-		/* Variable NÉCÉSSAIRE dans TeamOrchestrator
-        m_ressourceToUse =    List<Collectible> : liste des ressources choisi pour être miné par les workers, la ressource est enlevé de la liste une fois
-		                      qu'un worker y a été assigné
 		
-		m_alreadyUsedRessources = List<Collectible> : Les ressource y sont ajouter en même temps que dans m_ressourceToUse mais il ne sont jamais retiré
-		                          cette liste est utilisé afin d'éviter de réassigner plusieurs fois la même ressource.
-		
-		m_campToSpawn =    List<Vector2> : Liste de position de camps à spawné bien centré par rapport a ressource dans m_ressourceToUse
-         
-        m_workerSpeedUnitBySecond = vitesse des worker (m/secondes)
-         */
 
 		Collecting_Manager instance = Collecting_Manager._Instance;
 		float remainingTime = MapGenerator.SimulationDuration.Value - Time.timeSinceLevelLoad;
@@ -70,7 +57,7 @@ public class Tommy_SearchBestCampPosition : Leaf
 			{
 				packSize--;
 			}
-
+			
 			//Avoid using same ressource twice
 			if (alreadyUsedRessources.Contains(ressourceToCheck) == true)
 			{
@@ -141,7 +128,6 @@ public class Tommy_SearchBestCampPosition : Leaf
 					//All test has passed, this potentialPack is for now the best option
 					if (closeEnough == true)
 					{
-
 						bestPossiblePoints = checkPossiblePoint - campCost;
 						bestPack.Clear();
 						foreach (Collectible_Team collectible in potentialRessourcePack)

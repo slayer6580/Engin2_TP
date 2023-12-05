@@ -477,7 +477,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!224 &195427617
 RectTransform:
   m_ObjectHideFlags: 0
@@ -641,8 +641,9 @@ MonoBehaviour:
   m_scoreText: {fileID: 153566360}
   m_remainingTimeText: {fileID: 1264221022}
   m_numberOfWorkersText: {fileID: 195427618}
-  m_timeScale: 5
+  m_timeScale: 40
   m_workersPrefab: {fileID: 8024679636586000092, guid: 2cb8dd90365686041acca0177764c2fc, type: 3}
+  m_remainingTime: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -846,11 +847,11 @@ MonoBehaviour:
     m_minimumValue: 12
     m_maximumValue: 80
     <Value>k__BackingField: 0
-  m_takeTestVariables: 1
-  m_campCost: 15
-  m_mapDimension: 205
-  m_simulationDuration: 1000
-  m_nodeDensity: 12
+  m_takeTestVariables: 0
+  m_campCost: 80
+  m_mapDimension: 184
+  m_simulationDuration: 507
+  m_nodeDensity: 80
 --- !u!1 &810867466
 GameObject:
   m_ObjectHideFlags: 0

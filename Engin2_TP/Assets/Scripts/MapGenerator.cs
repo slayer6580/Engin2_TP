@@ -43,7 +43,7 @@ public class MapGenerator : MonoBehaviour
     {
         if (SimulationDuration.Value < Time.timeSinceLevelLoad)
 		{
-			TeamOrchestrator._Instance.OnGameEnded();
+			TeamOrchestrator_Team._Instance.OnGameEnded();
 		}
     }
 

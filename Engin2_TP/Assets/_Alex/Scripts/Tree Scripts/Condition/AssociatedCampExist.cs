@@ -25,11 +25,14 @@ public class AssociatedCampExist : Condition
         }
         
 
-      
-        if (Collecting_Manager._Instance.m_campList.Contains(reservedRessource.m_associatedCamp))
+        if(reservedRessource.m_associatedCamp.x != float.PositiveInfinity)
         {
-    		return true;
+			if (Collecting_Manager._Instance.m_campList.Contains(reservedRessource.m_associatedCamp))
+			{
+				return true;
+			}
 		}
+       
         return false;
     }
 

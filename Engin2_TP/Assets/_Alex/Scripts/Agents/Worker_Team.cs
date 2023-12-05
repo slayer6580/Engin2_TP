@@ -20,9 +20,9 @@ public class Worker_Team : MonoBehaviour
     public Collecting_Manager collecting_manager;
     [HideInInspector] public bool m_extraExplorator = false;
 
-    private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState == EWorkerState.collecting ;
+    private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState != EWorkerState.exploring ;
 
-    [HideInInspector] public Collectible_Team m_reservedCollectible = null;
+    /*[HideInInspector]*/ public Collectible_Team m_reservedCollectible = null;      //ReadOnly
     /*[HideInInspector]*/ public ECollectibleType m_collectibleInInventory = ECollectibleType.None;     //ReadOnly
 
     // Pour exploration initiale
@@ -33,6 +33,7 @@ public class Worker_Team : MonoBehaviour
     public bool hasCollectibleReserverd;        //ReadOnly
 
     public Vector2 m_campPosition = Vector2.positiveInfinity;
+    public bool m_doubleMode = false;
 
 	private void OnValidate()
     {
@@ -80,6 +81,7 @@ public class Worker_Team : MonoBehaviour
             //Start countdown to collect it
         }
 
+        /*
         if (m_workerState == EWorkerState.endPhase)
         {
             m_currentExtractingCollectible = collectible;
@@ -87,7 +89,7 @@ public class Worker_Team : MonoBehaviour
             m_isInExtraction = true;
 
         }
-
+        */
         Camp_Team camp = collision.GetComponent<Camp_Team>();
         if (camp != null && m_collectibleInInventory != ECollectibleType.None)
         {
@@ -121,11 +123,12 @@ public class Worker_Team : MonoBehaviour
     //Code a max
     private void GainCollectible()
     {
+        
         if (m_currentExtractingCollectible == null)
         {
             return;
         }
-
+        
 
         m_collectibleInInventory = m_currentExtractingCollectible.Extract(m_workerState);
         

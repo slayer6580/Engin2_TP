@@ -29,6 +29,7 @@ GameObject:
   - component: {fileID: 1679354697617917206}
   - component: {fileID: 2773378714002216682}
   - component: {fileID: 3282192735997294772}
+  - component: {fileID: 7713766312125414705}
   m_Layer: 0
   m_Name: ConstructorBrain
   m_TagString: Untagged
@@ -63,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 0}
+  selectedEditorNode: {fileID: 7713766312125414705}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -103,7 +104,7 @@ MonoBehaviour:
     x: 260
     y: -75
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 0}
   children:
   - {fileID: 8165994264560643777}
@@ -184,7 +185,7 @@ MonoBehaviour:
     x: 224
     y: 295
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 1679354697617917206}
   children: []
   behaviourTree: {fileID: 0}
@@ -215,10 +216,11 @@ MonoBehaviour:
     x: 260
     y: 40
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 1446233749596396614}
   children:
   - {fileID: 2432623633859592052}
+  - {fileID: 7713766312125414705}
   - {fileID: 795480335615418303}
   - {fileID: 2773378714002216682}
   - {fileID: 8227020413171775031}
@@ -274,7 +276,7 @@ MonoBehaviour:
     x: 663
     y: 386
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 3924987229676762272}
   children: []
   behaviourTree: {fileID: 0}
@@ -301,10 +303,10 @@ MonoBehaviour:
   title: Get New Camp Position
   rect:
     serializedVersion: 2
-    x: -42.999985
-    y: 155
+    x: -240
+    y: 140
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 8165994264560643777}
   children: []
   behaviourTree: {fileID: 0}
@@ -340,7 +342,7 @@ MonoBehaviour:
     x: 127.000015
     y: 155
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 8165994264560643777}
   children: []
   behaviourTree: {fileID: 0}
@@ -378,7 +380,7 @@ MonoBehaviour:
     x: 641
     y: 160
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 8165994264560643777}
   children:
   - {fileID: 1683581075305111099}
@@ -405,7 +407,7 @@ MonoBehaviour:
     x: 573
     y: 233
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 8227020413171775031}
   children:
   - {fileID: 3924987229676762272}
@@ -436,7 +438,7 @@ MonoBehaviour:
     x: 743
     y: 233
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 8227020413171775031}
   children: []
   behaviourTree: {fileID: 0}
@@ -466,7 +468,7 @@ MonoBehaviour:
     x: 573
     y: 307
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 1683581075305111099}
   children:
   - {fileID: 7648906449712453415}
@@ -493,7 +495,7 @@ MonoBehaviour:
     x: 226
     y: 236
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 2773378714002216682}
   children:
   - {fileID: 6118387011072370879}
@@ -518,7 +520,7 @@ MonoBehaviour:
     x: 306
     y: 155
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 8165994264560643777}
   children:
   - {fileID: 1679354697617917206}
@@ -545,7 +547,7 @@ MonoBehaviour:
     x: 405
     y: 234
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 2773378714002216682}
   children: []
   behaviourTree: {fileID: 0}
@@ -556,6 +558,42 @@ MonoBehaviour:
     mode: 0
     blackboard: {fileID: 5490948263577424106}
     key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &7713766312125414705
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7be00bb964bf7354fb79184f85cdf495, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Check If No Camp
+  rect:
+    serializedVersion: 2
+    x: -60
+    y: 160
+    width: 160
+    height: 45
+  parent: {fileID: 8165994264560643777}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_assignedPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  m_workerTransform:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 5490948263577424106}
+    key: AgentTransform
     constantValue: {fileID: 0}
 --- !u!1 &1174697470459306767
 GameObject:
@@ -815,6 +853,9 @@ GameObject:
   - component: {fileID: 4123613395707178169}
   - component: {fileID: 5033294007304755884}
   - component: {fileID: 1436807623333854413}
+  - component: {fileID: 1347303275858661941}
+  - component: {fileID: 327251661990938131}
+  - component: {fileID: 5149287636885763007}
   m_Layer: 0
   m_Name: CollectorBrain
   m_TagString: Untagged
@@ -887,9 +928,9 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: -140
-    y: -220
+    y: -360
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 0}
   children:
   - {fileID: 4475834290022723365}
@@ -968,14 +1009,14 @@ MonoBehaviour:
   rect:
     serializedVersion: 2
     x: -140
-    y: -160
+    y: -300
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 4509307611025896770}
   children:
   - {fileID: 5033294007304755884}
   - {fileID: 4523286771224175348}
-  - {fileID: 2959212905807081376}
+  - {fileID: 1347303275858661941}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -1029,7 +1070,7 @@ MonoBehaviour:
     x: -251
     y: 176
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 6136042906815814339}
   children:
   - {fileID: 8375854160661154006}
@@ -1061,7 +1102,7 @@ MonoBehaviour:
     x: -492
     y: 482
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 4882599775530954222}
   children: []
   behaviourTree: {fileID: 0}
@@ -1129,7 +1170,7 @@ MonoBehaviour:
     x: -146
     y: 15.000015
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 4523286771224175348}
   children:
   - {fileID: 6136042906815814339}
@@ -1223,7 +1264,7 @@ MonoBehaviour:
     x: -40
     y: 96
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 2960785821425020124}
   children: []
   behaviourTree: {fileID: 0}
@@ -1283,7 +1324,7 @@ MonoBehaviour:
     x: 322
     y: 129.00002
     width: 160
-    height: 59
+    height: 45
   parent: {fileID: 622805383506023006}
   children: []
   behaviourTree: {fileID: 0}
@@ -1338,7 +1379,7 @@ MonoBehaviour:
     x: 380
     y: 35.000015
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 2959212905807081376}
   children:
   - {fileID: 9117839050213348453}
@@ -1365,8 +1406,8 @@ MonoBehaviour:
     x: 209
     y: -58.999985
     width: 160
-    height: 44
-  parent: {fileID: 4475834290022723365}
+    height: 45
+  parent: {fileID: 327251661990938131}
   children:
   - {fileID: 7819004553331426937}
   - {fileID: 622805383506023006}
@@ -1422,7 +1463,7 @@ MonoBehaviour:
     x: -140
     y: 480
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 4882599775530954222}
   children: []
   behaviourTree: {fileID: 0}
@@ -1458,7 +1499,7 @@ MonoBehaviour:
     x: 24
     y: 480
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 4882599775530954222}
   children: []
   behaviourTree: {fileID: 0}
@@ -1526,7 +1567,7 @@ MonoBehaviour:
     x: -251
     y: 101
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 2960785821425020124}
   children:
   - {fileID: 4882599775530954222}
@@ -1619,7 +1660,7 @@ MonoBehaviour:
     x: 527
     y: 131
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 622805383506023006}
   children:
   - {fileID: 1283616958625498596}
@@ -1676,7 +1717,7 @@ MonoBehaviour:
     x: -419
     y: -68
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 4475834290022723365}
   children:
   - {fileID: 1436807623333854413}
@@ -1701,7 +1742,7 @@ MonoBehaviour:
     x: -412
     y: 5.0000153
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 5033294007304755884}
   children: []
   behaviourTree: {fileID: 0}
@@ -1713,6 +1754,88 @@ MonoBehaviour:
     blackboard: {fileID: 4191507787326917845}
     key: Worker
     constantValue: {fileID: 0}
+--- !u!114 &1347303275858661941
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Selector
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: -260
+    width: 160
+    height: 45
+  parent: {fileID: 4475834290022723365}
+  children:
+  - {fileID: 327251661990938131}
+  - {fileID: 5149287636885763007}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &327251661990938131
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d95934ca074e174c97f732aeccc7978, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Is there still unmanaged ressources
+  rect:
+    serializedVersion: 2
+    x: 220
+    y: -160
+    width: 160
+    height: 59
+  parent: {fileID: 1347303275858661941}
+  children:
+  - {fileID: 2959212905807081376}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 4191507787326917845}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &5149287636885763007
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3560390117405055710}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4d3b2d3ab592a9648957fd4b9ed387bb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Return True
+  rect:
+    serializedVersion: 2
+    x: 415
+    y: -132
+    width: 160
+    height: 45
+  parent: {fileID: 1347303275858661941}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
 --- !u!1 &6177246556418889351
 GameObject:
   m_ObjectHideFlags: 0
@@ -1729,16 +1852,20 @@ GameObject:
   - component: {fileID: 5824262928323595318}
   - component: {fileID: 8908019512457806072}
   - component: {fileID: 816640233730470231}
-  - component: {fileID: 7940002035965276380}
-  - component: {fileID: 4589849685899036277}
-  - component: {fileID: 5640690358699923642}
-  - component: {fileID: 1535724342155945578}
-  - component: {fileID: 4914040867574076083}
-  - component: {fileID: 3117116250243160705}
-  - component: {fileID: 3481378739658409046}
-  - component: {fileID: 8922426174371007996}
-  - component: {fileID: 1213318016274803062}
-  - component: {fileID: 4756099913425915389}
+  - component: {fileID: 5091871775008572477}
+  - component: {fileID: 8210141278897686828}
+  - component: {fileID: 2300977503687440588}
+  - component: {fileID: 2627655833425468627}
+  - component: {fileID: 8662442654141329139}
+  - component: {fileID: 1148402898364634075}
+  - component: {fileID: 7909141958426769527}
+  - component: {fileID: 7225634998497398858}
+  - component: {fileID: 3797174137320160776}
+  - component: {fileID: 2505470966266262090}
+  - component: {fileID: 4114310448938265811}
+  - component: {fileID: 3230175684859035444}
+  - component: {fileID: 4674308747682182821}
+  - component: {fileID: 3935405838339990163}
   m_Layer: 0
   m_Name: EndphaseBrain
   m_TagString: Untagged
@@ -1773,7 +1900,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 1213318016274803062}
+  selectedEditorNode: {fileID: 0}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -1810,13 +1937,13 @@ MonoBehaviour:
   title: Root
   rect:
     serializedVersion: 2
-    x: -138
-    y: -294
+    x: -800
+    y: -680
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 0}
   children:
-  - {fileID: 3481378739658409046}
+  - {fileID: 4674308747682182821}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -1876,7 +2003,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   key: Worker
   val: {fileID: 8024679636586000092}
---- !u!114 &7940002035965276380
+--- !u!114 &5091871775008572477
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1885,66 +2012,28 @@ MonoBehaviour:
   m_GameObject: {fileID: 6177246556418889351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Script: {fileID: 11500000, guid: f8c53ee6548f63d40b3b16b66258b89a, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Sequence
+  title: Is in double mode
   rect:
     serializedVersion: 2
-    x: -267
-    y: -81
+    x: -480
+    y: -400
     width: 160
-    height: 44
-  parent: {fileID: 3117116250243160705}
-  children:
-  - {fileID: 4589849685899036277}
-  - {fileID: 5640690358699923642}
-  - {fileID: 1535724342155945578}
-  - {fileID: 4914040867574076083}
-  - {fileID: 8922426174371007996}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  random: 0
---- !u!114 &4589849685899036277
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6177246556418889351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00f01889f0b15e4428689a7ff644ce12, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Go to reserved ressource
-  rect:
-    serializedVersion: 2
-    x: -495
-    y: 80
-    width: 160
-    height: 44
-  parent: {fileID: 7940002035965276380}
+    height: 45
+  parent: {fileID: 0}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  transformToMove:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 500047919846587215}
-    key: AgentTransform
-    constantValue: {fileID: 0}
-  speed: 0.1
-  minDistance: 0
   m_workerGO:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 500047919846587215}
     key: Worker
     constantValue: {fileID: 0}
---- !u!114 &5640690358699923642
+--- !u!114 &8210141278897686828
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1953,17 +2042,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6177246556418889351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 05ab68fa68ed1a941a51d37706b39e4f, type: 3}
+  m_Script: {fileID: 11500000, guid: 52aca84337ca7ef49ad18dbed0fb3a3c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Wait till you collect the ressource
+  title: Set Worker As Double Mode
   rect:
     serializedVersion: 2
-    x: -318
-    y: 80
+    x: -60
+    y: -300
     width: 160
     height: 59
-  parent: {fileID: 7940002035965276380}
+  parent: {fileID: 2505470966266262090}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -1974,7 +2063,7 @@ MonoBehaviour:
     blackboard: {fileID: 500047919846587215}
     key: Worker
     constantValue: {fileID: 0}
---- !u!114 &1535724342155945578
+--- !u!114 &2300977503687440588
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1983,34 +2072,34 @@ MonoBehaviour:
   m_GameObject: {fileID: 6177246556418889351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 8a2a53ff8f5ced2489e9189031233505, type: 3}
+  m_Script: {fileID: 11500000, guid: 6f38c194eb110bb4bb090c85381f79c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Get Camp Position
+  title: Get nearest camp condition
   rect:
     serializedVersion: 2
-    x: -147
-    y: 82
+    x: -1520
+    y: -120
     width: 160
-    height: 44
-  parent: {fileID: 7940002035965276380}
+    height: 59
+  parent: {fileID: 8662442654141329139}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  m_assignedPosition:
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: Worker
+    constantValue: {fileID: 0}
+  m_nearestCampPos:
     useConstant: 0
     mode: 0
     blackboard: {fileID: 500047919846587215}
     key: TargetPosition2D
     constantValue: {x: 0, y: 0}
-  m_workerTransform:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 500047919846587215}
-    key: AgentTransform
-    constantValue: {fileID: 0}
---- !u!114 &4914040867574076083
+--- !u!114 &2627655833425468627
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2025,11 +2114,11 @@ MonoBehaviour:
   title: Move Towards 2D
   rect:
     serializedVersion: 2
-    x: 20
-    y: 83
+    x: -1340
+    y: -120
     width: 160
-    height: 44
-  parent: {fileID: 7940002035965276380}
+    height: 45
+  parent: {fileID: 8662442654141329139}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -2048,7 +2137,7 @@ MonoBehaviour:
     constantValue: {fileID: 0}
   speed: 0.1
   minDistance: 0
---- !u!114 &3117116250243160705
+--- !u!114 &8662442654141329139
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2057,56 +2146,30 @@ MonoBehaviour:
   m_GameObject: {fileID: 6177246556418889351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81b9813557b02634c8213c2cdfd25c05, type: 3}
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Worker have a designed ressource?
+  title: Sequence
   rect:
     serializedVersion: 2
-    x: -266.8
-    y: -160.20001
+    x: -800
+    y: -260
     width: 160
-    height: 59
-  parent: {fileID: 3481378739658409046}
+    height: 45
+  parent: {fileID: 3935405838339990163}
   children:
-  - {fileID: 7940002035965276380}
-  behaviourTree: {fileID: 0}
-  runtimePriority: 0
-  breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 500047919846587215}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &3481378739658409046
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 6177246556418889351}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 08540605df275034fafc8e05c6704214, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  title: Selector
-  rect:
-    serializedVersion: 2
-    x: -137.79999
-    y: -232.20001
-    width: 160
-    height: 44
-  parent: {fileID: 4692445209397192850}
-  children:
-  - {fileID: 3117116250243160705}
-  - {fileID: 1213318016274803062}
+  - {fileID: 2300977503687440588}
+  - {fileID: 2627655833425468627}
+  - {fileID: 1148402898364634075}
+  - {fileID: 3230175684859035444}
+  - {fileID: 7909141958426769527}
+  - {fileID: 7225634998497398858}
+  - {fileID: 3797174137320160776}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
   random: 0
---- !u!114 &8922426174371007996
+--- !u!114 &1148402898364634075
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2115,17 +2178,49 @@ MonoBehaviour:
   m_GameObject: {fileID: 6177246556418889351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a8961d1c070ced147adfde5d9af7ccd4, type: 3}
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Wait till you drop the ressource
+  title: Wait
   rect:
     serializedVersion: 2
-    x: 185.20001
-    y: 82.8
+    x: -1160
+    y: -120
+    width: 160
+    height: 45
+  parent: {fileID: 8662442654141329139}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  randomDeviation: 0
+  continueOnRestart: 0
+--- !u!114 &7909141958426769527
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52e7cda73914e294db0ed8fe0ebce214, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Find Nearest Known Ressource
+  rect:
+    serializedVersion: 2
+    x: -840
+    y: -120
     width: 160
     height: 59
-  parent: {fileID: 7940002035965276380}
+  parent: {fileID: 8662442654141329139}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -2136,7 +2231,13 @@ MonoBehaviour:
     blackboard: {fileID: 500047919846587215}
     key: Worker
     constantValue: {fileID: 0}
---- !u!114 &1213318016274803062
+  m_nearestRessource:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+--- !u!114 &7225634998497398858
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2145,29 +2246,94 @@ MonoBehaviour:
   m_GameObject: {fileID: 6177246556418889351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7576235a6911ac842bedad790f428fa8, type: 3}
+  m_Script: {fileID: 11500000, guid: 5153e1372194aba43b420cfc075cd285, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Find Remaining Suitable Ressource
+  title: Move Towards 2D
   rect:
     serializedVersion: 2
-    x: 70.20001
-    y: -155.20001
+    x: -660
+    y: -120
     width: 160
-    height: 59
-  parent: {fileID: 3481378739658409046}
+    height: 45
+  parent: {fileID: 8662442654141329139}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  targetPosition:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: TargetPosition2D
+    constantValue: {x: 0, y: 0}
+  transformToMove:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: AgentTransform
+    constantValue: {fileID: 0}
+  speed: 0.1
+  minDistance: 0
+--- !u!114 &3797174137320160776
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 58fe7bc6a9b18e148b82820c7c1c0a90, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Wait
+  rect:
+    serializedVersion: 2
+    x: -480
+    y: -120
+    width: 160
+    height: 45
+  parent: {fileID: 8662442654141329139}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  time:
+    useConstant: 1
+    mode: 0
+    blackboard: {fileID: 0}
+    key: 
+    constantValue: 1
+  randomDeviation: 0
+  continueOnRestart: 0
+--- !u!114 &2505470966266262090
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -180
+    y: -380
+    width: 160
+    height: 45
+  parent: {fileID: 0}
   children:
-  - {fileID: 4756099913425915389}
+  - {fileID: 8210141278897686828}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
-  m_workerGO:
-    useConstant: 0
-    mode: 0
-    blackboard: {fileID: 500047919846587215}
-    key: Worker
-    constantValue: {fileID: 0}
---- !u!114 &4756099913425915389
+  random: 0
+--- !u!114 &4114310448938265811
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -2176,17 +2342,17 @@ MonoBehaviour:
   m_GameObject: {fileID: 6177246556418889351}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 972372c47008c4a478b60e5bd93b3ee1, type: 3}
+  m_Script: {fileID: 11500000, guid: ed6be03fdc7cfa048a92c3bb0fc7ca67, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Get Nearest Camp From That Ressource
+  title: REmove Reserved Ressource
   rect:
     serializedVersion: 2
-    x: 71.20001
-    y: -74.2
+    x: -960
+    y: -480
     width: 160
     height: 59
-  parent: {fileID: 1213318016274803062}
+  parent: {fileID: 4674308747682182821}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -2197,6 +2363,90 @@ MonoBehaviour:
     blackboard: {fileID: 500047919846587215}
     key: Worker
     constantValue: {fileID: 0}
+--- !u!114 &3230175684859035444
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ed6be03fdc7cfa048a92c3bb0fc7ca67, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Remove Reserved Ressource
+  rect:
+    serializedVersion: 2
+    x: -1000
+    y: -120
+    width: 160
+    height: 59
+  parent: {fileID: 8662442654141329139}
+  children: []
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  m_workerGO:
+    useConstant: 0
+    mode: 0
+    blackboard: {fileID: 500047919846587215}
+    key: Worker
+    constantValue: {fileID: 0}
+--- !u!114 &4674308747682182821
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4c78c7da6b00e1b46bad07949050f82f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Sequence
+  rect:
+    serializedVersion: 2
+    x: -800
+    y: -560
+    width: 160
+    height: 45
+  parent: {fileID: 4692445209397192850}
+  children:
+  - {fileID: 4114310448938265811}
+  - {fileID: 3935405838339990163}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  random: 0
+--- !u!114 &3935405838339990163
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 6177246556418889351}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 056841afaed742d4e909e76361b5173f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Repeater
+  rect:
+    serializedVersion: 2
+    x: -760
+    y: -440
+    width: 160
+    height: 45
+  parent: {fileID: 4674308747682182821}
+  children:
+  - {fileID: 8662442654141329139}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
+  loops: 1
+  infinite: 1
 --- !u!1 &7367874694531944036
 GameObject:
   m_ObjectHideFlags: 0
@@ -2423,7 +2673,7 @@ MonoBehaviour:
     x: 444
     y: 168.99998
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 0}
   children:
   - {fileID: 7487259782675157115}
@@ -2476,7 +2726,7 @@ MonoBehaviour:
     x: 446
     y: 242
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 2091507204910816275}
   children:
   - {fileID: 1332684680197837570}
@@ -2573,7 +2823,7 @@ MonoBehaviour:
     x: 529
     y: 312.00006
     width: 160
-    height: 44
+    height: 45
   parent: {fileID: 7487259782675157115}
   children: []
   behaviourTree: {fileID: 0}
@@ -2652,6 +2902,7 @@ MonoBehaviour:
   m_workerDirection: 4
   hasCollectibleReserverd: 0
   m_campPosition: {x: Infinity, y: Infinity}
+  m_doubleMode: 0
 --- !u!212 &1261728512577390039
 SpriteRenderer:
   m_ObjectHideFlags: 0
