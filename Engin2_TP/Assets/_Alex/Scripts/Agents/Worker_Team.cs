@@ -14,7 +14,7 @@ public class Worker_Team : MonoBehaviour
     private Collectible_Team m_currentExtractingCollectible;
 
     private Color32 m_noRessourceColor = new Color32(255, 255, 0, 255); // yellow
-    private Color32 m_ressourceColor = new Color32(0, 0, 255, 255);  // bleu
+    private Color32 m_ressourceColor = new Color32(0, 0, 255, 255);  // blue
     private Color32 m_specialRessourceColor = new Color32(255, 0, 0, 255);  // red
 
     public Collecting_Manager collecting_manager;
@@ -22,19 +22,17 @@ public class Worker_Team : MonoBehaviour
 
     private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState != EWorkerState.exploring ;
 
-    /*[HideInInspector]*/ public Collectible_Team m_reservedCollectible = null;      //ReadOnly
-    /*[HideInInspector]*/ public ECollectibleType m_collectibleInInventory = ECollectibleType.None;     //ReadOnly
+    public Collectible_Team m_reservedCollectible = null;
+    public ECollectibleType m_collectibleInInventory = ECollectibleType.None;
 
     // Pour exploration initiale
     public EWorkerState m_workerState = EWorkerState.none;
     [HideInInspector] public EDirection m_workerDirection = EDirection.left;
 
     [SerializeField]
-    public bool hasCollectibleReserverd;        //ReadOnly
-
+    public bool hasCollectibleReserverd;
     public Vector2 m_campPosition = Vector2.positiveInfinity;
   
-
 	private void OnValidate()
     {
         m_radiusDebugTransform.localScale = new Vector3(m_radius, m_radius, m_radius);
@@ -81,15 +79,6 @@ public class Worker_Team : MonoBehaviour
             //Start countdown to collect it
         }
 
-        /*
-        if (m_workerState == EWorkerState.endPhase)
-        {
-            m_currentExtractingCollectible = collectible;
-            m_currentActionDuration = EXTRACTION_DURATION;
-            m_isInExtraction = true;
-
-        }
-        */
         Camp_Team camp = collision.GetComponent<Camp_Team>();
         if (camp != null && m_collectibleInInventory != ECollectibleType.None)
         {
@@ -184,6 +173,4 @@ public enum EDirection
     right,
     up,
     down,
-
-
 }

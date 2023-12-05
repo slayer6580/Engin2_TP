@@ -177,19 +177,12 @@ public class TeamOrchestrator_Team : MonoBehaviour
             SetClosestWorkerToRessource();
 			m_newWorkerIsNecessary = false;
 			nbsOfWorkers = 0;
-			//nbsOfWorkers = ((MAX_SPAWNABLE_WORKERS * mapDimensionScale) + (MAX_SPAWNABLE_WORKERS * simulationDurationScale)) / 2;
 		}
 
-        //Pas la facon la plus optimal donc feel free de changer
-        //nbsOfWorkers = Mathf.Clamp(nbsOfWorkers, 0, numberOfRessourcePossible);
-
-        //int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_SPAWNABLE_WORKERS));
-
+       
         // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbsOfWorkers;
 
-
-		// TODO spawn un lot de 4 workers et moins a la fois sur une petite durée
 		for (int i = 0; i < nbsOfWorkers; i++)
         {
             GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
@@ -217,7 +210,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
                     if(worker.m_workerState == EWorkerState.exploring)
                     {
 						float tempDistance = Vector2.Distance(ressource.transform.position, worker.transform.position);
-						// trouver le camp le plus proche
+						
 						if (tempDistance < distance)
 						{
 							closestWorker = worker;
@@ -234,10 +227,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
                     ressource.m_associatedCamp = Vector2.zero;
 					SetWorkerToCollecting(closestWorker);
 				}
-                
-
 			}
 		}
     }
-
 }

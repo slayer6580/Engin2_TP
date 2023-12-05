@@ -49,8 +49,5 @@ public class FindRemainingSuitableRessource : Condition
         }
 
         return false;
-
-    }
-
-  
+    } 
 }

@@ -10,6 +10,8 @@ public class Collectible_Team : MonoBehaviour
     public bool m_hasBeenPickedInTheLastFiveSeconds = false;
     public Vector2 m_associatedCamp = Vector2.positiveInfinity;
 	public List<Worker_Team> m_endGameAssociatedWorkerList = new List<Worker_Team>();
+
+
 	public ECollectibleType Extract(EWorkerState state)
     {
         if (m_currentCooldown < 0.0f)

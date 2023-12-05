@@ -18,8 +18,6 @@ namespace MBT
             Vector2 campPos = m_workerTransform.Value.gameObject.GetComponent<Worker_Team>().m_campPosition;
             m_assignedPosition.Value = campPos;
 
-            //Collecting_Manager._Instance.m_campList.Add(campPos);
-
 			return NodeResult.success;
         }
     }

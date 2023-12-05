@@ -21,7 +21,7 @@ public class Exploring_Manager : MonoBehaviour
     [HideInInspector] public bool m_explorationIsDone = false;
 
     private const int MAX_WORKER = 40;
-    private const int RESSOURCE_TO_FOUND_TO_STOP_EXPLORING = 60;    //Bigger than max nb of worker
+    //private const int RESSOURCE_TO_FOUND_TO_STOP_EXPLORING = 60;    //Bigger than max nb of worker
 
 
     public static Exploring_Manager _Instance
@@ -45,7 +45,6 @@ public class Exploring_Manager : MonoBehaviour
         {
             CheckIfExploratorsAreDoneExploring();
             StopExploringWhenEnoughRessourceFound();
-
 		}
     }
 
@@ -53,7 +52,6 @@ public class Exploring_Manager : MonoBehaviour
     {
 
         GetMapDimensionAndZoneLength();
-       // EvaluateWhenStopExploring();
         SetZonePositionsForList();
 
         for (int i = 0; i < m_zoneLenght; i++)
@@ -159,7 +157,6 @@ public class Exploring_Manager : MonoBehaviour
     // calcule un temps d'arret de l'exploration
     private void EvaluateWhenStopExploring()
     {
-        //TODO améliorer fonction
         int minDuration = MapGenerator.SimulationDuration.GetMin(); // 10
         int maxDuration = MapGenerator.SimulationDuration.GetMax(); // 1000
         int mapDuration = MapGenerator.SimulationDuration.Value;
@@ -192,8 +189,6 @@ public class Exploring_Manager : MonoBehaviour
             }
         }
 
-		
-
 		int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
         int workerCount = TeamOrchestrator_Team._Instance.WorkersList.Count;
 		int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
@@ -202,10 +197,6 @@ public class Exploring_Manager : MonoBehaviour
         {
             return;
         }
-
-  
-			
-
     }  
 
     // Fonction qui calcule le pourcentage de la map explorer
@@ -244,7 +235,6 @@ public class Exploring_Manager : MonoBehaviour
 
 	private void StopExploringWhenEnoughRessourceFound()
 	{
-
         if (Collecting_Manager._Instance.KnownCollectibles.Count >= (int)(TeamOrchestrator_Team._Instance.WorkersList.Count * 1.5f))
 		{
 			WorkersStopExploringAndSpawnCollectors();
