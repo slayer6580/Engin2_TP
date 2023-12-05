@@ -33,7 +33,7 @@ public class Worker_Team : MonoBehaviour
     public bool hasCollectibleReserverd;        //ReadOnly
 
     public Vector2 m_campPosition = Vector2.positiveInfinity;
-    public bool m_doubleMode = false;
+  
 
 	private void OnValidate()
     {

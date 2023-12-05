@@ -42,6 +42,10 @@ public class Collecting_Manager : MonoBehaviour
             PredictRessourceDistance();
         }
 
+        if (KnownCollectibles.Count > 2 && TeamOrchestrator_Team._Instance.m_newWorkerIsNecessary == false)
+        {
+            TeamOrchestrator_Team._Instance.SetClosestWorkerToRessource();
+		}
         Debug.Log("Collectible added");
     }
 

@@ -18,6 +18,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
 
 
     [HideInInspector] public float m_remainingTime;
+    [HideInInspector] public bool m_newWorkerIsNecessary = true;
     private int m_score = 0;
     private bool m_workersAlreadySpawnBasedOnPrediction = false;
 
@@ -164,14 +165,17 @@ public class TeamOrchestrator_Team : MonoBehaviour
 		if (m_remainingTime > (timeForAWorkerToPayForPartOfCamp + timeForAWorkerToPayForHimself)) // new
         {
             nbsOfWorkers = numberOfRessourcePossible;
+            m_newWorkerIsNecessary = true;
 
-            if (nbsOfWorkers > MAX_SPAWNABLE_WORKERS)
+			if (nbsOfWorkers > MAX_SPAWNABLE_WORKERS)
             {
                 nbsOfWorkers = MAX_SPAWNABLE_WORKERS;
             }
         }
         else
         {
+            SetClosestWorkerToRessource();
+			m_newWorkerIsNecessary = false;
 			nbsOfWorkers = 0;
 			//nbsOfWorkers = ((MAX_SPAWNABLE_WORKERS * mapDimensionScale) + (MAX_SPAWNABLE_WORKERS * simulationDurationScale)) / 2;
 		}
@@ -192,6 +196,48 @@ public class TeamOrchestrator_Team : MonoBehaviour
             OnWorkerCreated();
             newWorker.transform.SetParent(transform);
         }
+    }
+
+    public void SetWorkerToCollecting(Worker_Team worker)
+    {
+        worker.m_workerState = EWorkerState.collecting;
+    }
+
+    public void SetClosestWorkerToRessource()
+    {
+        foreach(Collectible_Team ressource in Collecting_Manager._Instance.KnownCollectibles)
+        {
+
+			if(ressource.m_designedWorker == null)
+            {
+				float distance = float.PositiveInfinity;
+                Worker_Team closestWorker = null;
+                foreach(Worker_Team worker in WorkersList)
+                {
+                    if(worker.m_workerState == EWorkerState.exploring)
+                    {
+						float tempDistance = Vector2.Distance(ressource.transform.position, worker.transform.position);
+						// trouver le camp le plus proche
+						if (tempDistance < distance)
+						{
+							closestWorker = worker;
+							distance = tempDistance;
+						}
+					}				
+				}
+
+                if(closestWorker != null)
+                {
+                    closestWorker.m_reservedCollectible = ressource;
+                    closestWorker.m_campPosition = Vector2.zero;
+                    ressource.m_designedWorker = closestWorker;
+                    ressource.m_associatedCamp = Vector2.zero;
+					SetWorkerToCollecting(closestWorker);
+				}
+                
+
+			}
+		}
     }
 
 }
