@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
@@ -8,8 +9,8 @@ public class Collectible_Team : MonoBehaviour
     [HideInInspector] public Worker_Team m_designedWorker = null;
     public bool m_hasBeenPickedInTheLastFiveSeconds = false;
     public Vector2 m_associatedCamp = Vector2.positiveInfinity;
-    
-    public ECollectibleType Extract(EWorkerState state)
+	public List<Worker_Team> m_endGameAssociatedWorkerList = new List<Worker_Team>();
+	public ECollectibleType Extract(EWorkerState state)
     {
         if (m_currentCooldown < 0.0f)
         {

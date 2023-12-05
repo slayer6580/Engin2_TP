@@ -16,10 +16,15 @@ public class FindNearestKnownRessource : Leaf
 
 		float minDistance = float.PositiveInfinity;
 		bool suitableRessourceExist = false;
-
+		Collectible_Team chosenRessource = null;
 
 		foreach (Collectible_Team ressource in Collecting_Manager._Instance.KnownCollectibles)
 		{
+			if(ressource.GetComponent<Collectible_Team>().m_endGameAssociatedWorkerList.Count >= 2)
+			{
+				continue;
+			}
+
 			float tempDistance = Vector2.Distance(ressource.transform.position, m_workerGO.Value.transform.position);
 			// trouver le camp le plus proche
 			if (tempDistance < minDistance)
@@ -28,11 +33,13 @@ public class FindNearestKnownRessource : Leaf
 				m_nearestRessource.Value = ressource.transform.position;
 				minDistance = tempDistance;
 				suitableRessourceExist = true;
+				chosenRessource = ressource;
 			}
 		}
 
 		if (suitableRessourceExist)
 		{
+			chosenRessource.GetComponent<Collectible_Team>().m_endGameAssociatedWorkerList.Add(m_workerGO.Value.GetComponent<Worker_Team>());
 			return NodeResult.success;
 		}
 

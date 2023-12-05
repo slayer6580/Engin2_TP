@@ -30,6 +30,7 @@ GameObject:
   - component: {fileID: 2773378714002216682}
   - component: {fileID: 3282192735997294772}
   - component: {fileID: 7713766312125414705}
+  - component: {fileID: 3803734079798275668}
   m_Layer: 0
   m_Name: ConstructorBrain
   m_TagString: Untagged
@@ -64,7 +65,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b25af8627659c6949b60949c3aa8d91d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  selectedEditorNode: {fileID: 7713766312125414705}
+  selectedEditorNode: {fileID: 3803734079798275668}
   repeatOnFinish: 1
   maxExecutionsPerTick: 60
   parent: {fileID: 6576822107427613505}
@@ -182,11 +183,11 @@ MonoBehaviour:
   title: Place Camp
   rect:
     serializedVersion: 2
-    x: 224
-    y: 295
+    x: 203
+    y: 443
     width: 160
     height: 45
-  parent: {fileID: 1679354697617917206}
+  parent: {fileID: 3803734079798275668}
   children: []
   behaviourTree: {fileID: 0}
   runtimePriority: 0
@@ -303,8 +304,8 @@ MonoBehaviour:
   title: Get New Camp Position
   rect:
     serializedVersion: 2
-    x: -240
-    y: 140
+    x: -260
+    y: 160
     width: 160
     height: 45
   parent: {fileID: 8165994264560643777}
@@ -492,13 +493,13 @@ MonoBehaviour:
   title: Can Place Camp
   rect:
     serializedVersion: 2
-    x: 226
-    y: 236
+    x: 200
+    y: 240
     width: 160
     height: 45
   parent: {fileID: 2773378714002216682}
   children:
-  - {fileID: 6118387011072370879}
+  - {fileID: 3803734079798275668}
   behaviourTree: {fileID: 0}
   runtimePriority: 0
   breakpoint: 0
@@ -574,7 +575,7 @@ MonoBehaviour:
   title: Check If No Camp
   rect:
     serializedVersion: 2
-    x: -60
+    x: -80
     y: 160
     width: 160
     height: 45
@@ -595,6 +596,31 @@ MonoBehaviour:
     blackboard: {fileID: 5490948263577424106}
     key: AgentTransform
     constantValue: {fileID: 0}
+--- !u!114 &3803734079798275668
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 30566971199137537}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f2b87ad07d96ad5408288f652f1d5cdd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Is Camp Worth It
+  rect:
+    serializedVersion: 2
+    x: 201
+    y: 347
+    width: 160
+    height: 45
+  parent: {fileID: 1679354697617917206}
+  children:
+  - {fileID: 6118387011072370879}
+  behaviourTree: {fileID: 0}
+  runtimePriority: 0
+  breakpoint: 0
 --- !u!1 &1174697470459306767
 GameObject:
   m_ObjectHideFlags: 0

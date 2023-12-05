@@ -153,7 +153,15 @@ public class TeamOrchestrator_Team : MonoBehaviour
 
         int nbsOfWorkers;
 
-        if (m_remainingTime > (int)(MapGenerator.CampCost.GetValue() / 4) * 5 + 100) // new
+		int tripTime = (int)Mathf.Floor(((distancePredicted / Collecting_Manager._Instance.WORKER_SPEED_BY_SECOND) * 2) + 2);
+		if (tripTime < 5) tripTime = 5;
+
+
+		float timeForAWorkerToPayForHimself = tripTime *20;
+		float timeForAWorkerToPayForPartOfCamp = (tripTime * MapGenerator.CampCost.GetValue())/4;   //Assuming there will be 4 worker on 1 camp
+		
+
+		if (m_remainingTime > (timeForAWorkerToPayForPartOfCamp + timeForAWorkerToPayForHimself)) // new
         {
             nbsOfWorkers = numberOfRessourcePossible;
 
@@ -176,8 +184,9 @@ public class TeamOrchestrator_Team : MonoBehaviour
         // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbsOfWorkers;
 
-        // TODO spawn un lot de 4 workers et moins a la fois sur une petite durée
-        for (int i = 0; i < nbsOfWorkers; i++)
+
+		// TODO spawn un lot de 4 workers et moins a la fois sur une petite durée
+		for (int i = 0; i < nbsOfWorkers; i++)
         {
             GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
             OnWorkerCreated();
