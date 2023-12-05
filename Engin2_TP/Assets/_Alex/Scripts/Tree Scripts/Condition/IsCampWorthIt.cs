@@ -11,7 +11,7 @@ public class IsCampWorthIt : Condition
         float workerSpeed = Collecting_Manager._Instance.WORKER_SPEED_BY_SECOND;
         int campCost = MapGenerator.CampCost.Value;
 
-        int tripTime = (int)Mathf.Floor(((distBetweenRessource / workerSpeed) * 2) + 2);
+        int tripTime = (int)Mathf.Floor(((distBetweenRessource / workerSpeed)) + 2);
 
         if (tripTime < 5) tripTime = 5;
 
@@ -22,9 +22,10 @@ public class IsCampWorthIt : Condition
 
         if ((possiblePointByWorker * 4) > campCost)
         {
+            print("WORTH IT");
             return true;
         }
-
-        return false;
+		print("DONT -- WORTH IT");
+		return false;
     }
 }

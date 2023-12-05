@@ -194,20 +194,4 @@ public class TeamOrchestrator_Team : MonoBehaviour
         }
     }
 
-    // Fonction qui spawn des collector manquant a la fin de l'exploration
-    public void SpawnCollectingWorker(int numberToSpawn)
-    {
-
-        for (int i = 0; i < numberToSpawn; i++)
-        {
-            // spawner un collecteur
-            GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
-            OnWorkerCreated();
-            newWorker.transform.SetParent(transform);
-
-
-        }
-
-    }
-
 }

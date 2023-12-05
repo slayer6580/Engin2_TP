@@ -10,7 +10,7 @@ public class Collecting_Manager : MonoBehaviour
     public float WORKER_SPEED_BY_SECOND = 4.8076f;
 
    [HideInInspector] public bool m_predictionDistanceDone = false;
-   [HideInInspector] public float m_predictionDistance;
+    public float m_predictionDistance;
     
     public static Collecting_Manager _Instance
     {

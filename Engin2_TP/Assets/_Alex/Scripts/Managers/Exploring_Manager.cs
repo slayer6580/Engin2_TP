@@ -203,16 +203,7 @@ public class Exploring_Manager : MonoBehaviour
             return;
         }
 
-        
-
-		if (TeamOrchestrator_Team._Instance.m_remainingTime > (int)(MapGenerator.CampCost.GetValue() / 4) * 5 + 100)
-        {
-			if (numberOfCollectorToSpawn + workerCount > MAX_WORKER)
-			{
-				numberOfCollectorToSpawn = MAX_WORKER - workerCount;
-			}
-			TeamOrchestrator_Team._Instance.SpawnCollectingWorker(numberOfCollectorToSpawn);
-		}
+  
 			
 
     }  
