@@ -5,7 +5,6 @@ public class Constructing_Manager : MonoBehaviour
 {
     public List<Camp_Team> Camps { get; private set; } = new List<Camp_Team>();
     [Header("Plus ce chiffre es haut, plus loin un worker cherchera une ressource")]
-    public int m_campDistanceByCostMultiplier;
 
     private const float MIN_OBJECTS_DISTANCE = 2.0f;
 

@@ -36,8 +36,7 @@ public class SearchForUnexploredZone : Leaf
 
 
         if (CheckZoneAtRightDirection(workerDirection))
-        {
-            Debug.Log("worker find a zone at is right");
+        {           
             if (worker.m_extraExplorator == true)
             {
                 worker.m_extraExplorator = false;
@@ -46,12 +45,11 @@ public class SearchForUnexploredZone : Leaf
         }
         else if (CheckZoneAtFrontDirectionExtra(workerDirection) && worker.m_extraExplorator == true)
         {
-            Debug.Log("worker find a zone at is front");
+        
             return;
         }
         else if (CheckZoneAtFrontDirection(workerDirection))
-        {
-            Debug.Log("worker find a zone at is front");
+        {    
             if (worker.m_extraExplorator == true)
             {
                 worker.m_extraExplorator = false;
@@ -60,7 +58,6 @@ public class SearchForUnexploredZone : Leaf
         }
         else if (CheckZoneAtLeftDirection(workerDirection))
         {
-            Debug.Log("worker find a zone at is left");
             if (worker.m_extraExplorator == true)
             {
                 worker.m_extraExplorator = false;
@@ -116,7 +113,6 @@ public class SearchForUnexploredZone : Leaf
             return true;
         }
 
-
         return false;
 
     }
@@ -134,7 +130,6 @@ public class SearchForUnexploredZone : Leaf
         {
             return true;
         }
-
 
         return false;
 

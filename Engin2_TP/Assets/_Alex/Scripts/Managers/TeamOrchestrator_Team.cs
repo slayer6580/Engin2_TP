@@ -12,10 +12,8 @@ public class TeamOrchestrator_Team : MonoBehaviour
 
     [SerializeField] private TextMeshProUGUI m_scoreText;
     [SerializeField] private TextMeshProUGUI m_remainingTimeText;
-    [SerializeField] private TextMeshProUGUI m_numberOfWorkersText;
     [SerializeField] private float m_timeScale;
     [SerializeField] private GameObject m_workersPrefab;
-
 
     [HideInInspector] public float m_remainingTime;
     [HideInInspector] public bool m_newWorkerIsNecessary = true;
@@ -23,6 +21,9 @@ public class TeamOrchestrator_Team : MonoBehaviour
     private bool m_workersAlreadySpawnBasedOnPrediction = false;
 
     private const int STARTING_WORKER = 5;
+    private const int MAX_WORKER_PER_CAMP = 4;
+    private const int PRICE_OF_WORKER = 20;
+    private const int MIN_SECONDS_FOR_REGULAR_COLLECT = 5;
 
     public static TeamOrchestrator_Team _Instance
     {
@@ -53,8 +54,6 @@ public class TeamOrchestrator_Team : MonoBehaviour
 
         m_remainingTime -= Time.deltaTime;
         m_remainingTimeText.text = "Remaining time: " + m_remainingTime.ToString("#.00");
-        m_numberOfWorkersText.text = "Number of workers: " + WorkersList.Count;
-
         CheckIfGameEnd();
     }
 
@@ -63,7 +62,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
     {
         return m_remainingTime;
     }
-    // Code a Max
+
     private void CheckIfGameEnd()
     {
         if (MapGenerator.SimulationDuration.Value < Time.timeSinceLevelLoad)
@@ -72,7 +71,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
         }
     }
 
-    // Code a Max
+
     public void GainResource(ECollectibleType collectibleType)
     {
         if (collectibleType == ECollectibleType.Regular)
@@ -84,11 +83,10 @@ public class TeamOrchestrator_Team : MonoBehaviour
             m_score += SPECIAL_SCORE;
         }
 
-        // Debug.Log("New score = " + m_score);
         m_scoreText.text = "Score: " + m_score.ToString();
     }
 
-    // Code a Max
+
     public void OnGameEnded()
     {
         PrintTextFile();
@@ -98,7 +96,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
         Application.Quit();
     }
 
-    // Code a Max
+
     private void PrintTextFile()
     {
         string path = Application.persistentDataPath + "/Results.txt";
@@ -110,20 +108,19 @@ public class TeamOrchestrator_Team : MonoBehaviour
 #endif
     }
 
-    // Code a Max
+
     public void OnCampPlaced()
     {
         m_score -= MapGenerator.CampCost.Value;
     }
 
-    // Code a Max
+
     public void OnWorkerCreated()
     {
-        //TODO élèves. À vous de trouver quand utiliser cette méthode et l'utiliser.
         m_score -= MapGenerator.WORKER_COST;
     }
 
-    // Fonction de départ qui spawn mes 5 workers principal.
+
     private void SpawnStartingWorkers()
     {
         for (int i = 0; i < STARTING_WORKER; i++)
@@ -133,7 +130,7 @@ public class TeamOrchestrator_Team : MonoBehaviour
         }
     }
 
-    // Fonction qui spawn des explorator selon une prédiction de collectible
+
     public void SpawnExplorerBasedOnPredictionDistance(float distancePredicted)
     {
         if (m_workersAlreadySpawnBasedOnPrediction)
@@ -142,27 +139,24 @@ public class TeamOrchestrator_Team : MonoBehaviour
         }
         m_workersAlreadySpawnBasedOnPrediction = true;
 
-        //TODO améliorer la formule pour résultat plus efficace (avec temps restant aussi)
+ 
         int mapDimension = MapGenerator.MapDimension.Value;
-        float mapDimensionScale = (float)mapDimension / 600; //600 = max
 
         int timeLeft = MapGenerator.SimulationDuration.GetValue();
-        float simulationDurationScale = (float)timeLeft / 1000; //1000 = max
 
         int numberOfRessourcePossibleInZoneLenght = mapDimension / (int)distancePredicted;
         int numberOfRessourcePossible = (int)Mathf.Pow(numberOfRessourcePossibleInZoneLenght, 2);
 
         int nbsOfWorkers;
 
-		int tripTime = (int)Mathf.Floor(((distancePredicted / Collecting_Manager._Instance.WORKER_SPEED_BY_SECOND) * 2) + 2);
-		if (tripTime < 5) tripTime = 5;
+		int tripTime = (int)Mathf.Floor((distancePredicted / Collecting_Manager._Instance.WORKER_SPEED_BY_SECOND) + 2);
+		if (tripTime < MIN_SECONDS_FOR_REGULAR_COLLECT) tripTime = MIN_SECONDS_FOR_REGULAR_COLLECT;
 
-
-		float timeForAWorkerToPayForHimself = tripTime *20;
-		float timeForAWorkerToPayForPartOfCamp = (tripTime * MapGenerator.CampCost.GetValue())/4;   //Assuming there will be 4 worker on 1 camp
+		float timeForAWorkerToPayForHimself = tripTime * PRICE_OF_WORKER;
+		float timeForAWorkerToPayForPartOfCamp = (tripTime * MapGenerator.CampCost.GetValue())/ MAX_WORKER_PER_CAMP;
 		
 
-		if (m_remainingTime > (timeForAWorkerToPayForPartOfCamp + timeForAWorkerToPayForHimself)) // new
+		if (m_remainingTime > (timeForAWorkerToPayForPartOfCamp + timeForAWorkerToPayForHimself)) 
         {
             nbsOfWorkers = numberOfRessourcePossible;
             m_newWorkerIsNecessary = true;
@@ -177,19 +171,10 @@ public class TeamOrchestrator_Team : MonoBehaviour
             SetClosestWorkerToRessource();
 			m_newWorkerIsNecessary = false;
 			nbsOfWorkers = 0;
-			//nbsOfWorkers = ((MAX_SPAWNABLE_WORKERS * mapDimensionScale) + (MAX_SPAWNABLE_WORKERS * simulationDurationScale)) / 2;
 		}
 
-        //Pas la facon la plus optimal donc feel free de changer
-        //nbsOfWorkers = Mathf.Clamp(nbsOfWorkers, 0, numberOfRessourcePossible);
-
-        //int nbOfNewExplorator = (int)Mathf.Round(Mathf.Clamp(nbsOfWorkers, 0, MAX_SPAWNABLE_WORKERS));
-
-        // Spawn le nombre d'explorateur selon la formule du haut
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbsOfWorkers;
 
-
-		// TODO spawn un lot de 4 workers et moins a la fois sur une petite durée
 		for (int i = 0; i < nbsOfWorkers; i++)
         {
             GameObject newWorker = Instantiate(m_workersPrefab, new Vector2(0, 0), transform.rotation);
@@ -198,8 +183,12 @@ public class TeamOrchestrator_Team : MonoBehaviour
         }
     }
 
-    public void SetWorkerToCollecting(Worker_Team worker)
+    public void SetWorkerToCollecting(Worker_Team worker, Collectible_Team ressource)
     {
+        worker.m_reservedCollectible = ressource;
+        worker.m_campPosition = Vector2.zero;
+        ressource.m_designedWorker = worker;
+        ressource.m_associatedCamp = Vector2.zero;
         worker.m_workerState = EWorkerState.collecting;
     }
 
@@ -207,17 +196,17 @@ public class TeamOrchestrator_Team : MonoBehaviour
     {
         foreach(Collectible_Team ressource in Collecting_Manager._Instance.KnownCollectibles)
         {
-
 			if(ressource.m_designedWorker == null)
             {
 				float distance = float.PositiveInfinity;
                 Worker_Team closestWorker = null;
+
                 foreach(Worker_Team worker in WorkersList)
                 {
                     if(worker.m_workerState == EWorkerState.exploring)
                     {
 						float tempDistance = Vector2.Distance(ressource.transform.position, worker.transform.position);
-						// trouver le camp le plus proche
+					
 						if (tempDistance < distance)
 						{
 							closestWorker = worker;
@@ -227,15 +216,10 @@ public class TeamOrchestrator_Team : MonoBehaviour
 				}
 
                 if(closestWorker != null)
-                {
-                    closestWorker.m_reservedCollectible = ressource;
-                    closestWorker.m_campPosition = Vector2.zero;
-                    ressource.m_designedWorker = closestWorker;
-                    ressource.m_associatedCamp = Vector2.zero;
-					SetWorkerToCollecting(closestWorker);
+                {               
+					SetWorkerToCollecting(closestWorker, ressource);
 				}
-                
-
+             
 			}
 		}
     }

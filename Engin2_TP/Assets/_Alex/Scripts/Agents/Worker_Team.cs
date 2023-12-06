@@ -4,8 +4,8 @@ public class Worker_Team : MonoBehaviour
 {
     private const float EXTRACTION_DURATION = 1.0f;
     private const float DEPOSIT_DURATION = 1.0f;
+    private const float RADIUS = 5.0f;
 
-    [SerializeField] private float m_radius = 5.0f;
     [SerializeField] private Transform m_radiusDebugTransform;
 
     private bool m_isInDepot = false;
@@ -13,31 +13,24 @@ public class Worker_Team : MonoBehaviour
     private float m_currentActionDuration = 0.0f;
     private Collectible_Team m_currentExtractingCollectible;
 
-    private Color32 m_noRessourceColor = new Color32(255, 255, 0, 255); // yellow
-    private Color32 m_ressourceColor = new Color32(0, 0, 255, 255);  // bleu
-    private Color32 m_specialRessourceColor = new Color32(255, 0, 0, 255);  // red
+    private Color32 m_yellowColor = new Color32(255, 255, 0, 255); 
+    private Color32 m_blueColor = new Color32(0, 0, 255, 255);  
+    private Color32 m_redColor = new Color32(255, 0, 0, 255);  
 
-    public Collecting_Manager collecting_manager;
+    [HideInInspector] public Collecting_Manager collecting_manager;
     [HideInInspector] public bool m_extraExplorator = false;
-
-    private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState != EWorkerState.exploring ;
-
-    /*[HideInInspector]*/ public Collectible_Team m_reservedCollectible = null;      //ReadOnly
-    /*[HideInInspector]*/ public ECollectibleType m_collectibleInInventory = ECollectibleType.None;     //ReadOnly
-
-    // Pour exploration initiale
-    public EWorkerState m_workerState = EWorkerState.none;
+    [HideInInspector] public EWorkerState m_workerState = EWorkerState.none;
+    [HideInInspector] public Collectible_Team m_reservedCollectible = null;    
+    [HideInInspector] public ECollectibleType m_collectibleInInventory = ECollectibleType.None;    
     [HideInInspector] public EDirection m_workerDirection = EDirection.left;
+    [HideInInspector] public Vector2 m_campPosition = Vector2.positiveInfinity;
 
-    [SerializeField]
-    public bool hasCollectibleReserverd;        //ReadOnly
+    private bool m_isCollectingAndEmptyHands => m_collectibleInInventory == ECollectibleType.None && m_workerState != EWorkerState.exploring;
 
-    public Vector2 m_campPosition = Vector2.positiveInfinity;
-  
 
-	private void OnValidate()
+    private void OnValidate()
     {
-        m_radiusDebugTransform.localScale = new Vector3(m_radius, m_radius, m_radius);
+        m_radiusDebugTransform.localScale = new Vector3(RADIUS, RADIUS, RADIUS);
     }
 
     private void Start()
@@ -49,7 +42,6 @@ public class Worker_Team : MonoBehaviour
 
     private void FixedUpdate()
     {
-		hasCollectibleReserverd = m_reservedCollectible != null;
 
 		if (m_isInDepot || m_isInExtraction)
         {
@@ -78,24 +70,13 @@ public class Worker_Team : MonoBehaviour
             m_currentExtractingCollectible = collectible;
             m_currentActionDuration = EXTRACTION_DURATION;
             m_isInExtraction = true;
-            //Start countdown to collect it
         }
-
-        /*
-        if (m_workerState == EWorkerState.endPhase)
-        {
-            m_currentExtractingCollectible = collectible;
-            m_currentActionDuration = EXTRACTION_DURATION;
-            m_isInExtraction = true;
-
-        }
-        */
+      
         Camp_Team camp = collision.GetComponent<Camp_Team>();
         if (camp != null && m_collectibleInInventory != ECollectibleType.None)
         {
             m_currentActionDuration = DEPOSIT_DURATION;
             m_isInDepot = true;
-            //Start countdown to deposit my current collectible (if it exists)
         }
     }
 
@@ -120,7 +101,6 @@ public class Worker_Team : MonoBehaviour
         }
     }
 
-    //Code a max
     private void GainCollectible()
     {
         
@@ -132,7 +112,6 @@ public class Worker_Team : MonoBehaviour
 
         m_collectibleInInventory = m_currentExtractingCollectible.Extract(m_workerState);
         
-        // si jamais peut pas extraire
         if (m_collectibleInInventory == ECollectibleType.None)
         {
             return;
@@ -140,27 +119,25 @@ public class Worker_Team : MonoBehaviour
 
         m_isInExtraction = false;
         m_currentExtractingCollectible = null;
-        GetComponent<SpriteRenderer>().color = m_ressourceColor;
+        GetComponent<SpriteRenderer>().color = m_blueColor;
 
 		if (m_collectibleInInventory == ECollectibleType.Special)
 		{			
-			GetComponent<SpriteRenderer>().color = m_specialRessourceColor;
-            collecting_manager.RemoveCollectible(m_reservedCollectible); // le fait deja dans collectible mais somehow ca marche pas!
-            m_reservedCollectible = null; // to be sure
+			GetComponent<SpriteRenderer>().color = m_redColor;
+            collecting_manager.RemoveCollectible(m_reservedCollectible);
+            m_reservedCollectible = null; 
         }
 
     }
 
-    //Code a max
     private void DepositResource()
     {
         TeamOrchestrator_Team._Instance.GainResource(m_collectibleInInventory);
         m_collectibleInInventory = ECollectibleType.None;
         m_isInDepot = false;
-        GetComponent<SpriteRenderer>().color = m_noRessourceColor;
+        GetComponent<SpriteRenderer>().color = m_yellowColor;
     }
 
-    // Fonction qui va décider du role de mes workers
     private void SetWorkerState()
     {
         Exploring_Manager._Instance.SetWorkerForExploring(this);
@@ -169,7 +146,6 @@ public class Worker_Team : MonoBehaviour
 
 public enum EWorkerState
 {
-    // State de mes workers
     exploring,
     collecting,
     constructing,
@@ -179,11 +155,8 @@ public enum EWorkerState
 
 public enum EDirection
 {
-    // Pour exploration initiale
     left,
     right,
     up,
     down,
-
-
 }

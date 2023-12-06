@@ -3,26 +3,20 @@ using UnityEngine;
 
 public class Exploring_Manager : MonoBehaviour
 {
-    [Header("Le nombre d'exploreur au début de la simulation")]
-    public int m_nbOfExploringWorkers;
 
     [SerializeField] private GameObject m_zone;
 
     private int m_mapDimension = 0;
     private int m_workerInExploration = 0;
-    private float m_pourcentageOfTotalTimeExploration;
 
     private List<float> m_xPositions = new List<float>();
     private List<float> m_yPositions = new List<float>();
 
+    [HideInInspector] public int m_nbOfExploringWorkers = 5;
     [HideInInspector] public int m_zoneLenght = 0;
     [HideInInspector] public List<Vector2> m_zonesPositions = new List<Vector2>();
     [HideInInspector] public List<bool> m_zonesIsDetected = new List<bool>();
     [HideInInspector] public bool m_explorationIsDone = false;
-
-    private const int MAX_WORKER = 40;
-    private const int RESSOURCE_TO_FOUND_TO_STOP_EXPLORING = 60;    //Bigger than max nb of worker
-
 
     public static Exploring_Manager _Instance
     {
@@ -51,9 +45,7 @@ public class Exploring_Manager : MonoBehaviour
 
     void Start()
     {
-
         GetMapDimensionAndZoneLength();
-       // EvaluateWhenStopExploring();
         SetZonePositionsForList();
 
         for (int i = 0; i < m_zoneLenght; i++)
@@ -65,7 +57,7 @@ public class Exploring_Manager : MonoBehaviour
         }
     }
 
-    // Fonction pour créer les chunks
+
     private void GetMapDimensionAndZoneLength()
     {
         m_mapDimension = MapGenerator.MapDimension.Value;
@@ -75,12 +67,10 @@ public class Exploring_Manager : MonoBehaviour
         Debug.Log("Length of Zones: " + m_zoneLenght.ToString());
     }
 
-    /// <summary> Cette fonction sert a placer les positions des zones dans une liste </summary>
     private void SetZonePositionsForList()
     {
         int mapDimension = m_mapDimension;
 
-        // Round to 5
         while (mapDimension % 5 != 0)
         {
             mapDimension--;
@@ -98,7 +88,6 @@ public class Exploring_Manager : MonoBehaviour
         }
     }
 
-    /// <summary> Cette fonction initialise les listes de positions et la liste de bool </summary>
     private void ListAllZones(int i, int j)
     {
         Vector2 zonePosition = new Vector2(m_xPositions[j], m_yPositions[i]);
@@ -106,27 +95,23 @@ public class Exploring_Manager : MonoBehaviour
         m_zonesIsDetected.Add(false);
     }
 
-    /// <summary> Cette fonction sert a assigner des workers comme explorateur </summary>
+
     public void SetWorkerForExploring(Worker_Team worker)
     {
 
-        // Si on prévoit pas d'explorateur ou si l'exploration est considérée finie
         if (m_workerInExploration > m_nbOfExploringWorkers || m_explorationIsDone)
         {
             worker.m_workerState = EWorkerState.collecting;
             return;
         }
      
-        // Pour les extra explorateur
         if (m_workerInExploration > 3)
         {
             worker.m_extraExplorator = true;
         }
 
-        // modulo pour s'assurer que les workers vont dans des directions séparer équalement
         int moduloForDirection = m_workerInExploration % 4;
 
-        // donner des direction de départ au worker
         switch (moduloForDirection)
         {
             case 0:
@@ -149,32 +134,13 @@ public class Exploring_Manager : MonoBehaviour
         m_workerInExploration++;
     }
 
-    /// <summary> Cette fonction sert a placer les zones détectés </summary>
+
     public void SpawnDetectedZone(Vector2 position)
     {
         GameObject zone = Instantiate(m_zone, position, transform.rotation);
         zone.transform.SetParent(transform);
     }
 
-    // calcule un temps d'arret de l'exploration
-    private void EvaluateWhenStopExploring()
-    {
-        //TODO améliorer fonction
-        int minDuration = MapGenerator.SimulationDuration.GetMin(); // 10
-        int maxDuration = MapGenerator.SimulationDuration.GetMax(); // 1000
-        int mapDuration = MapGenerator.SimulationDuration.Value;
-
-        // retourne le pourcentage sur le temps d'une partie en comparaison a son min et max
-        m_pourcentageOfTotalTimeExploration = Mathf.InverseLerp(minDuration, maxDuration, mapDuration) * 100;
-
-        float totalTime = MapGenerator.SimulationDuration.Value;
-        float explorationTime = (totalTime / 100) * m_pourcentageOfTotalTimeExploration;
-
-        // dire a mes explorateur de collecté apres un certain temps calculer plus haut
-        Invoke("WorkersStopExploringAndSpawnCollectors", explorationTime);
-    }
-
-    // Arreter l'exploration et spawner les collecteur manquant
     private void WorkersStopExploringAndSpawnCollectors()
     {
         if (m_explorationIsDone)
@@ -192,42 +158,8 @@ public class Exploring_Manager : MonoBehaviour
             }
         }
 
-		
-
-		int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
-        int workerCount = TeamOrchestrator_Team._Instance.WorkersList.Count;
-		int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
-
-		if (workerCount >= MAX_WORKER)
-        {
-            return;
-        }
-
-  
-			
-
     }  
 
-    // Fonction qui calcule le pourcentage de la map explorer
-    public float GetPourcentageOfMapExpored()
-    {
-        float pourcentage = 100;
-        int numberOfZoneExplored = 0;
-
-        foreach (bool zone in m_zonesIsDetected)
-        {
-            if (zone == true)
-            {
-                numberOfZoneExplored++;
-            }
-        }
-
-        pourcentage /= m_zonesIsDetected.Count;
-        pourcentage *= numberOfZoneExplored;
-        return pourcentage;
-    }
-
-    // Fonction qui regarde si mes explorateur on tous finis d'explorer en temps réel
     private void CheckIfExploratorsAreDoneExploring()
     {
 
