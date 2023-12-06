@@ -681,11 +681,19 @@ MonoBehaviour:
     m_minimumValue: 12
     m_maximumValue: 80
     <Value>k__BackingField: 0
+<<<<<<< HEAD
   m_takeTestVariables: 0
   m_campCost: 31
   m_mapDimension: 184
   m_simulationDuration: 282
   m_nodeDensity: 12
+=======
+  m_takeTestVariables: 1
+  m_campCost: 20
+  m_mapDimension: 140
+  m_simulationDuration: 860
+  m_nodeDensity: 44
+>>>>>>> origin/main
 --- !u!1 &810867466
 GameObject:
   m_ObjectHideFlags: 0

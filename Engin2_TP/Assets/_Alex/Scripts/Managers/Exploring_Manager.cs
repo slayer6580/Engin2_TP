@@ -18,6 +18,13 @@ public class Exploring_Manager : MonoBehaviour
     [HideInInspector] public List<bool> m_zonesIsDetected = new List<bool>();
     [HideInInspector] public bool m_explorationIsDone = false;
 
+<<<<<<< HEAD
+=======
+    private const int MAX_WORKER = 40;
+    //private const int RESSOURCE_TO_FOUND_TO_STOP_EXPLORING = 60;    //Bigger than max nb of worker
+
+
+>>>>>>> origin/main
     public static Exploring_Manager _Instance
     {
         get;
@@ -39,7 +46,6 @@ public class Exploring_Manager : MonoBehaviour
         {
             CheckIfExploratorsAreDoneExploring();
             StopExploringWhenEnoughRessourceFound();
-
 		}
     }
 
@@ -141,6 +147,27 @@ public class Exploring_Manager : MonoBehaviour
         zone.transform.SetParent(transform);
     }
 
+<<<<<<< HEAD
+=======
+    // calcule un temps d'arret de l'exploration
+    private void EvaluateWhenStopExploring()
+    {
+        int minDuration = MapGenerator.SimulationDuration.GetMin(); // 10
+        int maxDuration = MapGenerator.SimulationDuration.GetMax(); // 1000
+        int mapDuration = MapGenerator.SimulationDuration.Value;
+
+        // retourne le pourcentage sur le temps d'une partie en comparaison a son min et max
+        m_pourcentageOfTotalTimeExploration = Mathf.InverseLerp(minDuration, maxDuration, mapDuration) * 100;
+
+        float totalTime = MapGenerator.SimulationDuration.Value;
+        float explorationTime = (totalTime / 100) * m_pourcentageOfTotalTimeExploration;
+
+        // dire a mes explorateur de collecté apres un certain temps calculer plus haut
+        Invoke("WorkersStopExploringAndSpawnCollectors", explorationTime);
+    }
+
+    // Arreter l'exploration et spawner les collecteur manquant
+>>>>>>> origin/main
     private void WorkersStopExploringAndSpawnCollectors()
     {
         if (m_explorationIsDone)
@@ -158,6 +185,17 @@ public class Exploring_Manager : MonoBehaviour
             }
         }
 
+<<<<<<< HEAD
+=======
+		int knownCollectibleCount = Collecting_Manager._Instance.KnownCollectibles.Count;
+        int workerCount = TeamOrchestrator_Team._Instance.WorkersList.Count;
+		int numberOfCollectorToSpawn = knownCollectibleCount - workerCount;
+
+		if (workerCount >= MAX_WORKER)
+        {
+            return;
+        }
+>>>>>>> origin/main
     }  
 
     private void CheckIfExploratorsAreDoneExploring()
@@ -176,7 +214,6 @@ public class Exploring_Manager : MonoBehaviour
 
 	private void StopExploringWhenEnoughRessourceFound()
 	{
-
         if (Collecting_Manager._Instance.KnownCollectibles.Count >= (int)(TeamOrchestrator_Team._Instance.WorkersList.Count * 1.5f))
 		{
 			WorkersStopExploringAndSpawnCollectors();

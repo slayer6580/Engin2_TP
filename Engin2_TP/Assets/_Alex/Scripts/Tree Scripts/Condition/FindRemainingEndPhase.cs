@@ -16,7 +16,6 @@ public class FindRemainingEndPhase : Condition
 
     public override bool Check()
     {
-
         float minDistance = float.PositiveInfinity;
         bool suitableRessourceExist = false;
         Collectible_Team chosenRessource = null;
@@ -24,8 +23,6 @@ public class FindRemainingEndPhase : Condition
         // regarde si la distance d'un camp est plus petit qu'un autre camps
         foreach (Collectible_Team ressource in Collecting_Manager._Instance.KnownCollectibles)
         {
-           
-            
                 // trouver le camp le plus proche
                 float tempMinDistance = Vector2.Distance(ressource.transform.position, m_workerPos);
 
@@ -34,8 +31,7 @@ public class FindRemainingEndPhase : Condition
                     minDistance = tempMinDistance;
                     chosenRessource = ressource;
                     suitableRessourceExist = true;
-                }
-            
+                }     
         }
 
         if (suitableRessourceExist)
@@ -43,9 +39,7 @@ public class FindRemainingEndPhase : Condition
             m_workerGO.Value.gameObject.GetComponent<Worker_Team>().m_reservedCollectible = chosenRessource;
             return true;
         }
-
         return false;
 
     }
-
 }

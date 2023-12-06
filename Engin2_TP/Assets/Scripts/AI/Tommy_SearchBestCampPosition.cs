@@ -7,19 +7,15 @@ using UnityEngine;
 [AddComponentMenu("")]
 public class Tommy_SearchBestCampPosition : Leaf
 {
+	public const float DISTANCE_BUFFER = 2;
 	List<Collectible_Team> pack = new List<Collectible_Team>();
 
 
 	public override void OnEnter()
     {
-		
-
 		Collecting_Manager instance = Collecting_Manager._Instance;
 		float remainingTime = MapGenerator.SimulationDuration.Value - Time.timeSinceLevelLoad;
-
 		pack = FindBestPackOfRessources(instance.KnownCollectibles, instance.m_ressourceToUse, instance.m_alreadyUsedRessources, instance.WORKER_SPEED_BY_SECOND, instance.m_predictionDistance, remainingTime);
-
-
 	}
 
     public override NodeResult Execute()
@@ -27,13 +23,9 @@ public class Tommy_SearchBestCampPosition : Leaf
 
         if(pack.Count > 0)
         {
-            print("SEARCH SUCESS");
-			//Debug.Log("On SEARCH BEST CAMP execute");
 			return NodeResult.success;
 		}
-		print("SEARCH FAILURE");
-		return NodeResult.success;
-		
+		return NodeResult.success;	
     }
 
 
@@ -119,8 +111,8 @@ public class Tommy_SearchBestCampPosition : Leaf
 							j = 0;
 						}
 						float dist = Vector2.Distance(potentialRessourcePack[i].transform.position, potentialRessourcePack[j].transform.position);
-						//TODO change 2 to global const to make some test
-						if (dist > (minimumDistanceBetweenRessources * 2f))
+
+						if (dist > (minimumDistanceBetweenRessources * DISTANCE_BUFFER))
 						{
 							closeEnough = false;
 						}
@@ -196,9 +188,6 @@ public class Tommy_SearchBestCampPosition : Leaf
 
 			possiblePoints += Mathf.FloorToInt(remainingTime / timeToCollect);
 		}
-
-
-		// print("Possible points with " + ressourcePack.Count + " ressources. = " + possiblePoints);
 		return possiblePoints;
 	}
 }

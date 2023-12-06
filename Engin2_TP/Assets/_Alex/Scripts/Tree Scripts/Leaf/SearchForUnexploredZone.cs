@@ -36,7 +36,11 @@ public class SearchForUnexploredZone : Leaf
 
 
         if (CheckZoneAtRightDirection(workerDirection))
+<<<<<<< HEAD
         {           
+=======
+        {
+>>>>>>> origin/main
             if (worker.m_extraExplorator == true)
             {
                 worker.m_extraExplorator = false;
@@ -45,11 +49,18 @@ public class SearchForUnexploredZone : Leaf
         }
         else if (CheckZoneAtFrontDirectionExtra(workerDirection) && worker.m_extraExplorator == true)
         {
+<<<<<<< HEAD
         
             return;
         }
         else if (CheckZoneAtFrontDirection(workerDirection))
         {    
+=======
+            return;
+        }
+        else if (CheckZoneAtFrontDirection(workerDirection))
+        {
+>>>>>>> origin/main
             if (worker.m_extraExplorator == true)
             {
                 worker.m_extraExplorator = false;
@@ -66,7 +77,7 @@ public class SearchForUnexploredZone : Leaf
         }
 
         //si le joueur ne peut pas explorer, il va commencer a collecter
-        Debug.Log("Worker will start collecting because he cant explore anymore");
+        //Debug.Log("Worker will start collecting because he cant explore anymore");
         m_worker.Value.GetComponent<Worker_Team>().m_workerState = EWorkerState.collecting;
         m_foundZone = false;
 

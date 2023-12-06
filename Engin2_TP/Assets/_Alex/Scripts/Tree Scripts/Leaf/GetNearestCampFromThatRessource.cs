@@ -4,7 +4,7 @@ using UnityEngine;
 
 [AddComponentMenu("")]
 [MBTNode(name = "Alex Condition/Get Nearest Camp From That Ressource")]
-public class Tommy_GetNearestCampFromThatRessource : Leaf
+public class GetNearestCampFromThatRessource : Leaf
 {
     public GameObjectReference m_workerGO = new GameObjectReference();
     private Collectible_Team workerCollectible; 
@@ -38,8 +38,4 @@ public class Tommy_GetNearestCampFromThatRessource : Leaf
 
 		return NodeResult.failure;
 	}
-
-    
-
-  
 }

@@ -22,10 +22,8 @@ public class IsCampWorthIt : Condition
 
         if ((possiblePointByWorker * 4) > campCost)
         {
-            print("WORTH IT");
             return true;
         }
-		print("DONT -- WORTH IT");
 		return false;
     }
 }

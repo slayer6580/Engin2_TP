@@ -173,6 +173,11 @@ public class TeamOrchestrator_Team : MonoBehaviour
 			nbsOfWorkers = 0;
 		}
 
+<<<<<<< HEAD
+=======
+       
+        // Spawn le nombre d'explorateur selon la formule du haut
+>>>>>>> origin/main
         Exploring_Manager._Instance.m_nbOfExploringWorkers += nbsOfWorkers;
 
 		for (int i = 0; i < nbsOfWorkers; i++)
@@ -206,7 +211,11 @@ public class TeamOrchestrator_Team : MonoBehaviour
                     if(worker.m_workerState == EWorkerState.exploring)
                     {
 						float tempDistance = Vector2.Distance(ressource.transform.position, worker.transform.position);
+<<<<<<< HEAD
 					
+=======
+						
+>>>>>>> origin/main
 						if (tempDistance < distance)
 						{
 							closestWorker = worker;
@@ -219,9 +228,11 @@ public class TeamOrchestrator_Team : MonoBehaviour
                 {               
 					SetWorkerToCollecting(closestWorker, ressource);
 				}
+<<<<<<< HEAD
              
+=======
+>>>>>>> origin/main
 			}
 		}
     }
-
 }
